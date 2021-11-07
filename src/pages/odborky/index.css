@@ -1,0 +1,16 @@
+.my-card:hover {
+    background-color: #dedede !important
+}
+
+.odborky::after {
+    content: "";
+    flex-basis: 460px;
+}
+
+.active-section.div {
+    border: 10px solid #000 !important;
+}
+
+.active-section:hover {
+    text-decoration: none !important;
+}
