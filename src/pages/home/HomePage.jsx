@@ -27,18 +27,18 @@ const HomePage = () => {
     width: "300px",
   };
 
-  const iconStyle = { margin: "0 1rem 0 2rem" };
+  const iconStyle = { margin: "0 1rem 0 1.5rem" };
 
   const buttonStyle = {
     width: "100%",
-    marginTop: "2rem",
+    marginTop: "1.25rem",
     backgroundColor: "#EB6267",
     borderColor: "#EB6267",
   };
 
   const pStyle = {
     fontWeight: "bold",
-    fontSize: "1.5rem",
+    fontSize: "1.75rem",
     color: "#3E4042",
   };
 
@@ -48,21 +48,21 @@ const HomePage = () => {
         <div style={cardStyle}>
           <div
             style={{
-              backgroundColor: "rgb(245,246,247,0.5)",
-              padding: "1rem 0",
+              backgroundColor: "rgb(245,246,247,0.65)",
+              padding: "1rem 0 0.5rem 0",
             }}
           >
             <p style={pStyle}>
               <BsFillBookmarkStarFill style={iconStyle} />
-              Nove zazitky
+              Nové zážitky
             </p>
             <p style={pStyle}>
               <BsFillPeopleFill style={iconStyle} />
-              Priatelstva
+              Priateľstvá
             </p>
             <p style={pStyle}>
               <IoIosRocket style={iconStyle} />
-              Osobny rast
+              Osobný rast
             </p>
           </div>
           <Button style={buttonStyle} as={Link} to="/odborky">

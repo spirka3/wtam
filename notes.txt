@@ -1,2 +1,13 @@
-ked som na private a sa odhlasim, tak ist na home
-ked som na private neprihlaseny tak po prihlasini sa ukaze kontent
+dopracovat
+- vyzvy (zrejme dost podobne ako odborky)
+- moj progres
+- moju druzinu
+- filter v odborkach
+- odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
+- detske prvky -> minimalne vymenit cierne btny
+
+napravit
+- obrazkove pozadie
+- z private po odhlasini hned na home
+- po prihlaseni hned ukazat kontent private
+- farbu odkazov v navigacii

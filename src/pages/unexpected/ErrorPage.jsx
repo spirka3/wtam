@@ -5,9 +5,9 @@ const ErrorPage = () => {
   const url = useLocation().pathname;
 
   return (
-    <h4 className="text-center" style={{ marginTop: "200px" }}>
-      Stranka <code>{url}</code> neexistuje ...
-    </h4>
+    <h3 className="text-center" style={{ marginTop: "200px" }}>
+      Mrzí nás to, ale stránka <code>{url}</code> neexistuje.
+    </h3>
   );
 };
 
