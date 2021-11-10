@@ -1,13 +1,38 @@
-dopracovat
-- vyzvy (zrejme dost podobne ako odborky)
-- moj progres
-- moju druzinu
-- filter v odborkach
-- odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
-- detske prvky -> minimalne vymenit cierne btny
+JA
+Pridat na koniec roverov do zoznami expertske odborky
+Z registracie byt schopni swtichnut do loginu
+Dat blizsi popis k prihlaseniu
+Zobrazit 3 stavy uloh
+Klinutim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer)
+Carousel sa hybe az ked mam hover na dashboarde
+Nezobrazit indicator ale arrows
+Gradient efect na hover cez HomePage button
+HTML notifikacie
+orezat obrazkove pozadie
+icony x a < > sa nezobrazuju spravne
+[narvh] interface pre veduceho na schvalenie uloh
 
-napravit
-- obrazkove pozadie
+
+FILIP
+- po prihlaseni hned ukazat moje aktivity
 - z private po odhlasini hned na home
-- po prihlaseni hned ukazat kontent private
-- farbu odkazov v navigacii
+
+- nacitat z db odborky
+- vediet odfiltrovat hotove
+- vediet pridat do rozpracovanych
+-   hotove uz nemoze znova pridat
+- [mozno] odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
+
+- poslat ulohu s prilohou
+-    moznost poslat viac uloh naraz
+- vediet vymazat aktivitu
+
+- interface pre veduceho na schvalenie uloh
+- moznost napisat spatnu vazbu
+- niektore ulohy musi vediet potvrdit rodic (heslom)
+
+- podla veku usera sa zobrazuju taby v Moje aktivity (aktivna je najnovsia)
+-   podobne v Odborky
+- ak od posledneho zobrazenia stranky bola potvrdena uloha, zobrazi sa notifikacia
+
+- [navrhnut] zgrupovanie odboriek do expertskych odboriek

@@ -7,11 +7,11 @@ import HomePage from "./pages/home/HomePage";
 import EmptyPage from "./pages/unexpected/EmptyPage";
 import OdborkyPage from "./pages/odborky/OdborkyPage";
 import ChallengesPage from "./pages/challenges/ChallengesPage";
-import MyProgressPage from "./my-profile/progress/MyProgressPage";
-import MyTeamPage from "./my-profile/team/MyTeamPage";
+import MyActivitiesPage from "./pages/my-profile/activities/MyActivitiesPage";
+import MyTeamPage from "./pages/my-profile/team/MyTeamPage";
 import ErrorPage from "./pages/unexpected/ErrorPage";
 import AuthModal from "./components/modals/AuthModal";
-import ProfilePage from "./my-profile/settings/ProfilePage";
+import ProfilePage from "./pages/my-profile/settings/ProfilePage";
 import { getItem } from "./utils/functions";
 import jwtDecode from "jwt-decode";
 
@@ -56,7 +56,7 @@ function App() {
             <Route path="/odborky" component={OdborkyPage} />
             <Route path="/vyzvy" component={ChallengesPage} />
             <Route path="/aktivity" component={EmptyPage} />
-            <Private path="/progres" component={MyProgressPage} />}
+            <Private path="/progres" component={MyActivitiesPage} />}
             <Private path="/druzina" component={MyTeamPage} />}
             <Private path="/profil" component={ProfilePage} />
             <Route path="*" component={ErrorPage} />

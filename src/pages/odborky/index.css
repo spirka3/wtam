@@ -14,3 +14,14 @@
 .active-section:hover {
     text-decoration: none !important;
 }
+
+.my-badge {
+    transform: rotate(-45deg);
+    width: 80px;
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    height: 25px;
+    color: white;
+    background: #0977ab;
+}

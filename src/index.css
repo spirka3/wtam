@@ -20,6 +20,37 @@
     position: relative;
 }
 
-p {
-    /*color: #333333;*/
+.my-tabs {
+    display: flex;
+}
+
+.my-tabs:nth-child(-n+3) {
+    margin-left: auto;
+}
+
+.my-tabs:nth-last-child(-n+3) {
+    margin-right: auto;
+}
+
+.checked-state > label {
+    text-decoration: line-through !important;
+}
+
+/*.navbar-collapse {*/
+/*    position: fixed;*/
+/*    top: 100px;*/
+/*    right: 0;*/
+/*}*/
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }

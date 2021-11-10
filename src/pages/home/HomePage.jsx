@@ -8,12 +8,16 @@ import {
 } from "react-icons/all";
 import { Link } from "react-router-dom";
 
+import "./index.css";
+
 const HomePage = () => {
+  // document.title = "Domov" + _appName;
+
   const containerStyle = { margin: "-4rem -8rem" };
 
   const backgroundStyle = {
     width: "100%",
-    height: "94vh",
+    height: "calc(100vh - 57px)", // navbar height = 57px
     backgroundImage: "url('images/home-bg.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -67,7 +71,7 @@ const HomePage = () => {
           </div>
           <Button style={buttonStyle} as={Link} to="/odborky">
             <p style={{ ...pStyle, margin: "0", color: "white" }}>
-              Vyber si aktivitu
+              Vyber si odborku
               <IoArrowForwardCircleSharp
                 size={30}
                 style={{ margin: "-0.5rem 0.5rem 0 0.5rem" }}

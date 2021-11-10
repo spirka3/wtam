@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Button, Modal, Card } from "react-bootstrap";
+import { Row, Button, Modal, Card, Badge } from "react-bootstrap";
 
 import "./index.css";
 import RightColumn from "./RightColumn";
@@ -10,8 +10,13 @@ import AuthModal from "../../components/modals/AuthModal";
 const OdborkyPage = () => {
   const { auth } = useAuthContext();
 
+  const [isAdded, setIsAdded] = useState(false);
+
   const [showCardModal, setShowCardModal] = useState(undefined);
-  const closeCardModal = () => setShowCardModal(undefined);
+  const closeCardModal = () => {
+    setIsAdded(false);
+    setShowCardModal(undefined);
+  };
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const closeLoginModal = () => setShowLoginModal(false);
@@ -19,6 +24,7 @@ const OdborkyPage = () => {
   const addItem = () => {
     if (auth.token) {
       console.log("mas to");
+      setIsAdded(true);
     } else {
       console.log("naskor sa prihlas");
       setShowLoginModal(true);
@@ -26,6 +32,9 @@ const OdborkyPage = () => {
   };
 
   const CardModal = () => {
+    const btnColor = isAdded ? "#B6DE92" : "#F2E272";
+    const btnText = isAdded ? "Zobraz progres" : "Pridaj odborku";
+
     return (
       <>
         <Modal.Header closeButton style={{ textAlign: "center" }}>
@@ -63,16 +72,20 @@ const OdborkyPage = () => {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          {/* todo set section for the button */}
-          <Button
-            style={{ backgroundColor: "#F2E272", borderColor: "#F2E272" }}
-            onClick={addItem}
-          >
-            <strong>Pridat odborku</strong>
-          </Button>
-          <Button variant="light" onClick={closeCardModal}>
-            Zavriet
-          </Button>
+          <div style={{ marginLeft: "0", marginRight: "auto" }}>
+            {isAdded && <h6>✔ Odborka bola pridana</h6>}
+          </div>
+          <div>
+            <Button
+              style={{ backgroundColor: btnColor, borderColor: btnColor }}
+              onClick={addItem}
+            >
+              <strong>{btnText}</strong>
+            </Button>
+            <Button variant="light" onClick={closeCardModal}>
+              Zavriet
+            </Button>
+          </div>
         </Modal.Footer>
       </>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import EmptyPage from "../../pages/unexpected/EmptyPage";
+import EmptyPage from "../../unexpected/EmptyPage";
 
 const MyTeamPage = () => {
   return (

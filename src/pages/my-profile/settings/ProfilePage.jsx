@@ -3,7 +3,7 @@ import axios from "axios";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import UserPassForm from "./forms/UserPassForm";
 import UserInfoForm from "./forms/UserInfoForm";
-import { useAuthContext } from "../../providers/AuthProvider";
+import { useAuthContext } from "../../../providers/AuthProvider";
 import { Button } from "react-bootstrap";
 
 const ProfilePage = () => {

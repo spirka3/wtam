@@ -5,7 +5,7 @@ import {
   Error,
   Submit,
   Select,
-} from "../../../components/forms/MyForm";
+} from "../../../../components/forms/MyForm";
 
 const UserInfoForm = ({ onSubmit, defaultValues, error }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, NavLink } from "react-bootstrap";
+import { Col, NavLink, Form } from "react-bootstrap";
 import { Link as SectionLink } from "react-scroll";
 import { Link } from "react-router-dom";
 
@@ -52,7 +52,7 @@ const RightColumn = () => {
     );
   };
 
-  const NavigationButton = ({ text, url, marginTop, to }) => {
+  const NavigationButton = ({ text, url, marginTop, to, filter }) => {
     return (
       <NavLink
         style={{
@@ -60,6 +60,7 @@ const RightColumn = () => {
           marginTop: marginTop,
           boxShadow: `3px 3px 10px 4px rgba(0,0,0,0.1)`,
           backgroundImage: `url(${url})`,
+          filter: filter,
         }}
         as={Link}
         to={to}
@@ -72,6 +73,14 @@ const RightColumn = () => {
   return (
     <Col className="d-xs-none" sm={0} md={3}>
       <div style={{ position: "fixed", width: "20%" }}>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check
+            onChange={() => console.log("clicked")}
+            className="font-weight-bold"
+            type="checkbox"
+            label="Nezobrazovat ziskane aktivity"
+          />
+        </Form.Group>
         <h4>Kategorie:</h4>
         <SectionButton
           text="Vĺčatá a včielky"
@@ -98,6 +107,7 @@ const RightColumn = () => {
           text="Ostatne aktivity"
           url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
           to="/aktivity"
+          filter="hue-rotate(180deg)"
         />
       </div>
     </Col>

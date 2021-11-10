@@ -1,9 +1,19 @@
-import { fakeOdborky } from "../../utils/fakeData";
-import { Card, Col } from "react-bootstrap";
-import React from "react";
+import { fakeOdborky, fakeOdborky1 } from "../../utils/fakeData";
+import { Badge, Button, Card, Col } from "react-bootstrap";
+import React, { useState } from "react";
 
 const LeftColumn = ({ setShowCardModal }) => {
-  const MyCard = ({ card }) => {
+  const [hoveredCard, setHoveredCard] = useState(undefined);
+
+  const handleMouseOver = (id) => {
+    // setHoveredCard(id);
+  };
+
+  const handleMouseOut = () => {
+    setHoveredCard(undefined);
+  };
+
+  const MyCard = ({ id }) => {
     return (
       <div
         className="my-card"
@@ -12,10 +22,12 @@ const LeftColumn = ({ setShowCardModal }) => {
           margin: "1%",
           cursor: "pointer",
           backgroundColor: "rgba(255, 255, 255, 0.5)",
+          zIndex: "99",
         }}
         onClick={() => setShowCardModal({})}
+        onMouseOver={() => handleMouseOver(id)}
+        onMouseOut={handleMouseOut}
       >
-        {/* TODO set card */}
         <Card
           style={{
             padding: "1rem",
@@ -24,6 +36,11 @@ const LeftColumn = ({ setShowCardModal }) => {
           }}
           className="my-card"
         >
+          {id % 3 === 1 && (
+            <Badge bg="warning" className="my-badge">
+              Bud prvy
+            </Badge>
+          )}
           <Card.Img
             style={{
               padding: "1rem",
@@ -36,6 +53,7 @@ const LeftColumn = ({ setShowCardModal }) => {
           />
           <Card.Body style={{ backgroundColor: "rgba(255, 255, 255, 0)" }}>
             <Card.Title className="text-center">Animáčik</Card.Title>
+            {hoveredCard === id && <Button>Hi</Button>}
           </Card.Body>
         </Card>
       </div>
@@ -53,8 +71,8 @@ const LeftColumn = ({ setShowCardModal }) => {
           Odborky často plnia kolektívne so skupinou priateľov. Majú iba jeden
           stupeň a ich nášivka má trojuholníkový tvar a červený lem.
         </p>
-        {fakeOdborky.map(() => (
-          <MyCard />
+        {fakeOdborky.map((_, id) => (
+          <MyCard id={id} />
         ))}
       </div>
     );
