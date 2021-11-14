@@ -14,25 +14,25 @@ icony x a < > sa nezobrazuju spravne
 
 
 FILIP
-- po prihlaseni hned ukazat moje aktivity
-- z private po odhlasini hned na home
+po prihlaseni hned ukazat moje aktivity 
+z private po odhlaseni hned na home
 
-- nacitat z db odborky
-- vediet odfiltrovat hotove
-- vediet pridat do rozpracovanych
--   hotove uz nemoze znova pridat
+TODO: nacitat z db odborky
+TODO: vediet odfiltrovat hotove
+TODO: vediet pridat do rozpracovanych
+TODO:   hotove uz nemoze znova pridat
 - [mozno] odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
 
-- poslat ulohu s prilohou
--    moznost poslat viac uloh naraz
-- vediet vymazat aktivitu
+TODO: poslat ulohu s prilohou
+TODO:    moznost poslat viac uloh naraz
+TODO: vediet vymazat aktivitu
 
-- interface pre veduceho na schvalenie uloh
-- moznost napisat spatnu vazbu
-- niektore ulohy musi vediet potvrdit rodic (heslom)
+TODO: interface pre veduceho na schvalenie uloh
+TODO: moznost napisat spatnu vazbu
+TODO: niektore ulohy musi vediet potvrdit rodic (heslom)
 
-- podla veku usera sa zobrazuju taby v Moje aktivity (aktivna je najnovsia)
--   podobne v Odborky
-- ak od posledneho zobrazenia stranky bola potvrdena uloha, zobrazi sa notifikacia
+TODO: podla veku usera sa zobrazuju taby v Moje aktivity (aktivna je najnovsia)
+TODO:   podobne v Odborky
+TODO: ak od posledneho zobrazenia stranky bola potvrdena uloha, zobrazi sa notifikacia
 
-- [navrhnut] zgrupovanie odboriek do expertskych odboriek
+TODO: [navrhnut] zgrupovanie odboriek do expertskych odboriek
