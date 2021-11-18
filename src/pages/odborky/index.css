@@ -7,8 +7,8 @@
     flex-basis: 460px;
 }
 
-.active-section.div {
-    border: 10px solid #000 !important;
+.active-section {
+    text-decoration: none;
 }
 
 .active-section:hover {

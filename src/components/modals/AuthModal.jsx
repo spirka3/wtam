@@ -6,7 +6,12 @@ import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
 import { fakeAuth } from "../../utils/fakeData";
 
-const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
+const AuthModal = ({
+  action: _action = "login",
+  onHide,
+  onlyBody,
+  additionalInfo,
+}) => {
   const { logIn } = useAuthContext();
 
   const [action, setAction] = useState(_action);
@@ -32,7 +37,8 @@ const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
   };
 
   const props = { handleSubmit, authError, switchForm };
-  const title = action === "login" ? "Prihlasenie" : "Registracia"; // action = "login" || "register"
+
+  let title = action === "login" ? "Prihlasenie" : "Registracia"; // action = "login" || "register"
 
   const ModalContainer = ({ children }) => {
     if (onlyBody) {

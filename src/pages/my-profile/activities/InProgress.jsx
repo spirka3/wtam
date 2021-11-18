@@ -91,17 +91,17 @@ const InProgress = () => {
     );
   };
 
-  const MyCard = ({ color, title }) => {
+  const MyCard = ({ color, title, url }) => {
     const MyProgress = ({ now, label }) => {
       return (
-        <Row
+        <div
           className="my-card"
           style={{
             display: "flex",
             justifyContent: "space-between",
             paddingTop: "1rem",
           }}
-          onClick={() => setShowCardModal({})}
+          onClick={() => setShowCardModal()}
         >
           <img
             style={{
@@ -126,7 +126,7 @@ const InProgress = () => {
               label={label}
             />
           </div>
-        </Row>
+        </div>
       );
     };
 
@@ -134,13 +134,14 @@ const InProgress = () => {
       <Card>
         <Card.Header
           style={{
-            backgroundColor: color,
             padding: ".5rem",
             color: "white",
-            opacity: "0.5",
+            // opacity: "0.8",
+            backgroundSize: "cover",
+            backgroundImage: `url('${url}')`,
           }}
         >
-          {title}
+          <strong>{title}</strong>
         </Card.Header>
         <Card.Body>
           <MyProgress now={30} label={`3/8`} />
@@ -153,16 +154,30 @@ const InProgress = () => {
 
   return (
     <>
-      <h3 style={{ marginTop: "2rem" }}>Rozpracovane</h3>
+      <h3 style={{ marginTop: "1.15rem" }}>Rozpracovane</h3>
       <Row>
         <Col>
-          <MyCard color="orange" title="Odborky" number="1" />
+          <MyCard
+            title="Odborky"
+            number="1"
+            url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-skautske-bttn.png"
+          />
         </Col>
         <Col>
-          <MyCard color="green" title="Vyzvy" number="3" />
+          <MyCard
+            color="green"
+            title="Vyzvy"
+            number="3"
+            url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
+          />
         </Col>
         <Col>
-          <MyCard color="blue" title="Ocenenia" number="1" />
+          <MyCard
+            color="blue"
+            title="Ocenenia"
+            number="1"
+            url="https://www.skauting.sk/wp-content/uploads/2019/01/skauting-program-najvyssie-ocenenie-medvedi-skaut-bttn.png"
+          />
         </Col>
       </Row>
       {showCardModal && <CardModal />}

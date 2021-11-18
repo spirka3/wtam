@@ -33,7 +33,7 @@ const OdborkyPage = () => {
 
   const CardModal = () => {
     const btnColor = isAdded ? "#B6DE92" : "#F2E272";
-    const btnText = isAdded ? "Zobraz progres" : "Pridaj odborku";
+    const btnText = isAdded ? "Zobraz progres" : "Zacat odborku";
 
     return (
       <>
@@ -104,7 +104,9 @@ const OdborkyPage = () => {
             onHide={showLoginModal ? closeLoginModal : closeCardModal}
             centered
           >
-            {showLoginModal && <AuthModal onHide={closeLoginModal} onlyBody />}
+            {showLoginModal && (
+              <AuthModal onHide={closeLoginModal} onlyBody title="omg" />
+            )}
             {!showLoginModal && <CardModal />}
           </Modal>
         )}

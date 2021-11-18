@@ -1,38 +1,54 @@
-JA
-Pridat na koniec roverov do zoznami expertske odborky
-Z registracie byt schopni swtichnut do loginu
-Dat blizsi popis k prihlaseniu
-Zobrazit 3 stavy uloh
-Klinutim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer)
-Carousel sa hybe az ked mam hover na dashboarde
-Nezobrazit indicator ale arrows
-Gradient efect na hover cez HomePage button
-HTML notifikacie
-orezat obrazkove pozadie
-icony x a < > sa nezobrazuju spravne
+JANO
+- gradient efect na hover cez HomePage button
+- orezat obrazkove pozadie
+
+[narvh] Zobrazit 3 stavy uloh
+[narvh] Nadidednim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer)
+    -   kliknutim sa zobrazia detaily
 [narvh] interface pre veduceho na schvalenie uloh
+[navrh] expertske odborky
+[navrh] blizsi popis/vysvetlenie akcii
+
 
 
 FILIP
-- po prihlaseni hned ukazat moje aktivity
-- z private po odhlasini hned na home
+- po prihlaseni redirect na moje aktivity (vynimkou je ak si vyberam prave odborku)
+- z PrivatePage po odhlasini redirect na home
 
 - nacitat z db odborky
 - vediet odfiltrovat hotove
 - vediet pridat do rozpracovanych
 -   hotove uz nemoze znova pridat
-- [mozno] odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
+- odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
 
 - poslat ulohu s prilohou
 -    moznost poslat viac uloh naraz
-- vediet vymazat aktivitu
+- vediet vymazat rozpracovanu aktivitu
 
 - interface pre veduceho na schvalenie uloh
-- moznost napisat spatnu vazbu
-- niektore ulohy musi vediet potvrdit rodic (heslom)
+- moznost napisat spatnu vazbu, ktoru uvidi povodny odosielatel ako odpoved
+- niektore ulohy musi vediet potvrdit rodic (pred odoslanim musi zadat heslo)
+    - treba vediet rozlisovat, kt. ulohy maju takuto vlastnost
 
-- podla veku usera sa zobrazuju taby v Moje aktivity (aktivna je najnovsia)
+- podla veku usera sa zobrazuju taby v Moje aktivity (default je najvyssia)
 -   podobne v Odborky
-- ak od posledneho zobrazenia stranky bola potvrdena uloha, zobrazi sa notifikacia
 
-- [navrhnut] zgrupovanie odboriek do expertskych odboriek
+- ak od posledneho zobrazenia stranky prisla odpoved od veduceho, zobrazi sa notifikacia
+-   po kliknuti sa da rozbalit cela odpoved
+
+- [navrh] zgrupovanie odboriek do expertskych odboriek
+
+
+
+TOMAS
+- rozbehat Node.js
+- doplnit data do db
+-   treba sa zamysliet co na chyba
+- poskytnut API
+- deploy
+
+
+
+MARTIN
+- spracovat pripomienky z hodnotenia
+-   neviem ci sa to da, necital som to

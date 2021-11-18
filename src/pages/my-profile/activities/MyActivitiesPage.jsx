@@ -12,7 +12,7 @@ const MyActivitiesPage = () => {
           id="uncontrolled-tab-example"
           className="mb-3 my-tabs"
         >
-          <Tab eventKey="wolfs" title="Vĺčatá a včielky">
+          <Tab eventKey="wolfs" className="my-tab" title="Vĺčatá a včielky">
             <InProgress />
             <Done />
             {/*<Todo />*/}
