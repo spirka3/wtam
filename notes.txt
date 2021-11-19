@@ -12,33 +12,29 @@ JANO
 
 
 FILIP
-- po prihlaseni redirect na moje aktivity (vynimkou je ak si vyberam prave odborku)
-- z PrivatePage po odhlasini redirect na home
 
-- nacitat z db odborky
-- vediet odfiltrovat hotove
-- vediet pridat do rozpracovanych
--   hotove uz nemoze znova pridat
-- odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
+po prihlaseni hned ukazat moje aktivity 
+z private po odhlaseni hned na home
 
-- poslat ulohu s prilohou
--    moznost poslat viac uloh naraz
-- vediet vymazat rozpracovanu aktivitu
+TODO: nacitat z db odborky
+TODO: vediet odfiltrovat hotove
+TODO: vediet pridat do rozpracovanych
+TODO:   hotove uz nemoze znova pridat
+- [mozno] odlisit odborky cez badge (hotove, zacate, new, oblubene, bud prvy!)
 
-- interface pre veduceho na schvalenie uloh
-- moznost napisat spatnu vazbu, ktoru uvidi povodny odosielatel ako odpoved
-- niektore ulohy musi vediet potvrdit rodic (pred odoslanim musi zadat heslo)
-    - treba vediet rozlisovat, kt. ulohy maju takuto vlastnost
+TODO: poslat ulohu s prilohou
+TODO:    moznost poslat viac uloh naraz
+TODO: vediet vymazat aktivitu
 
-- podla veku usera sa zobrazuju taby v Moje aktivity (default je najvyssia)
--   podobne v Odborky
+TODO: interface pre veduceho na schvalenie uloh
+TODO: moznost napisat spatnu vazbu
+TODO: niektore ulohy musi vediet potvrdit rodic (heslom)
 
-- ak od posledneho zobrazenia stranky prisla odpoved od veduceho, zobrazi sa notifikacia
--   po kliknuti sa da rozbalit cela odpoved
+TODO: podla veku usera sa zobrazuju taby v Moje aktivity (aktivna je najnovsia)
+TODO:   podobne v Odborky
+TODO: ak od posledneho zobrazenia stranky bola potvrdena uloha, zobrazi sa notifikacia
 
-- [navrh] zgrupovanie odboriek do expertskych odboriek
-
-
+TODO: [navrhnut] zgrupovanie odboriek do expertskych odboriek
 
 TOMAS
 - rozbehat Node.js
@@ -46,7 +42,6 @@ TOMAS
 -   treba sa zamysliet co na chyba
 - poskytnut API
 - deploy
-
 
 
 MARTIN

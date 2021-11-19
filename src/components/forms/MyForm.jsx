@@ -151,8 +151,14 @@ export function Select({ register, options, label, ...rest }) {
   );
 }
 
-export function Submit({ register, variant = "dark", ...rest }) {
+export function Submit({ register, variant = "dark", login, ...rest }) {
   return (
-    <Button type="submit" className="btn-block" variant={variant} {...rest} />
+    <Button
+      type="submit"
+      className="btn-block"
+      variant={variant}
+      onClick={login}
+      {...rest}
+    />
   );
 }
