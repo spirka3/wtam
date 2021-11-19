@@ -54,3 +54,30 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
+
+.form-btn {
+    color: dodgerblue;
+    margin-bottom: -0.25rem;
+    text-decoration: none !important;
+}
+
+.form-btn:hover {
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+.my-toast {
+    background-color: #F8F9FA !important;
+    position: fixed;
+    z-index: 999;
+    top: 70px;
+    right: 9px;
+    width: 250px;
+    height: 100px;
+}
+
+/*.nav-tabs .nav-item > button.active {*/
+/*    !*background-size: cover;*!*/
+/*    background-image: url('https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-skautske-bttn.png');*/
+/*}*/

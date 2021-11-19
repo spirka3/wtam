@@ -52,7 +52,7 @@ const RightColumn = () => {
     );
   };
 
-  const NavigationButton = ({ text, url, marginTop, to, filter }) => {
+  const NavigationButton = ({ text, url, marginTop, to }) => {
     return (
       <NavLink
         style={{
@@ -60,7 +60,6 @@ const RightColumn = () => {
           marginTop: marginTop,
           boxShadow: `3px 3px 10px 4px rgba(0,0,0,0.1)`,
           backgroundImage: `url(${url})`,
-          filter: filter,
         }}
         as={Link}
         to={to}
@@ -104,10 +103,9 @@ const RightColumn = () => {
           to="/vyzvy"
         />
         <NavigationButton
-          text="Ostatne aktivity"
-          url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
-          to="/aktivity"
-          filter="hue-rotate(180deg)"
+          text="Ocenenia"
+          url="https://www.skauting.sk/wp-content/uploads/2019/01/skauting-program-najvyssie-ocenenie-medvedi-skaut-bttn.png"
+          to="/ocenenia"
         />
       </div>
     </Col>

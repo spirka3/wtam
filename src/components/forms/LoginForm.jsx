@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Error, Input, Submit } from "./MyForm";
-import { Button } from "react-bootstrap";
 
 const LoginForm = ({ handleSubmit, authError, switchForm }) => {
   const loginHandler = () => {
@@ -29,10 +28,10 @@ const LoginForm = ({ handleSubmit, authError, switchForm }) => {
           marginTop: "1rem",
         }}
       >
-        <Button variant="link" onClick={switchForm}>
+        <p onClick={switchForm} className="form-btn">
           <span style={{ color: "black" }}>Nemas ucet?</span> Zaregistruj sa
-        </Button>
-        <Button variant="link">Zabudol som heslo</Button>
+        </p>
+        <p className="form-btn">Zabudol som heslo</p>
       </div>
     </div>
   );

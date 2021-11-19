@@ -91,7 +91,7 @@ const Navigation = () => {
           <MyNavLink to="/novinky" name="Novinky" />
           <MyNavLink to="/odborky" name="Odborky" />
           <MyNavLink to="/vyzvy" name="Vyzvy" />
-          <MyNavLink to="/aktivity" name="Ostatne aktivity" />
+          <MyNavLink to="/ocenenia" name="Ocenenia" />
           {auth.token ? (
             <>
               {/*<ProfileDropDown />*/}
