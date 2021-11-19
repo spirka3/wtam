@@ -100,6 +100,7 @@ const Navigation = () => {
                 onClick={() => {
                   logOut();
                   setExpanded(false);
+                  window.location.replace("/novinky");
                 }}
               >
                 Odhlasit sa
