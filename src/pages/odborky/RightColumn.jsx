@@ -12,7 +12,7 @@ const RightColumn = () => {
     textAlign: "center",
     width: "100%",
     height: "100px",
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
     paddingTop: "2rem",
     backgroundSize: "cover",
     cursor: "pointer",
@@ -72,10 +72,10 @@ const RightColumn = () => {
   return (
     <Col className="d-xs-none" sm={0} md={3}>
       <div style={{ position: "fixed", width: "20%" }}>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-4" controlId="formBasicCheckbox">
           <Form.Check
             onChange={() => console.log("clicked")}
-            className="font-weight-bold"
+            style={{ fontWeight: "500" }}
             type="checkbox"
             label="Nezobrazovat ziskane aktivity"
           />
@@ -99,7 +99,7 @@ const RightColumn = () => {
         <NavigationButton
           text="Vyzvy"
           url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
-          marginTop="8rem"
+          marginTop="6rem"
           to="/vyzvy"
         />
         <NavigationButton

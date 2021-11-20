@@ -19,7 +19,6 @@ const LeftColumn = ({ setShowCardModal }) => {
         className="my-card"
         style={{
           display: "inline-block",
-          margin: "1%",
           cursor: "pointer",
           backgroundColor: "rgba(255, 255, 255, 0.5)",
           zIndex: "99",
@@ -60,39 +59,39 @@ const LeftColumn = ({ setShowCardModal }) => {
     );
   };
 
-  const Section = ({ id }) => {
+  const Section = ({ name, id }) => {
     return (
       <div id={id} style={{ marginBottom: "2.5rem" }}>
-        <h3>Vlčiacke a včielkarske odborky</h3>
-        <p style={{ width: "90%" }}>
+        <h2>{name}</h2>
+        <p>
           U vĺčat a včielok majú mnohé odborky rozprávkový charakter (Žabí
           princ, Hobit) alebo sa už zameriavajú na konkrétne reálne oblasti, na
           ktoré neskôr nadväzujú aj skautské odborky (Táborník, Hvezdár).
           Odborky často plnia kolektívne so skupinou priateľov. Majú iba jeden
           stupeň a ich nášivka má trojuholníkový tvar a červený lem.
         </p>
-        {fakeOdborky.map((_, id) => (
-          <MyCard id={id} />
-        ))}
+        <div
+          style={{
+            display: "flex",
+            // justifyContent: "space-between",
+            justifyContent: "space-around",
+            flexWrap: "wrap",
+          }}
+          className="odborky"
+        >
+          {fakeOdborky.map((_, id) => (
+            <MyCard id={id} />
+          ))}
+        </div>
       </div>
     );
   };
 
   return (
-    <Col
-      className="odborky"
-      xs={12}
-      sm={12}
-      md={9}
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-      }}
-    >
-      <Section id="1" />
-      <Section id="2" />
-      <Section id="3" />
+    <Col xs={12} sm={12} md={9}>
+      <Section id="1" name={"Vlčiacke a včielkarske odborky"} />
+      <Section id="2" name={"Skauti a rangeri"} />
+      <Section id="3" name={"Roveri"} />
     </Col>
   );
 };

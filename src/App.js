@@ -13,7 +13,7 @@ import AuthModal from "./components/modals/AuthModal";
 import ProfilePage from "./pages/my-profile/settings/ProfilePage";
 import { useToastContext } from "./providers/ToastProvider";
 import { getItem } from "./utils/functions";
-import jwtDecode from "jwt-decode"
+import jwtDecode from "jwt-decode";
 
 function App() {
   const { setToast } = useToastContext();
@@ -52,7 +52,7 @@ function App() {
         src="https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg"
         alt=""
       />
-      <div style={{ margin: "4rem 8rem" }} className="demo-content">
+      <div className="my-content">
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/novinky" component={EmptyPage} />
