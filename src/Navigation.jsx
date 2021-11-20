@@ -20,7 +20,7 @@ const Navigation = () => {
 
   const getStyle = (to) => {
     return {
-      backgroundColor: isActiveLink(to) ? "#85ccff" : "#f8f9fa",
+      backgroundColor: isActiveLink(to) ? "#9ed6ff" : "#f8f9fa",
     };
   };
 
@@ -39,37 +39,13 @@ const Navigation = () => {
     );
   };
 
-  // const ProfileDropDown = () => {
-  //   const MyDropdownItem = ({ to, name }) => {
-  //     return (
-  //       <NavDropdown.Item
-  //         key={to}
-  //         style={getStyle(to)}
-  //         as={Link}
-  //         to={to}
-  //         active={isActiveLink(to)}
-  //         className={`text-center ${isActiveLink(to) && "active-drop-link"}`}
-  //       >
-  //         {name}
-  //       </NavDropdown.Item>
-  //     );
-  //   };
-  //   return (
-  //     <NavDropdown title="Moj profil" id="profile-dropdown">
-  //       <MyDropdownItem to="/progres" name="Moj progres" />
-  //       <MyDropdownItem to="/druzina" name="Moja druzina" />
-  //       <MyDropdownItem to="/profil" name="Upravit profil" />
-  //     </NavDropdown>
-  //   );
-  // };
-
   return (
     <Navbar
       expand="lg"
-      bg="light"
-      variant="light"
+      // bg="light"
+      // variant="light"
       sticky="top"
-      style={{ padding: "0.25rem 1rem 0.25rem 8rem" }}
+      className="my-navbar"
       expanded={expanded}
     >
       <Navbar.Brand as={Link} to="/">
@@ -124,3 +100,27 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+// const ProfileDropDown = () => {
+//   const MyDropdownItem = ({ to, name }) => {
+//     return (
+//       <NavDropdown.Item
+//         key={to}
+//         style={getStyle(to)}
+//         as={Link}
+//         to={to}
+//         active={isActiveLink(to)}
+//         className={`text-center ${isActiveLink(to) && "active-drop-link"}`}
+//       >
+//         {name}
+//       </NavDropdown.Item>
+//     );
+//   };
+//   return (
+//     <NavDropdown title="Moj profil" id="profile-dropdown">
+//       <MyDropdownItem to="/progres" name="Moj progres" />
+//       <MyDropdownItem to="/druzina" name="Moja druzina" />
+//       <MyDropdownItem to="/profil" name="Upravit profil" />
+//     </NavDropdown>
+//   );
+// };

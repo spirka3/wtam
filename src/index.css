@@ -1,6 +1,38 @@
-/*body {*/
-/*    background-image: url("https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg")*/
-/*}*/
+body {
+    min-width: 450px;
+}
+
+
+@media screen and (min-width: 276px) {
+    .my-content {
+        margin: 1rem 1rem
+    }
+    .my-navbar {
+        padding-left: 2rem;
+        background-color: red !important;
+        height: 100px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .my-content {
+        margin: 2rem 4rem
+    }
+    .my-navbar {
+        padding-left: 4rem;
+        background-color: green !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .my-content {
+        margin: 4rem 8rem
+    }
+    .my-navbar {
+        padding-left: 8rem;
+        background-color: dodgerblue !important;
+    }
+}
 
 .demo-wrap {
     overflow: hidden;
