@@ -57,7 +57,7 @@ const Navigation = () => {
           }}
           size={35}
         />
-        <h1 className="d-inline" style={{ color: "#363636", fontSize: "2rem" }}>
+        <h1 className="d-inline appname">
           {appName}
         </h1>
       </Navbar.Brand>
