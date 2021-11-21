@@ -20,7 +20,7 @@ const Navigation = () => {
 
   const getStyle = (to) => {
     return {
-      backgroundColor: isActiveLink(to) ? "#85ccff" : "#f8f9fa",
+      backgroundColor: isActiveLink(to) ? "#9ed6ff" : "#f8f9fa",
     };
   };
 
@@ -39,88 +39,90 @@ const Navigation = () => {
     );
   };
 
-  // const ProfileDropDown = () => {
-  //   const MyDropdownItem = ({ to, name }) => {
-  //     return (
-  //       <NavDropdown.Item
-  //         key={to}
-  //         style={getStyle(to)}
-  //         as={Link}
-  //         to={to}
-  //         active={isActiveLink(to)}
-  //         className={`text-center ${isActiveLink(to) && "active-drop-link"}`}
-  //       >
-  //         {name}
-  //       </NavDropdown.Item>
-  //     );
-  //   };
-  //   return (
-  //     <NavDropdown title="Moj profil" id="profile-dropdown">
-  //       <MyDropdownItem to="/progres" name="Moj progres" />
-  //       <MyDropdownItem to="/druzina" name="Moja druzina" />
-  //       <MyDropdownItem to="/profil" name="Upravit profil" />
-  //     </NavDropdown>
-  //   );
-  // };
-
   return (
-    <Navbar
-      expand="lg"
-      bg="light"
-      variant="light"
-      sticky="top"
-      style={{ padding: "0.25rem 1rem 0.25rem 8rem" }}
-      expanded={expanded}
-    >
-      <Navbar.Brand as={Link} to="/">
-        <GiStairsGoal
-          style={{
-            marginTop: "-1rem",
-            marginRight: "0.5rem",
-            color: "#363636",
-          }}
-          size={35}
-        />
-        <h1 className="d-inline" style={{ color: "#363636", fontSize: "2rem" }}>
-          {appName}
-        </h1>
-      </Navbar.Brand>
-      <Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="ml-auto" variant="pills">
-          <MyNavLink to="/novinky" name="Novinky" />
-          <MyNavLink to="/odborky" name="Odborky" />
-          <MyNavLink to="/vyzvy" name="Vyzvy" />
-          <MyNavLink to="/ocenenia" name="Ocenenia" />
-          {auth.token ? (
-            <>
-              {/*<ProfileDropDown />*/}
-              <MyNavLink to="/progres" name="Moje aktivity" />
-              <NavLink
-                onClick={() => {
-                  logOut();
-                  setExpanded(false);
-                  window.location.replace("/novinky");
-                }}
-              >
-                Odhlasit sa
-              </NavLink>
-            </>
-          ) : (
-            <NavLink
-              onClick={() => {
-                setShowModal(true);
-                setExpanded(false);
-              }}
-            >
-              Prihlasit sa
-            </NavLink>
-          )}
-        </Nav>
-      </Navbar.Collapse>
-      {showModal && <AuthModal action="login" onHide={closeModal} />}
-    </Navbar>
+	<div class="navbar-wrapper">
+		<Navbar
+		expand="lg"
+		// bg="light"
+		// variant="light"
+		className="my-navbar"
+		sticky="top"
+		expanded={expanded}
+		>
+		<Navbar.Brand as={Link} to="/">
+			<GiStairsGoal
+			style={{
+				marginTop: "-0.5rem",
+				marginRight: "0.5rem",
+				color: "#363636",
+			}}
+			size={35}
+			/>
+			<h1 className="d-inline appname">
+			{appName}
+			</h1>
+		</Navbar.Brand>
+		<Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
+		<Navbar.Collapse id="responsive-navbar-nav">
+			<Nav className="ml-auto mt-2 mobile-menu" variant="pills">
+			<MyNavLink to="/novinky" name="Novinky" />
+			<MyNavLink to="/odborky" name="Odborky" />
+			<MyNavLink to="/vyzvy" name="Vyzvy" />
+			<MyNavLink to="/ocenenia" name="Ocenenia" />
+			{auth.token ? (
+				<>
+				{/*<ProfileDropDown />*/}
+				<MyNavLink to="/progres" name="Moje aktivity" />
+				<NavLink
+					onClick={() => {
+					logOut();
+					setExpanded(false);
+					window.location.replace("/novinky");
+					}}
+				>
+					Odhlasit sa
+				</NavLink>
+				</>
+			) : (
+				<NavLink
+				onClick={() => {
+					setShowModal(true);
+					setExpanded(false);
+				}}
+				>
+				Prihlasit sa
+				</NavLink>
+			)}
+			</Nav>
+		</Navbar.Collapse>
+		{showModal && <AuthModal action="login" onHide={closeModal} />}
+		</Navbar>
+	</div>
   );
 };
 
 export default Navigation;
+
+// const ProfileDropDown = () => {
+//   const MyDropdownItem = ({ to, name }) => {
+//     return (
+//       <NavDropdown.Item
+//         key={to}
+//         style={getStyle(to)}
+//         as={Link}
+//         to={to}
+//         active={isActiveLink(to)}
+//         className={`text-center ${isActiveLink(to) && "active-drop-link"}`}
+//       >
+//         {name}
+//       </NavDropdown.Item>
+//     );
+//   };
+//   return (
+//     <NavDropdown title="Moj profil" id="profile-dropdown">
+//       <MyDropdownItem to="/progres" name="Moj progres" />
+//       <MyDropdownItem to="/druzina" name="Moja druzina" />
+//       <MyDropdownItem to="/profil" name="Upravit profil" />
+//     </NavDropdown>
+//   );
+// };

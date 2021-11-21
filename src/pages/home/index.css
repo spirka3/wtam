@@ -8,3 +8,117 @@
     -ms-overflow-style: none;
     scrollbar-width: none; /* Firefox */
 }
+
+
+
+body, html {
+height: 100%;
+}
+
+.bg {	
+    height: calc(100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+	z-index: -5;
+}
+
+.home-card{
+	width: 100%;
+	padding: 10px;
+}
+
+.home-box{
+	display: flex;
+	justify-content: center;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-right: 0;
+}
+
+.navbar-inner{
+	display: flex;
+}
+
+@media only screen and (min-width: 350px) {
+	.home-card{
+		width: 350px;
+		padding: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.home-box{
+		justify-content: flex-end;
+		margin-right: 6rem;
+		margin-top: 10rem;
+	}
+}
+
+.my-content{
+	padding: 3rem 2rem;
+	height: calc(100% - 65px);
+	padding-top: calc(65px + 2rem);
+}
+
+.my-navbar{
+	display: flex;
+    width: 100%;
+}
+
+.navbar-toggler, .navbar-brand{
+	display: flex;
+    position: relative;
+}
+
+@media only screen and (min-width: 992px) {
+	.mobile-menu{
+		margin-top: 0;
+	}
+
+	.home-btn-title{
+		font-size: 1.6rem;
+		font-weight: 700;
+		padding: 8px 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media only screen and (min-width: 1650px) {
+	.my-content{
+		width: 1650px;
+		margin: 0 auto;
+	}
+	.my-navbar{
+		width: 1650px;
+    	margin: 0 auto;
+	}
+}
+
+
+.nav-link.active{
+	color: rgba(0,0,0,.9);
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.home-arrow{
+	margin-left: 10px;
+}
+
+.home-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.activity-description{
+	background-color: rgb(255 255 255 / 70%);
+    padding: 10px 14px;
+    border-radius: 10px;
+    letter-spacing: 0.03rem;
+    line-height: 1.5rem;
+}
