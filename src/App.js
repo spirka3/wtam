@@ -23,7 +23,12 @@ function App() {
   }
   
   const backgroundStyle2 = {
-    backgroundImage: "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')"
+    backgroundImage: "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
+	opacity: 0.04,
+  }
+
+  const backgroundStyle3 = {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   }
    
 
@@ -58,6 +63,9 @@ function App() {
       {/*>*/}
 	  <div style={backgroundStyle2}></div>
 	  <div class="bg" style={backgroundStyle}></div>
+	  <div class="bg" style={backgroundStyle2}></div>
+	  <div class="bg" style={backgroundStyle3}></div>
+
       <div className="my-content">
         <Switch>
           <Route exact path="/" component={HomePage} />

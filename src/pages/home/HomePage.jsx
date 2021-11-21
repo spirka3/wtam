@@ -41,9 +41,8 @@ const HomePage = () => {
   };
 
   const pStyle = {
-    fontWeight: "bold",
-    fontSize: "1.75rem",
     color: "#3E4042",
+	fontWeight: 500,
   };
 
   return (
@@ -52,7 +51,7 @@ const HomePage = () => {
 			<div class="home-card">
 				<div
 				style={{
-					backgroundColor: "rgb(245,246,247,0.65)",
+					backgroundColor: "rgb(245,246,247,0.8)",
 					padding: "1rem 0 0.5rem 0",
 				}}
 				>
@@ -69,14 +68,14 @@ const HomePage = () => {
 					Osobný rast
 				</p>
 				</div>
-				<Button style={buttonStyle} as={Link} to="/odborky">
-				<p style={{ ...pStyle, margin: "0", color: "white" }}>
-					Vyber si odborku
+				<Button className="home-title" style={buttonStyle} as={Link} to="/odborky">
+				<div class="home-btn-title" style={{ ...pStyle, margin: "0", color: "white" }}>
+					<span>Vyber si odborku</span>
 					<IoArrowForwardCircleSharp
 					size={30}
-					style={{ margin: "-0.5rem 0.5rem 0 0.5rem" }}
+					className="home-arrow"
 					/>
-				</p>
+				</div>
 				</Button>
 			</div>
 		</div>

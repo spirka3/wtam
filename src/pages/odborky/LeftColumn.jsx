@@ -63,7 +63,7 @@ const LeftColumn = ({ setShowCardModal }) => {
     return (
       <div id={id} style={{ marginBottom: "2.5rem" }}>
         <h2>{name}</h2>
-        <p class="mb-4">
+        <p class="mb-4 mt-4 activity-description">
           U vĺčat a včielok majú mnohé odborky rozprávkový charakter (Žabí
           princ, Hobit) alebo sa už zameriavajú na konkrétne reálne oblasti, na
           ktoré neskôr nadväzujú aj skautské odborky (Táborník, Hvezdár).
