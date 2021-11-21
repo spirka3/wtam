@@ -26,14 +26,14 @@ const AuthModal = ({
   };
 
   const handleSubmit = (data) => {
-    console.log("login data", data);
-    // axios
-    //   .post("", data)
-    //   .then((res) => {
-    logIn(fakeAuth);
+    if (action === "register") {
+      // register request
+      // if successful then login
+    } else {
+      // login request
+      logIn(fakeAuth);
+    }
     onHide();
-    // })
-    // .catch(() => setAuthError("error"));
   };
 
   const props = { handleSubmit, authError, switchForm };

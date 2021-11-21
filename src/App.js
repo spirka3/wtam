@@ -14,10 +14,26 @@ import AuthModal from "./components/modals/AuthModal";
 import ProfilePage from "./pages/my-profile/settings/ProfilePage";
 import { getItem } from "./utils/functions";
 import { AuthProvider } from "./providers/AuthProvider";
+import jwtDecode from "jwt-decode";
+
 
 function App() {
   axios.defaults.baseURL = "http://www.polkadot-hub.eu/";
   const [state, setState] = useState(false);
+
+  const backgroundStyle = {
+    backgroundImage: "url('images/home-bg.png')"
+  }
+  
+  const backgroundStyle2 = {
+    backgroundImage: "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
+	opacity: 0.09,
+  }
+
+  const backgroundStyle3 = {
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+  }
+   
 
   useEffect(() => {
     // setToast({ message: "hahaha", time: "Prave teraz" });

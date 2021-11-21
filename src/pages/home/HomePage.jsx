@@ -13,7 +13,7 @@ import "./index.css";
 const HomePage = () => {
   // document.title = "Domov" + _appName;
 
-  const containerStyle = { margin: "-4rem -8rem" };
+  //const containerStyle = { margin: "-4rem -8rem" };
 
   const backgroundStyle = {
     width: "100%",
@@ -41,46 +41,45 @@ const HomePage = () => {
   };
 
   const pStyle = {
-    fontWeight: "bold",
-    fontSize: "1.75rem",
     color: "#3E4042",
+	fontWeight: 500,
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={backgroundStyle}>
-        <div style={cardStyle}>
-          <div
-            style={{
-              backgroundColor: "rgb(245,246,247,0.65)",
-              padding: "1rem 0 0.5rem 0",
-            }}
-          >
-            <p style={pStyle}>
-              <BsFillBookmarkStarFill style={iconStyle} />
-              Nové zážitky
-            </p>
-            <p style={pStyle}>
-              <BsFillPeopleFill style={iconStyle} />
-              Priateľstvá
-            </p>
-            <p style={pStyle}>
-              <IoIosRocket style={iconStyle} />
-              Osobný rast
-            </p>
-          </div>
-          <Button style={buttonStyle} as={Link} to="/odborky">
-            <p style={{ ...pStyle, margin: "0", color: "white" }}>
-              Vyber si odborku
-              <IoArrowForwardCircleSharp
-                size={30}
-                style={{ margin: "-0.5rem 0.5rem 0 0.5rem" }}
-              />
-            </p>
-          </Button>
-        </div>
-      </div>
-    </div>
+	<div class="home-wrapper">
+		<div class="home-box">
+			<div class="home-card">
+				<div
+				style={{
+					backgroundColor: "rgb(245,246,247,0.8)",
+					padding: "1rem 0 0.5rem 0",
+				}}
+				>
+				<p style={pStyle}>
+					<BsFillBookmarkStarFill style={iconStyle} />
+					Nové zážitky
+				</p>
+				<p style={pStyle}>
+					<BsFillPeopleFill style={iconStyle} />
+					Priateľstvá
+				</p>
+				<p style={pStyle}>
+					<IoIosRocket style={iconStyle} />
+					Osobný rast
+				</p>
+				</div>
+				<Button className="home-title" style={buttonStyle} as={Link} to="/odborky">
+				<div class="home-btn-title" style={{ ...pStyle, margin: "0", color: "white" }}>
+					<span>Vyber si odborku</span>
+					<IoArrowForwardCircleSharp
+					size={30}
+					className="home-arrow"
+					/>
+				</div>
+				</Button>
+			</div>
+		</div>
+	</div>
   );
 };
 
