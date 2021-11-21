@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import jwtDecode from "jwt-decode";
 import axios from "axios";
 
 import Navigation from "./Navigation";
@@ -13,14 +12,12 @@ import MyTeamPage from "./pages/my-profile/team/MyTeamPage";
 import ErrorPage from "./pages/unexpected/ErrorPage";
 import AuthModal from "./components/modals/AuthModal";
 import ProfilePage from "./pages/my-profile/settings/ProfilePage";
-import { useToastContext } from "./providers/ToastProvider";
 import { getItem } from "./utils/functions";
 import { AuthProvider } from "./providers/AuthProvider";
 
 function App() {
   axios.defaults.baseURL = "http://www.polkadot-hub.eu/";
   const [state, setState] = useState(false);
-  const [odborky, setOdborky] = useState();
 
   useEffect(() => {
     // setToast({ message: "hahaha", time: "Prave teraz" });
