@@ -23,7 +23,20 @@
 .navbar-brand{
 	display: flex;
     align-items: center;
+	position: relative;
 }
+
+.navbar-toggler{
+	position: relative;
+}
+
+
+.nav-link.active{
+	color: rgba(0,0,0,.9);
+    font-weight: 600;
+    padding-left: 10px !important;
+}
+
 
 .demo-content {
     position: relative;
@@ -35,6 +48,9 @@
 
 .navbar-wrapper{
 	background-color: rgb(248, 249, 250);
+	position: fixed;
+    width: 100%;
+	z-index: 999;
 }
 
 .my-tabs:nth-child(-n+3) {

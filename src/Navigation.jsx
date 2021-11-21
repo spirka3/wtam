@@ -45,8 +45,8 @@ const Navigation = () => {
 		expand="lg"
 		// bg="light"
 		// variant="light"
-		sticky="top"
 		className="my-navbar"
+		sticky="top"
 		expanded={expanded}
 		>
 		<Navbar.Brand as={Link} to="/">
