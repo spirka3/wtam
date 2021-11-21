@@ -73,8 +73,8 @@ function App() {
           <Route path="/odborky" component={OdborkyPage} />
           <Route path="/vyzvy" component={ChallengesPage} />
           <Route path="/ocenenia" component={EmptyPage} />
-          <PrivateRoute path="/progres" component={MyActivitiesPage} />}
-          <PrivateRoute path="/druzina" component={MyTeamPage} />}
+          <PrivateRoute path="/progres" component={MyActivitiesPage} />
+          <PrivateRoute path="/druzina" component={MyTeamPage} />
           <PrivateRoute path="/profil" component={ProfilePage} />
           <Route path="*" component={ErrorPage} />
         </Switch>
