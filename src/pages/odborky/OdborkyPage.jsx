@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { Row, Button, Modal, Card, Badge } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Row, Button, Modal } from "react-bootstrap";
 
 import "./index.css";
 import RightColumn from "./RightColumn";
 import LeftColumn from "./LeftColumn";
 import { useAuthContext } from "../../providers/AuthProvider";
 import AuthModal from "../../components/modals/AuthModal";
+import axios from "axios";
 
 const OdborkyPage = () => {
   const { auth } = useAuthContext();
+  const odborky = "odborky";
 
   const [isAdded, setIsAdded] = useState(false);
+  const [vekKat, setVekKat] = useState([]);
 
   const [showCardModal, setShowCardModal] = useState(undefined);
   const closeCardModal = () => {
@@ -30,6 +33,22 @@ const OdborkyPage = () => {
       setShowLoginModal(true);
     }
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post("api/age_categories")
+        .then((res) => {
+          console.log(res.data);
+          setVekKat(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    }
+    fetchData();
+  }, []);
 
   const CardModal = () => {
     const btnColor = isAdded ? "#B6DE92" : "#F2E272";
@@ -96,7 +115,11 @@ const OdborkyPage = () => {
   return (
     <>
       <Row>
-        <LeftColumn setShowCardModal={setShowCardModal} />
+        <LeftColumn
+          setShowCardModal={setShowCardModal}
+          vekKat={vekKat}
+          progKat={odborky}
+        />
         <RightColumn />
         {show && (
           <Modal
