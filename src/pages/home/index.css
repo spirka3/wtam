@@ -8,3 +8,72 @@
     -ms-overflow-style: none;
     scrollbar-width: none; /* Firefox */
 }
+
+
+
+body, html {
+height: 100%;
+}
+
+.bg {	
+    height: calc(100% - 60px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+	z-index: -5;
+}
+
+.home-card{
+	width: 100%;
+	padding: 10px;
+}
+
+.home-box{
+	display: flex;
+	justify-content: center;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-right: 0;
+}
+
+.navbar-inner{
+	display: flex;
+}
+
+@media only screen and (min-width: 350px) {
+	.home-card{
+		width: 350px;
+		padding: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.home-box{
+		justify-content: flex-end;
+		margin-right: 6rem;
+		margin-top: 10rem;
+	}
+}
+
+.my-content{
+	padding: 3rem 2rem;
+}
+
+@media only screen and (min-width: 992px) {
+	.mobile-menu{
+		margin-top: 0;
+	}
+}
+
+@media only screen and (min-width: 1650px) {
+	.my-content{
+		width: 1650px;
+		margin: 0 auto;
+	}
+	.my-navbar{
+		width: 1650px;
+    	margin: 0 auto;
+	}
+}

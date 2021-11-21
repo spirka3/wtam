@@ -18,6 +18,15 @@ import jwtDecode from "jwt-decode";
 function App() {
   const { setToast } = useToastContext();
 
+  const backgroundStyle = {
+    backgroundImage: "url('images/home-bg.png')"
+  }
+  
+  const backgroundStyle2 = {
+    backgroundImage: "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')"
+  }
+   
+
   useEffect(() => {
     // setToast({ message: "hahaha", time: "Prave teraz" });
   }, []);
@@ -47,11 +56,8 @@ function App() {
       {/*    backgroundImage: "url(/images/bg.jpg)",*/}
       {/*  }}*/}
       {/*>*/}
-      <img
-        className="demo-bg"
-        src="https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg"
-        alt=""
-      />
+	  <div style={backgroundStyle2}></div>
+	  <div class="bg" style={backgroundStyle}></div>
       <div className="my-content">
         <Switch>
           <Route exact path="/" component={HomePage} />

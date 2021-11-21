@@ -99,3 +99,20 @@ Return if succesful:
 Error Response Codes: 400 - Wrong request/Database error
 
 */
+
+/* Get tasks in progress for user [POST] https://www.polkadot-hub.eu/api/activities
+
+{
+	"user_id" : 10,
+	"task_id": 1
+}
+
+Return if succesful:
+
+{
+  "id": "1"
+}
+
+Error Response Codes: 400 - Wrong request/Database error
+
+*/

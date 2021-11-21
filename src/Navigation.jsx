@@ -40,62 +40,64 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar
-      expand="lg"
-      // bg="light"
-      // variant="light"
-      sticky="top"
-      className="my-navbar"
-      expanded={expanded}
-    >
-      <Navbar.Brand as={Link} to="/">
-        <GiStairsGoal
-          style={{
-            marginTop: "-1rem",
-            marginRight: "0.5rem",
-            color: "#363636",
-          }}
-          size={35}
-        />
-        <h1 className="d-inline appname">
-          {appName}
-        </h1>
-      </Navbar.Brand>
-      <Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="ml-auto" variant="pills">
-          <MyNavLink to="/novinky" name="Novinky" />
-          <MyNavLink to="/odborky" name="Odborky" />
-          <MyNavLink to="/vyzvy" name="Vyzvy" />
-          <MyNavLink to="/ocenenia" name="Ocenenia" />
-          {auth.token ? (
-            <>
-              {/*<ProfileDropDown />*/}
-              <MyNavLink to="/progres" name="Moje aktivity" />
-              <NavLink
-                onClick={() => {
-                  logOut();
-                  setExpanded(false);
-                  window.location.replace("/novinky");
-                }}
-              >
-                Odhlasit sa
-              </NavLink>
-            </>
-          ) : (
-            <NavLink
-              onClick={() => {
-                setShowModal(true);
-                setExpanded(false);
-              }}
-            >
-              Prihlasit sa
-            </NavLink>
-          )}
-        </Nav>
-      </Navbar.Collapse>
-      {showModal && <AuthModal action="login" onHide={closeModal} />}
-    </Navbar>
+	<div class="navbar-wrapper">
+		<Navbar
+		expand="lg"
+		// bg="light"
+		// variant="light"
+		sticky="top"
+		className="my-navbar"
+		expanded={expanded}
+		>
+		<Navbar.Brand as={Link} to="/">
+			<GiStairsGoal
+			style={{
+				marginTop: "-0.5rem",
+				marginRight: "0.5rem",
+				color: "#363636",
+			}}
+			size={35}
+			/>
+			<h1 className="d-inline appname">
+			{appName}
+			</h1>
+		</Navbar.Brand>
+		<Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
+		<Navbar.Collapse id="responsive-navbar-nav">
+			<Nav className="ml-auto mt-2 mobile-menu" variant="pills">
+			<MyNavLink to="/novinky" name="Novinky" />
+			<MyNavLink to="/odborky" name="Odborky" />
+			<MyNavLink to="/vyzvy" name="Vyzvy" />
+			<MyNavLink to="/ocenenia" name="Ocenenia" />
+			{auth.token ? (
+				<>
+				{/*<ProfileDropDown />*/}
+				<MyNavLink to="/progres" name="Moje aktivity" />
+				<NavLink
+					onClick={() => {
+					logOut();
+					setExpanded(false);
+					window.location.replace("/novinky");
+					}}
+				>
+					Odhlasit sa
+				</NavLink>
+				</>
+			) : (
+				<NavLink
+				onClick={() => {
+					setShowModal(true);
+					setExpanded(false);
+				}}
+				>
+				Prihlasit sa
+				</NavLink>
+			)}
+			</Nav>
+		</Navbar.Collapse>
+		{showModal && <AuthModal action="login" onHide={closeModal} />}
+		</Navbar>
+	</div>
   );
 };
 
