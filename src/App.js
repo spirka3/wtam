@@ -24,11 +24,11 @@ function App() {
   
   const backgroundStyle2 = {
     backgroundImage: "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
-	opacity: 0.04,
+	opacity: 0.09,
   }
 
   const backgroundStyle3 = {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
   }
    
 
