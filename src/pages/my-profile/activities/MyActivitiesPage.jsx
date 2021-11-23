@@ -3,9 +3,11 @@ import { Tabs, Tab } from "react-bootstrap";
 import InProgress from "./InProgress";
 import Done from "./Done";
 
+import "./index.css";
+
 const MyActivitiesPage = () => {
   return (
-    <div className="center">
+    <div className="center my-activities-container">
       <div>
         <Tabs
           defaultActiveKey="wolfs"
