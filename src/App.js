@@ -16,24 +16,23 @@ import { getItem } from "./utils/functions";
 import { AuthProvider } from "./providers/AuthProvider";
 import jwtDecode from "jwt-decode";
 
-
 function App() {
-  axios.defaults.baseURL = "http://www.polkadot-hub.eu/";
+  axios.defaults.baseURL = "https://www.polkadot-hub.eu/";
   const [state, setState] = useState(false);
 
   const backgroundStyle = {
-    backgroundImage: "url('images/home-bg.png')"
-  }
-  
+    backgroundImage: "url('images/home-bg.png')",
+  };
+
   const backgroundStyle2 = {
-    backgroundImage: "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
-	opacity: 0.09,
-  }
+    backgroundImage:
+      "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
+    opacity: 0.09,
+  };
 
   const backgroundStyle3 = {
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
-  }
-   
+    backgroundColor: "rgba(255, 255, 255, 0.4)",
+  };
 
   useEffect(() => {
     // setToast({ message: "hahaha", time: "Prave teraz" });
@@ -55,7 +54,7 @@ function App() {
   };
 
   return (
-	  <AuthProvider>
+    <AuthProvider>
       <BrowserRouter>
         <Navigation />
         {/*<div*/}
@@ -66,9 +65,9 @@ function App() {
         {/*  }}*/}
         {/*>*/}
         <div style={backgroundStyle2}></div>
-		<div class="bg" style={backgroundStyle}></div>
-		<div class="bg" style={backgroundStyle2}></div>
-		<div class="bg" style={backgroundStyle3}></div>
+        <div class="bg" style={backgroundStyle}></div>
+        <div class="bg" style={backgroundStyle2}></div>
+        <div class="bg" style={backgroundStyle3}></div>
 
         <div className="my-content">
           <Switch>
