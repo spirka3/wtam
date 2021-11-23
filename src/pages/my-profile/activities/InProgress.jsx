@@ -164,7 +164,7 @@ const InProgress = () => {
     };
 
     return (
-		<Row style={{ marginTop: "3rem" }}>
+		<Row className="mt-2 mt-md-4">
 			<MyProgress now={30} label={`3/8`} />
 			<MyProgress now={10} label={`1/10`} />
 			<MyProgress now={85} label={`7/8`} />
