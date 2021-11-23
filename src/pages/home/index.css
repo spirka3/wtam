@@ -1,18 +1,5 @@
-/* Hide scrollbar for Chrome, Safari and Opera */
-.scrollbar-hidden::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar for IE, Edge add Firefox */
-.scrollbar-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none; /* Firefox */
-}
-
-
-
 body, html {
-height: 100%;
+	height: 100%;
 }
 
 .bg {	
@@ -25,6 +12,18 @@ height: 100%;
 	z-index: -5;
 }
 
+.bg-2 {
+	height: calc(100%);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -5;
+}
+
 .home-card{
 	width: 100%;
 	padding: 10px;
@@ -33,7 +32,6 @@ height: 100%;
 .home-box{
 	display: flex;
 	justify-content: center;
-    justify-content: center;
     margin-top: 4rem;
     margin-right: 0;
 }
@@ -122,3 +120,36 @@ height: 100%;
     letter-spacing: 0.03rem;
     line-height: 1.5rem;
 }
+
+
+/* https://codepen.io/merkund/pen/EGpOEr */
+/*.home-title {*/
+/*	-webkit-appearance: none;*/
+/*	background: linear-gradient(to right, #a2ccb6 0%, #ee786e 50%, #ee786e 100%);*/
+/*	background-size: 500%;*/
+/*	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);*/
+/*	color: white;*/
+/*	cursor: pointer;*/
+/*	font: 1.5em Raleway, sans-serif;*/
+/*	letter-spacing: .05em;*/
+/*}*/
+
+/*.home-title:hover {*/
+/*	animation-name: gradient;*/
+/*	-webkit-animation-name: gradient;*/
+/*	animation-duration: 2s;*/
+/*	-webkit-animation-duration: 2s;*/
+/*	animation-iteration-count: 1;*/
+/*	-webkit-animation-iteration-count: 1;*/
+/*	animation-fill-mode: forwards;*/
+/*	-webkit-animation-fill-mode: forwards;*/
+/*}*/
+
+/*@keyframes gradient {*/
+/*	0% {*/
+/*		background-position: 0% 50%*/
+/*	}*/
+/*	100% {*/
+/*		background-position: 100%*/
+/*	}*/
+/*}*/

@@ -12,12 +12,23 @@
     height: auto;
 }
 
+.card-title {
+    max-width: 120px;
+    word-wrap: break-word;
+}
+
+.progress-card {
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
+}
+
 .navbar-toggler{
 	padding: 0.15rem 0.25rem;
 }
 
 .appname{
-	font-size: 1.2rem;
+	font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 .navbar-brand{
@@ -88,6 +99,7 @@ html {
     color: dodgerblue;
     margin-bottom: -0.25rem;
     text-decoration: none !important;
+    font-size: 0.9em;
 }
 
 .form-btn:hover {

@@ -52,7 +52,7 @@ const OdborkyPage = () => {
 
   const CardModal = () => {
     const btnColor = isAdded ? "#B6DE92" : "#F2E272";
-    const btnText = isAdded ? "Zobraz progres" : "Zacat odborku";
+    const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
     return (
       <>

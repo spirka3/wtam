@@ -36,7 +36,7 @@ const RightColumn = () => {
         spy={true}
         smooth={true}
         offset={-70}
-        duration={500}
+        duration={400}
         onSetActive={() => setActiveSection(to)}
       >
         <div

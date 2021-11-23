@@ -44,7 +44,7 @@ const MyCard = ({ id, setShowCardModal, image, name }) => {
           src={image}
         />
         <Card.Body style={{ backgroundColor: "rgba(255, 255, 255, 0)" }}>
-          <Card.Title className="text-center">{name}</Card.Title>
+          <Card.Title className="text-center card-title">{name}</Card.Title>
           {hoveredCard === id && <Button>Hi</Button>}
         </Card.Body>
       </Card>

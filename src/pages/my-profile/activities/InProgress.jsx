@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Badge,
   Button,
   Card,
   Col,
@@ -8,6 +9,12 @@ import {
   ProgressBar,
   Row,
 } from "react-bootstrap";
+import {
+  CgSandClock,
+  GiSandsOfTime,
+  MdEmail,
+  MdOutlineMailOutline,
+} from "react-icons/all";
 
 const InProgress = () => {
   const [showCardModal, setShowCardModal] = useState(false);
@@ -16,7 +23,12 @@ const InProgress = () => {
   const CardModal = () => {
     return (
       <Modal show={showCardModal} onHide={closeCardModal} centered>
-        <Modal.Header closeButton style={{ textAlign: "center" }}>
+        <Modal.Header
+          closeButton
+          style={{
+            textAlign: "center",
+          }}
+        >
           <Modal.Title className="mx-0">
             <img
               style={{
@@ -83,9 +95,16 @@ const InProgress = () => {
             />
           </Form.Group>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <Button variant="light">Vymazat</Button>
-          <Button variant="light">Zavriet</Button>
+          <Button variant="success">
+            Poslat <MdEmail size={20} />
+          </Button>
         </Modal.Footer>
       </Modal>
     );
@@ -95,93 +114,72 @@ const InProgress = () => {
     const MyProgress = ({ now, label }) => {
       return (
         <div
-          className="my-card"
+          className="my-card progress-card"
           style={{
             display: "flex",
-            justifyContent: "space-between",
-            paddingTop: "1rem",
+            justifyContent: "center",
+            padding: "2rem 1.5rem 0 1.5rem",
+            marginBottom: "1.5rem",
+            backgroundColor: "white",
           }}
-          onClick={() => setShowCardModal()}
+          onClick={() => setShowCardModal(true)}
         >
-          <img
-            style={{
-              height: "50px",
-              // width: "10%",
-              marginRight: "10px",
-              marginLeft: "10px",
-              marginBottom: "5%",
-              opacity: "0.8",
-              display: "inline-block",
-            }}
-            src="https://www.skauting.sk/wp-content/uploads/2017/04/skauting-program-odborka-vlcata-42-200x180.png"
-            alt="First slide"
-          />
-          <div style={{ width: "calc(100% - 80px)" }}>
-            <span>meno</span>
-            <ProgressBar
+          <div>
+            <img
               style={{
-                height: "20px",
+                width: "100px",
+                height: "90px",
+                marginBottom: "2rem",
+                display: "inline",
+              }}
+              src="https://www.skauting.sk/wp-content/uploads/2017/04/skauting-program-odborka-vlcata-42-200x180.png"
+              alt="First slide"
+            />
+            <div className="d-inline-block mx-5">
+              <h3 className="mb-3">Meno aktivity</h3>
+              <p>typ aktivity</p>
+            </div>
+          </div>
+
+          <div>
+            <ProgressBar
+              className="mt-2"
+              style={{
+                height: "40px",
+                width: "600px",
               }}
               now={now}
               label={label}
             />
           </div>
+          <span className="mt-2 ml-1">
+            <Badge bg="warning">
+              <GiSandsOfTime size={30} />
+            </Badge>
+          </span>
         </div>
       );
     };
 
     return (
-      <Card>
-        <Card.Header
-          style={{
-            padding: ".5rem",
-            color: "white",
-            // opacity: "0.8",
-            backgroundSize: "cover",
-            backgroundImage: `url('${url}')`,
-          }}
-        >
-          <strong>{title}</strong>
-        </Card.Header>
-        <Card.Body>
-          <MyProgress now={30} label={`3/8`} />
-          <MyProgress now={10} label={`1/10`} />
-          <MyProgress now={85} label={`7/8`} />
-        </Card.Body>
-      </Card>
+      <div>
+        <MyProgress now={30} label={`3/8`} />
+        <MyProgress now={10} label={`1/10`} />
+        <MyProgress now={85} label={`7/8`} />
+        <MyProgress now={85} label={`7/8`} />
+      </div>
     );
   };
 
   return (
-    <>
-      <h3 style={{ marginTop: "1.15rem" }}>Rozpracovane</h3>
-      <Row>
-        <Col>
-          <MyCard
-            title="Odborky"
-            number="1"
-            url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-skautske-bttn.png"
-          />
-        </Col>
-        <Col>
-          <MyCard
-            color="green"
-            title="Vyzvy"
-            number="3"
-            url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
-          />
-        </Col>
-        <Col>
-          <MyCard
-            color="blue"
-            title="Ocenenia"
-            number="1"
-            url="https://www.skauting.sk/wp-content/uploads/2019/01/skauting-program-najvyssie-ocenenie-medvedi-skaut-bttn.png"
-          />
-        </Col>
-      </Row>
+    <Row style={{ marginTop: "3rem" }}>
+      <MyCard
+        title="Odborky"
+        number="1"
+        url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-skautske-bttn.png"
+      />
       {showCardModal && <CardModal />}
-    </>
+    </Row>
   );
 };
 

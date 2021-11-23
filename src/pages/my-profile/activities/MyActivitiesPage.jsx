@@ -5,23 +5,22 @@ import Done from "./Done";
 
 const MyActivitiesPage = () => {
   return (
-    <>
+    <div className="center">
       <div>
         <Tabs
           defaultActiveKey="wolfs"
           id="uncontrolled-tab-example"
           className="mb-3 my-tabs"
         >
-          <Tab eventKey="wolfs" className="my-tab" title="Vĺčatá a včielky">
+          <Tab eventKey="wolfs" className="my-tab" title="Rozpracované (7)">
             <InProgress />
-            <Done />
-            {/*<Todo />*/}
           </Tab>
-          <Tab eventKey="rangers" title="Skauti a rangeri" />
-          <Tab eventKey="rovers" title="Roveri" />
+          <Tab eventKey="rangers" title="Získané (12)">
+            <Done />
+          </Tab>
         </Tabs>
       </div>
-    </>
+    </div>
   );
 };
 
