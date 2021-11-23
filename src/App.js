@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -18,20 +18,12 @@ import jwtDecode from "jwt-decode";
 
 function App() {
   axios.defaults.baseURL = "https://www.polkadot-hub.eu/";
-  const [state, setState] = useState(false);
 
   const backgroundStyle = {
-    backgroundImage: "url('images/home-bg.png')",
-  };
+    opacity: 0.05,
 
-  const backgroundStyle2 = {
     backgroundImage:
       "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
-    opacity: 0.09,
-  };
-
-  const backgroundStyle3 = {
-    backgroundColor: "rgba(255, 255, 255, 0.4)",
   };
 
   useEffect(() => {
@@ -57,33 +49,20 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Navigation />
-        {/*<div*/}
-        {/*  className="demo-wrap"*/}
-        {/*  style={{*/}
-        {/*    backgroundRepeat: "repeat",*/}
-        {/*    backgroundImage: "url(/images/bg.jpg)",*/}
-        {/*  }}*/}
-        {/*>*/}
-        <div style={backgroundStyle2}></div>
         <div class="bg" style={backgroundStyle}></div>
-        <div class="bg" style={backgroundStyle2}></div>
-        <div class="bg" style={backgroundStyle3}></div>
-
         <div className="my-content">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/novinky" component={EmptyPage} />
             <Route path="/odborky" component={OdborkyPage} />
             <Route path="/vyzvy" component={ChallengesPage} />
-            <Route path="/aktivity" component={EmptyPage} />
+            <Route path="/ocenenia" component={EmptyPage} />
             <PrivateRoute path="/progres" component={MyActivitiesPage} />
             <PrivateRoute path="/druzina" component={MyTeamPage} />
             <PrivateRoute path="/profil" component={ProfilePage} />
             <Route path="*" component={ErrorPage} />
           </Switch>
         </div>
-        {/*</div>*/}
-        {state && <AuthModal action="login" />}
       </BrowserRouter>
     </AuthProvider>
   );
