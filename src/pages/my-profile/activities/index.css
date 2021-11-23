@@ -5,7 +5,7 @@
 
 .my-card{
     justify-content: center;
-    padding: 2rem 1.5rem 0px;
+	padding: 1rem 0.8rem 0;
     margin-bottom: 1.5rem;
     background-color: white;
 }
@@ -28,5 +28,11 @@
 @media only screen and (min-width: 1070px) {
 	.my-activities-container{
 		width: 1070px;
+	}
+}
+
+@media only screen and (min-width: 780px) {
+	.my-card{
+		padding: 2rem 1.5rem 0px;
 	}
 }
