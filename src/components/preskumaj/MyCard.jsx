@@ -4,8 +4,6 @@ import { Card } from "react-bootstrap";
 import CardModal from "./../modals/CardModal";
 
 const MyCard = ({ id, odborkyById, image, name }) => {
-  console.log(odborkyById);
-
   const [show, setShow] = useState(false);
   const closeHandler = () => setShow(false);
   const showHandler = () => setShow(true);

@@ -13,8 +13,6 @@ const CardModal = ({ id, odborka, show, setClose }) => {
   const btnColor = isAdded ? "#B6DE92" : "#F2E272";
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
-  console.log(tasks);
-
   const taskMapping = tasks.map((task) => {
     return <li key={task.id}>{task.description}</li>;
   });
