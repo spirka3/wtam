@@ -24,15 +24,18 @@ const Section = ({ id, name, setShowCardModal, progKat }) => {
     fetchData();
   }, [id, progKat]);
 
+  console.log(odborkyById);
+
   const activityCards = odborkyById.map((aktivita) => {
     // console.log(aktivita);
     return (
       <MyCard
         key={aktivita.id}
         id={aktivita.id}
-        setShowCardModal={setShowCardModal}
+        // setShowCardModal={setShowCardModal}
         image={aktivita.img_url}
         name={aktivita.name}
+        odborkyById={aktivita}
       />
     );
   });
