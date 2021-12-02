@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
-const MyCard = ({ id, setShowCardModal, image, name }) => {
-  const [hoveredCard, setHoveredCard] = useState(undefined);
+import CardModal from "./../modals/CardModal";
 
-  const handleMouseOver = (id) => {
-    // setHoveredCard(id);
-  };
+const MyCard = ({ id, odborkyById, image, name }) => {
+  console.log(odborkyById);
 
-  const handleMouseOut = () => {
-    setHoveredCard(undefined);
-  };
+  const [show, setShow] = useState(false);
+  const closeHandler = () => setShow(false);
+  const showHandler = () => setShow(true);
+
   return (
     <div
       className="my-card"
@@ -21,11 +20,9 @@ const MyCard = ({ id, setShowCardModal, image, name }) => {
         backgroundColor: "rgba(255, 255, 255, 0.5)",
         zIndex: "99",
       }}
-      onClick={() => setShowCardModal({})}
-      onMouseOver={() => handleMouseOver(id)}
-      onMouseOut={handleMouseOut}
     >
       <Card
+        onClick={showHandler}
         style={{
           padding: "1rem",
           border: "none",
@@ -45,9 +42,15 @@ const MyCard = ({ id, setShowCardModal, image, name }) => {
         />
         <Card.Body style={{ backgroundColor: "rgba(255, 255, 255, 0)" }}>
           <Card.Title className="text-center card-title">{name}</Card.Title>
-          {hoveredCard === id && <Button>Hi</Button>}
         </Card.Body>
       </Card>
+      <CardModal
+        key={id}
+        id={id}
+        odborka={odborkyById}
+        show={show}
+        setClose={closeHandler}
+      />
     </div>
   );
 };
