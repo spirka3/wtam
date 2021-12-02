@@ -1,12 +1,26 @@
 import React, { useState } from "react";
-import { Badge, Button, Form, Modal, ProgressBar, Row } from "react-bootstrap";
-import { GiSandsOfTime, MdEmail } from "react-icons/all";
+import {
+  Badge,
+  Button,
+  Card,
+  Col,
+  Form,
+  Modal,
+  ProgressBar,
+  Row,
+} from "react-bootstrap";
+import {
+  CgSandClock,
+  GiSandsOfTime,
+  MdEmail,
+  MdOutlineMailOutline,
+} from "react-icons/all";
 
 const InProgress = () => {
   const [showCardModal, setShowCardModal] = useState(false);
   const closeCardModal = () => setShowCardModal(false);
 
-  /*   const CardModal = () => {
+  const CardModal = () => {
     return (
       <Modal show={showCardModal} onHide={closeCardModal} centered>
         <Modal.Header
@@ -94,7 +108,7 @@ const InProgress = () => {
         </Modal.Footer>
       </Modal>
     );
-  }; */
+  };
 
   const MyCard = ({ color, title, url }) => {
     const MyProgress = ({ now, label }) => {
@@ -155,8 +169,7 @@ const InProgress = () => {
         <MyProgress now={10} label={`1/10`} />
         <MyProgress now={85} label={`7/8`} />
         <MyProgress now={85} label={`7/8`} />
-        {/*         {showCardModal && <CardModal />}
-         */}{" "}
+        {showCardModal && <CardModal />}
       </Row>
     );
   };
