@@ -10,9 +10,9 @@ import {
   InputGroup,
 } from "react-bootstrap";
 
-import { useYupResolver } from "../../hooks/useYupResolver";
+import { useYupResolver } from "../utils/hooks/useYupResolver";
 import * as Yup from "yup";
-import { upperFirst } from "../../utils/functions";
+import { upperFirst } from "../utils/functions";
 
 export const Error = ({ error }) => {
   if (!error) return null;
@@ -151,14 +151,8 @@ export function Select({ register, options, label, ...rest }) {
   );
 }
 
-export function Submit({ register, variant = "dark", login, ...rest }) {
+export function Submit({ register, variant = "dark", ...rest }) {
   return (
-    <Button
-      type="submit"
-      className="btn-block"
-      variant={variant}
-      onClick={login}
-      {...rest}
-    />
+    <Button type="submit" className="btn-block" variant={variant} {...rest} />
   );
 }

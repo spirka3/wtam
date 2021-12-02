@@ -1,24 +1,31 @@
 import React from "react";
 import { Tabs, Tab } from "react-bootstrap";
-import InProgress from "./InProgress";
-import Done from "./Done";
+import InProgress from "./in-progress/InProgress";
+import Achieved from "./achieved/Achieved";
 
-import "./index.css";
+import "./in-progress/index.css";
 
 const MyActivitiesPage = () => {
+  const numOfInProgress = 7; // TODO
+  const numOfAchieved = 10; // TODO
+
   return (
     <div className="center my-activities-container">
       <div>
         <Tabs
-          defaultActiveKey="wolfs"
+          defaultActiveKey="progress"
           id="uncontrolled-tab-example"
           className="mb-3 my-tabs"
         >
-          <Tab eventKey="wolfs" className="my-tab" title="Rozpracované (7)">
+          <Tab
+            eventKey="progress"
+            className="my-tab"
+            title={`Rozpracované (${numOfInProgress})`}
+          >
             <InProgress />
           </Tab>
-          <Tab eventKey="rangers" title="Získané (12)">
-            <Done />
+          <Tab eventKey="achieved" title={`Získané (${numOfAchieved})`}>
+            <Achieved />
           </Tab>
         </Tabs>
       </div>

@@ -1,11 +1,7 @@
 import React from "react";
-import { Form, Error, Input, Submit } from "./MyForm";
+import { Form, Error, Input, Submit } from "../components/MyForm";
 
 const LoginForm = ({ handleSubmit, authError, switchForm }) => {
-  const loginHandler = () => {
-    window.location.replace("/progres");
-  };
-
   return (
     <div>
       <Form onSubmit={handleSubmit} className="my-form">
@@ -17,9 +13,7 @@ const LoginForm = ({ handleSubmit, authError, switchForm }) => {
           required
         />
         <Error error={authError} />
-        <Submit className="btn-block" login={loginHandler}>
-          Prihlasit sa
-        </Submit>
+        <Submit className="btn-block">Prihlasit sa</Submit>
       </Form>
       <div
         style={{

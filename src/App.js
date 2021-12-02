@@ -10,11 +10,11 @@ import ChallengesPage from "./pages/challenges/ChallengesPage";
 import MyActivitiesPage from "./pages/my-profile/activities/MyActivitiesPage";
 import MyTeamPage from "./pages/my-profile/team/MyTeamPage";
 import ErrorPage from "./pages/unexpected/ErrorPage";
-import AuthModal from "./components/modals/AuthModal";
+import AuthModal from "./auth/AuthModal";
 import ProfilePage from "./pages/my-profile/settings/ProfilePage";
 import { getItem } from "./utils/functions";
 import { AuthProvider } from "./providers/AuthProvider";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 function App() {
   axios.defaults.baseURL = "https://www.polkadot-hub.eu/";
@@ -49,7 +49,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Navigation />
-        <div class="bg" style={backgroundStyle}></div>
+        <div className="bg" style={backgroundStyle}></div>
         <div className="my-content">
           <Switch>
             <Route exact path="/" component={HomePage} />

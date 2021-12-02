@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Submit, Error } from "./MyForm";
+import { Form, Input, Submit, Error } from "../components/MyForm";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({

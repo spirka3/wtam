@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Col, NavLink, Form } from "react-bootstrap";
 import { Link as SectionLink } from "react-scroll";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../providers/AuthProvider";
 
 const RightColumn = () => {
+  const { auth } = useAuthContext();
+
+  // TODO nastavit activeSection podla prihlaseneho usera
   const [activeSection, setActiveSection] = useState("1");
 
   const divStyle = {
@@ -75,7 +79,10 @@ const RightColumn = () => {
         <Form.Group className="mb-4" controlId="formBasicCheckbox">
           <Form.Check
             onChange={() => console.log("clicked")}
-            style={{ fontWeight: "500" }}
+            style={{
+              fontWeight: "500",
+              visibility: auth.token ? "visible" : "hidden",
+            }}
             type="checkbox"
             label="Nezobrazovat ziskane aktivity"
           />

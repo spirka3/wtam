@@ -3,7 +3,7 @@ import { Navbar, Nav, NavLink, NavDropdown, Button } from "react-bootstrap";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./providers/AuthProvider";
-import AuthModal from "./components/modals/AuthModal";
+import AuthModal from "./auth/AuthModal";
 import { GiStairsGoal } from "react-icons/all";
 import { appName } from "./utils/fakeData";
 
@@ -40,7 +40,7 @@ const Navigation = () => {
   };
 
   return (
-    <div class="navbar-wrapper">
+    <div className="navbar-wrapper">
       <Navbar
         expand="lg"
         // bg="light"

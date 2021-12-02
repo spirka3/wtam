@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Modal } from "react-bootstrap";
-import { useAuthContext } from "../../providers/AuthProvider";
-import LoginForm from "../forms/LoginForm";
-import RegisterForm from "../forms/RegisterForm";
-import { fakeAuth } from "../../utils/fakeData";
+import { useAuthContext } from "../providers/AuthProvider";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
+import { fakeAuth } from "../utils/fakeData";
 
-const AuthModal = ({
-  action: _action = "login",
-  onHide,
-  onlyBody,
-  additionalInfo,
-}) => {
+const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
   const { logIn } = useAuthContext();
 
   const [action, setAction] = useState(_action);
@@ -26,19 +20,18 @@ const AuthModal = ({
   };
 
   const handleSubmit = (data) => {
-    if (action === "register") {
-      // register request
-      // if successful then login
-    } else {
-      // login request
-      logIn(fakeAuth);
-    }
+    // if (action === "register")
+    // else // action === "login"
+
+    // TODO redirect len ak ide cez menu
+    // window.location.replace("/progres");
+    logIn(fakeAuth);
     onHide();
   };
 
   const props = { handleSubmit, authError, switchForm };
 
-  let title = action === "login" ? "Prihlasenie" : "Registracia"; // action = "login" || "register"
+  let title = action === "login" ? "Prihlasenie" : "Registracia";
 
   const ModalContainer = ({ children }) => {
     if (onlyBody) {

@@ -1,18 +1,20 @@
 import React from "react";
 import { Col } from "react-bootstrap";
-import Section from "../../components/preskumaj/Section";
+import Section from "./section/Section";
 
-const LeftColumn = ({ setShowCardModal, vekKat, progKat }) => {
-  const sectionsMaker = vekKat.map((section) => {
-    return (
-      <Section
-        id={section.id}
-        name={section.name}
-        // setShowCardModal={setShowCardModal}
-        progKat={progKat}
-      />
-    );
-  });
+const LeftColumn = ({ vekKat, progKat }) => {
+  const allowedKat = [
+    "Vĺčatá a včielky",
+    // "Rangeri a rangerky",
+    "Roveri a Roverky",
+    "Skauti a skautky",
+  ];
+
+  const sectionsMaker = vekKat
+    .filter((s) => allowedKat.includes(s.name))
+    .map((section) => {
+      return <Section id={section.id} name={section.name} progKat={progKat} />;
+    });
 
   return (
     <Col

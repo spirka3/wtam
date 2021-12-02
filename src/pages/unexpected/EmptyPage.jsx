@@ -4,10 +4,10 @@ import { BiTime } from "react-icons/all";
 const EmptyPage = () => {
   return (
     <h1 className="text-center" style={{ marginTop: "12rem" }}>
-      Na stránke sa ešte pracuje, prídte prosím neskôr.
+      Na stránke sa ešte pracuje, prídte prosím neskôr
       <BiTime
         size="40"
-        style={{ marginTop: "-0.75rem", marginLeft: "0.75rem" }}
+        style={{ paddingBottom: "0.25rem", marginLeft: "0.75rem" }}
       />
     </h1>
   );

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MyCard from "./MyCard";
+import OdborkaCard from "./odborka/OdborkaCard";
 
-const Section = ({ id, name, setShowCardModal, progKat }) => {
+const Section = ({ id, name, progKat }) => {
   const [odborkyById, setOdborkyById] = useState([]);
 
   useEffect(() => {
@@ -29,10 +29,9 @@ const Section = ({ id, name, setShowCardModal, progKat }) => {
   const activityCards = odborkyById.map((aktivita) => {
     // console.log(aktivita);
     return (
-      <MyCard
+      <OdborkaCard
         key={aktivita.id}
         id={aktivita.id}
-        // setShowCardModal={setShowCardModal}
         image={aktivita.img_url}
         name={aktivita.name}
         odborkyById={aktivita}
@@ -43,7 +42,6 @@ const Section = ({ id, name, setShowCardModal, progKat }) => {
   return (
     <div id={id} style={{ marginBottom: "2.5rem" }}>
       <h3>{name}</h3>
-      <p style={{ width: "90%" }}></p>
       {activityCards}
     </div>
   );
