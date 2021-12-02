@@ -6,25 +6,26 @@ import RightColumn from "./RightColumn";
 import LeftColumn from "./LeftColumn";
 import { useAuthContext } from "../../providers/AuthProvider";
 import AuthModal from "../../components/modals/AuthModal";
+import CardModal from "../../components/modals/CardModal";
 import axios from "axios";
 
 const OdborkyPage = () => {
   const { auth } = useAuthContext();
   const odborky = "odborky";
 
-  const [isAdded, setIsAdded] = useState(false);
+  // const [isAdded, setIsAdded] = useState(false);
   const [vekKat, setVekKat] = useState([]);
 
-  const [showCardModal, setShowCardModal] = useState(undefined);
-  const closeCardModal = () => {
+  // const [showCardModal, setShowCardModal] = useState(undefined);
+  /*   const closeCardModal = () => {
     setIsAdded(false);
     setShowCardModal(undefined);
   };
-
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const closeLoginModal = () => setShowLoginModal(false);
-
-  const addItem = () => {
+ */
+  // const [showLoginModal, setShowLoginModal] = useState(false);
+  /*   const closeLoginModal = () => setShowLoginModal(false);
+   */
+  /*   const addItem = () => {
     if (auth.token) {
       console.log("mas to");
       setIsAdded(true);
@@ -33,7 +34,7 @@ const OdborkyPage = () => {
       setShowLoginModal(true);
     }
   };
-
+ */
   useEffect(() => {
     async function fetchData() {
       await axios
@@ -50,13 +51,12 @@ const OdborkyPage = () => {
     fetchData();
   }, []);
 
-  const CardModal = () => {
+  /*   const CardModal = () => {
     const btnColor = isAdded ? "#B6DE92" : "#F2E272";
     const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
     return (
-      <>
-        <Modal.Header closeButton style={{ textAlign: "center" }}>
+      <><Modal.Header closeButton style={{ textAlign: "center" }}>
           <Modal.Title className="mx-0">
             <img
               style={{
@@ -109,19 +109,20 @@ const OdborkyPage = () => {
       </>
     );
   };
-
-  const show = showCardModal || showLoginModal;
-
+        
+ */
+  /*   const show = showCardModal || showLoginModal;
+   */
   return (
     <>
       <Row>
         <LeftColumn
-          setShowCardModal={setShowCardModal}
+          // setShowCardModal={setShowCardModal}
           vekKat={vekKat}
           progKat={odborky}
         />
         <RightColumn />
-        {show && (
+        {/* {show && (
           <Modal
             show={showCardModal}
             onHide={showLoginModal ? closeLoginModal : closeCardModal}
@@ -132,7 +133,7 @@ const OdborkyPage = () => {
             )}
             {!showLoginModal && <CardModal />}
           </Modal>
-        )}
+        )} */}
       </Row>
     </>
   );
