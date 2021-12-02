@@ -16,7 +16,7 @@ FILIP
 po prihlaseni hned ukazat moje aktivity 
 z private po odhlaseni hned na home
 
-TODO: nacitat z db odborky
+nacitat z db odborky
 TODO: vediet odfiltrovat hotove
 TODO: vediet pridat do rozpracovanych
 TODO:   hotove uz nemoze znova pridat
