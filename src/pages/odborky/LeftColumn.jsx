@@ -8,7 +8,7 @@ const LeftColumn = ({ setShowCardModal, vekKat, progKat }) => {
       <Section
         id={section.id}
         name={section.name}
-        setShowCardModal={setShowCardModal}
+        // setShowCardModal={setShowCardModal}
         progKat={progKat}
       />
     );
