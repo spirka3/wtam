@@ -93,24 +93,47 @@ Error Response Codes: 400 - Wrong request/Database error
 Return if succesful:
 
 {
-  "id": "1"
+  "new_record_id": "1",
+  "activity_id": "1"
 }
 
 Error Response Codes: 400 - Wrong request/Database error
 
 */
 
-/* Get tasks in progress for user [POST] https://www.polkadot-hub.eu/api/activities
+/* Create activities in progress with tasks [POST] https://www.polkadot-hub.eu/api/active
 
 {
-	"user_id" : 10,
-	"task_id": 1
+	"user_id" : 10
 }
+
 
 Return if succesful:
 
-{
-  "id": "1"
+[
+  {
+    "id": "60",
+    "name": "Gurmán",
+    "img_url": "https:\/\/www.skauting.sk\/wp-content\/uploads\/2019\/11\/skauting-program-odborka-vlcata-52-200x180.png",
+    "age_category_id": "1",
+    "level": "",
+    "activity_type": "Odborky",
+    "age_activity_name": "Vĺčatá a včielky",
+    "tasks": [
+      {
+        "id": "40",
+        "description": "Učíme sa vážiť si každé jedlo, správame sa k jedlu s úctou, pýtame si len vždy len toľko, koľko zjeme a naučíme sa za jedlo nahlas poďakovať.",
+        "activity_id": "60",
+        "task_state": "rozpracovane"
+      },
+      {
+        "id": "41",
+        "description": "Vieme, ako sa správať v reštaurácii, objednať si jedlo a správne ho konzumovať. Vieme, aký je celkový bontón pri konzumácii jedla a pri obsluhovaní.",
+        "activity_id": "60",
+        "task_state": "nesplnene"
+      }...
+	]
+  }
 }
 
 Error Response Codes: 400 - Wrong request/Database error
