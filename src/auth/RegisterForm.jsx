@@ -14,21 +14,27 @@ const RegisterForm = ({ handleSubmit, authError, switchForm }) => {
     <>
       <Form onSubmit={handleSubmit} validationSchema={validationSchema}>
         <Input
-          name="name"
+          name="nick"
           label="Zadaj prihlasovacie meno *"
           placeholder="Sem napis meno, ktorym sa budes prihlasovat"
           required
         />
         <Input
-          name="email"
-          label="Zadaj svoj email"
-          placeholder="Ak mas emailovu adresu, mozes ju sem napisat"
+          name="name"
+          label="Zadaj svoje meno"
+          placeholder="Sem napis svoje meno"
+        />
+        <Input
+          name="surname"
+          label="Zadaj svoje priezvisko"
+          placeholder="Sem napis svoje priezvisko"
         />
         <Input
           name="age"
           type="number"
-          label="Zadaj svoj vek"
+          label="Zadaj svoj vek *"
           placeholder="Sem napis cislom kolko mas rokov"
+          required
         />
         <Input
           name="password"
