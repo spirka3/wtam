@@ -1,20 +1,49 @@
-import React, { useState } from "react";
-import { Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+import { Row, Accordion } from "react-bootstrap";
+
 import ProgressCard from "./ProgressCard";
-import ProgressModal from "./ProgressModal";
+
+// TODO: api na poslanie id prvej aktivnej aktivity (default active ket)
 
 const InProgress = () => {
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal((prev) => !prev);
+  const [userActivities, setUserActivities] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post("api/active", {
+          user_id: 10,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUserActivities(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    }
+    fetchData();
+  }, []);
+
+  const progressCards = userActivities.map((aktivita) => {
+    console.log(aktivita.name);
+    return (
+      <ProgressCard
+        key={aktivita.id}
+        aktivita={aktivita}
+        now={10}
+        label={`1/10`}
+      />
+    );
+  });
 
   return (
-    <Row className="mt-2 mt-md-4">
-      <ProgressCard now={30} label={`3/8`} openModal={toggleModal} />
-      <ProgressCard now={10} label={`1/10`} openModal={toggleModal} />
-      <ProgressCard now={85} label={`7/8`} openModal={toggleModal} />
-      <ProgressCard now={85} label={`7/8`} openModal={toggleModal} />
-      {showModal && <ProgressModal show={showModal} onHide={toggleModal} />}
-    </Row>
+    <Accordion>
+      <Row className="mt-2 mt-md-4">{progressCards}</Row>
+    </Accordion>
   );
 };
 

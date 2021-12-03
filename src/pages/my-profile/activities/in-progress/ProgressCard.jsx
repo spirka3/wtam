@@ -1,12 +1,28 @@
-import React from "react";
-import { Badge, ProgressBar } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import {
+  Badge,
+  ProgressBar,
+  Accordion,
+  Form,
+  useAccordionToggle,
+  Button,
+} from "react-bootstrap";
 import { GiSandsOfTime } from "react-icons/all";
+import axios from "axios";
 
-const ProgressCard = ({ now, label, openModal }) => {
+// TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
+
+const ProgressCard = ({ now, label, aktivita }) => {
+  const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
+
+  const allTasks = tasks.map((task) => {
+    return <Form.Check label={task.description} />;
+  });
+
   return (
-    <div className="my-card progress-card col-12" onClick={openModal}>
+    <div className="my-card progress-card col-12">
       <div className="row">
-        <div className="col-12 col-md-5">
+        <div onClick={useAccordionToggle(id)} className="col-12 col-md-5">
           <div className="row">
             <div className="col-4 col-md-4">
               <img
@@ -16,14 +32,14 @@ const ProgressCard = ({ now, label, openModal }) => {
                   marginBottom: "2rem",
                   display: "inline",
                 }}
-                src="https://www.skauting.sk/wp-content/uploads/2017/04/skauting-program-odborka-vlcata-42-200x180.png"
+                src={image}
                 alt="First slide"
               />
             </div>
             <div className="col-8 col-md-8">
               <div className="d-inline-block pl-4">
-                <h3 className="mb-3">Meno aktivity</h3>
-                <p>typ aktivity</p>
+                <h3 className="mb-3">{name}</h3>
+                <p>{type}</p>
               </div>
             </div>
           </div>
@@ -45,6 +61,12 @@ const ProgressCard = ({ now, label, openModal }) => {
               </Badge>
             </span>
           </div>
+          <Accordion.Collapse eventKey={id}>
+            <div>
+              <p>{allTasks}</p>
+              <Button>Odoslat</Button>
+            </div>
+          </Accordion.Collapse>
         </div>
       </div>
     </div>
