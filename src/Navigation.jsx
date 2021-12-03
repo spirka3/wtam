@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Nav, NavLink, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Nav, NavLink } from "react-bootstrap";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "./providers/AuthProvider";
