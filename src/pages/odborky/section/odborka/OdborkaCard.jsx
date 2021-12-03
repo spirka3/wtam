@@ -3,6 +3,7 @@ import { Card, Modal } from "react-bootstrap";
 import AuthModal from "../../../../auth/AuthModal";
 import { useAuthContext } from "../../../../providers/AuthProvider";
 import OdborkaModal from "./OdborkaModal";
+import { axios } from "axios";
 
 const OdborkaCard = ({ id, odborkyById, image, name }) => {
   const { auth } = useAuthContext();

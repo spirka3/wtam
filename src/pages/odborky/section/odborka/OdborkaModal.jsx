@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 //import css from "./OdborkaModal.css";
 
 const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
@@ -10,7 +10,15 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
   const taskMapping = tasks.map((task) => {
-    return <li key={task.id}>{task.description}</li>;
+    return (
+      <Form.Check
+        key={task.id}
+        label={task.description}
+        onChange={({ currentTarget: input }) => {
+          console.log(input.checked);
+        }}
+      />
+    );
   });
 
   return (
@@ -38,7 +46,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ol>{taskMapping}</ol>
+        <Form>{taskMapping}</Form>
       </Modal.Body>
       <Modal.Footer>
         <div style={{ marginLeft: "0", marginRight: "auto" }}>
