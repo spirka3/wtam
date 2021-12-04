@@ -4,7 +4,7 @@ import {
   ProgressBar,
   Accordion,
   Form,
-  useAccordionToggle,
+  useAccordionButton,
   Button,
 } from "react-bootstrap";
 import { GiSandsOfTime } from "react-icons/all";
@@ -22,7 +22,7 @@ const ProgressCard = ({ now, label, aktivita }) => {
   return (
     <div className="my-card progress-card col-12">
       <div className="row">
-        <div onClick={useAccordionToggle(id)} className="col-12 col-md-5">
+        <div onClick={useAccordionButton(id)} className="col-12 col-md-5">
           <div className="row">
             <div className="col-4 col-md-4">
               <img
