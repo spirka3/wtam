@@ -3,7 +3,7 @@ import { Card, Modal } from "react-bootstrap";
 import AuthModal from "../../../../auth/AuthModal";
 import { useAuthContext } from "../../../../providers/AuthProvider";
 import OdborkaModal from "./OdborkaModal";
-import { axios } from "axios";
+import axios from "axios";
 
 const OdborkaCard = ({ id, odborkyById, image, name }) => {
   const { auth } = useAuthContext();
@@ -21,10 +21,23 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
 
   const [isAdded, setIsAdded] = useState(hasInProgress);
 
-  const addItem = () => {
+  const addItem = async (taskId) => {
+    console.log(taskId);
     if (auth.token) {
       setIsAdded(true);
       // TODO uloz pridanie odborky do databazy podla id
+      await axios
+        .post("api/activities", {
+          user_id: 10,
+          task_id: taskId,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
     } else {
       setShowLoginModal(true);
     }
