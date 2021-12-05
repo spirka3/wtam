@@ -83,25 +83,29 @@ Error Response Codes: 400 - Wrong request/Database error
 */
 
 
-/* Create task progress [POST] https://www.polkadot-hub.eu/api/activities
+/* Create task progress or update stav [POST] https://www.polkadot-hub.eu/api/activities
+Task state musi byt: splnene, nesplnene, rozpracovane. Bez pola task state sa vytvori novy task v tabulke new_task_progress
 
 {
 	"user_id" : 10,
-	"task_id": 1
+	"task_id": 1,
+	"task_state": "nesplnene"
 }
+
 
 Return if succesful:
 
 {
-  "new_record_id": "1",
-  "activity_id": "1"
+  "activity_id": "1",
+  "task_id": 1,
+  "affected_rows": 1
 }
 
 Error Response Codes: 400 - Wrong request/Database error
 
 */
 
-/* Create activities in progress with tasks [POST] https://www.polkadot-hub.eu/api/active
+/* Get aktivne odborky s ulohami pre usera so stavmi [POST] https://www.polkadot-hub.eu/api/active
 
 {
 	"user_id" : 10
@@ -134,6 +138,63 @@ Return if succesful:
       }...
 	]
   }
+}
+
+/* Get completed aktivity pre usera s ulohami [POST] https://www.polkadot-hub.eu/api/completed
+
+{
+	"user_id" : 10
+}
+
+
+Return if succesful:
+
+  {
+    "id": "1",
+    "name": "Táborník",
+    "img_url": "https:\/\/www.skauting.sk\/wp-content\/uploads\/2017\/04\/skauting-program-odborka-skauti-z-25-200x200.png",
+    "level": "Zelený",
+    "activity_type": "Odborky",
+    "age_category_id": "2",
+    "age_category": "Skauti a skautky",
+    "ulohy": [
+      {
+        "id": "1",
+        "description": "Prespal som aspoň 20 nocí pod stanom (pod širákom či prístreškom).",
+        "activity_id": "1"
+      },
+      {
+        "id": "2",
+        "description": "Zúčastnil som sa stavania aspoň jednej väčšej táborovej stavby (brána, kuchyňa, típí, podsada…).",
+        "activity_id": "1"
+      },
+      {
+        "id": "3",
+        "description": "S použitím sekery, KPZ a jedného polena som priviedol do varu liter vody.",
+        "activity_id": "1"
+      }...
+	]
+  }
+}
+
+Error Response Codes: 400 - Wrong request/Database error
+
+*/
+
+
+/* Add into progress all tasks from activity [POST] https://www.polkadot-hub.eu/api/add-activity
+
+{
+	"user_id" : 10,
+	"activity_id": 6
+}
+
+
+
+Return if succesful:
+
+{
+  "message": "Inserted 8 rows."
 }
 
 Error Response Codes: 400 - Wrong request/Database error
