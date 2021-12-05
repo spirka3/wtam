@@ -5,6 +5,8 @@ import { useAuthContext } from "../../../../providers/AuthProvider";
 import OdborkaModal from "./OdborkaModal";
 import axios from "axios";
 
+import "./index.css";
+
 const OdborkaCard = ({ id, odborkyById, image, name }) => {
   const { auth } = useAuthContext();
 
@@ -46,32 +48,9 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
   const show = showOdborkaModal || showLoginModal;
 
   return (
-    <div
-      className="my-card"
-      style={{
-        display: "inline-block",
-        margin: "1%",
-        cursor: "pointer",
-        backgroundColor: "rgba(255, 255, 255, 0.5)",
-        zIndex: "99",
-      }}
-    >
-      <Card
-        onClick={toggleOdborkaModal}
-        style={{
-          padding: "1rem",
-          border: "none",
-          backgroundColor: "rgba(255, 255, 255, 0)",
-        }}
-        className="my-card"
-      >
+    <div className="my-card col-6 col-sm-4 col-lg-3">
+      <Card onClick={toggleOdborkaModal}>
         <Card.Img
-          style={{
-            padding: "1rem",
-            width: "10rem",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
           variant="top"
           src={image}
         />

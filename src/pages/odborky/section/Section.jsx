@@ -42,9 +42,11 @@ const Section = ({ order, id, name, progKat }) => {
   console.log("odborka", order);
 
   return (
-    <div id={order} style={{ paddingTop: "5rem" }}>
+    <div id={order} className="aktivity-section">
       <h3>{name}</h3>
-      {activityCards}
+	  <div className="row">
+      	{activityCards}
+	  </div>
     </div>
   );
 };
