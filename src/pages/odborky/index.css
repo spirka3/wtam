@@ -25,3 +25,22 @@
     color: white;
     background: #0977ab;
 }
+
+.fixed-sidebar{
+	position: relative;
+    width: inherit;
+}
+
+.fixed-sidebar h4{
+	margin-bottom: 25px;
+}
+
+
+@media screen and (min-width: 766px) {
+	.fixed-sidebar{
+		position: fixed;
+		max-width: 380px;
+		width: inherit;
+		padding: 0 20px 0 0;
+	}	
+  }

@@ -24,11 +24,7 @@ const LeftColumn = ({ vekKat, progKat }) => {
     });
 
   return (
-    <Col
-      className="odborky"
-      xs={12}
-      sm={12}
-      md={9}
+    <div class="odborky col-12 col-md-8 col-lg-9 order-2 order-md-1"
       style={{
         display: "flex",
         justifyContent: "space-between",
@@ -36,7 +32,7 @@ const LeftColumn = ({ vekKat, progKat }) => {
       }}
     >
       {sectionsMaker}
-    </Col>
+    </div>
   );
 };
 

@@ -4,6 +4,8 @@ import { Link as SectionLink } from "react-scroll";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../providers/AuthProvider";
 
+import "./index.css";
+
 const RightColumn = () => {
   const { auth } = useAuthContext();
 
@@ -15,9 +17,8 @@ const RightColumn = () => {
     verticalAlign: "middle",
     textAlign: "center",
     width: "100%",
-    height: "100px",
     marginBottom: "1.5rem",
-    paddingTop: "2rem",
+    padding: "2rem",
     backgroundSize: "cover",
     cursor: "pointer",
   };
@@ -56,7 +57,7 @@ const RightColumn = () => {
     );
   };
 
-  const NavigationButton = ({ text, url, marginTop, to }) => {
+  const NavigationButton = ({ text, url, marginTop, to, className }) => {
     return (
       <NavLink
         style={{
@@ -67,6 +68,7 @@ const RightColumn = () => {
         }}
         as={Link}
         to={to}
+		className={className}
       >
         <span style={spanStyle}>{text}</span>
       </NavLink>
@@ -74,8 +76,8 @@ const RightColumn = () => {
   };
 
   return (
-    <Col className="d-xs-none" sm={0} md={3}>
-      <div style={{ position: "fixed", width: "20%" }}>
+    <div className="col-12 col-md-4 col-lg-3 order-1 order-md-2">
+	  <div class="fixed-sidebar">
         <Form.Group className="mb-4" controlId="formBasicCheckbox">
           <Form.Check
             onChange={() => console.log("clicked")}
@@ -103,19 +105,20 @@ const RightColumn = () => {
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-roverske-bttn.png"
           to="2"
         />
+		<hr className="d-md-none"/>
         <NavigationButton
           text="Vyzvy"
           url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
-          marginTop="6rem"
-          to="/vyzvy"
+          to="/vyzvy"		 
+		  className="mt-md-5" 
         />
         <NavigationButton
           text="Ocenenia"
           url="https://www.skauting.sk/wp-content/uploads/2019/01/skauting-program-najvyssie-ocenenie-medvedi-skaut-bttn.png"
           to="/ocenenia"
         />
-      </div>
-    </Col>
+	  </div>
+    </div>
   );
 };
 
