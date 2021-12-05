@@ -62,6 +62,9 @@ TODO: !! rozpracovane aktivity
 TODO: po logine hned prehlad rozpracovanych veci
 TODO: pre mobilnu verziu, v dolnej casti (ako sme.sk) buttony - navrh: rozpracovane, odborky, dalsie?
 
+[AK VYJDE CAS]
+TODO: Footer - https://courses.matfyz.sk/webdesign/notes/note/lectures/layout-design/page-footers/
+TODO: Farby - https://www.nngroup.com/articles/color-enhance-design/
 
 MARTIN
 - spracovat pripomienky z hodnotenia
