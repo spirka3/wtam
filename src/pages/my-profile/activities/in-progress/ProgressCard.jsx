@@ -15,7 +15,7 @@ import ProgressModal from "./ProgressModal";
 
 // TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
 
-const ProgressCard = ({ now, label, aktivita, singleActivity }) => {
+const ProgressCard = ({ now, aktivita }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
 
   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -83,7 +83,7 @@ const ProgressCard = ({ now, label, aktivita, singleActivity }) => {
                 height: "40px",
               }}
               now={now}
-              label={label}
+              label={`0/${tasks.length}`}
             />
             <span className="my-activity-badge mt-md-2">
               <Badge bg="warning">

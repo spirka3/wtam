@@ -58,7 +58,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
             if (isAdded) {
               showItem();
             } else {
-              addItem();
+              addItem(odborka.id);
             }
           }}
         >

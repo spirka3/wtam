@@ -23,13 +23,13 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
 
   const [isAdded, setIsAdded] = useState(hasInProgress);
 
-  const addItem = async (activityId) => {
+  const addItem = (activityId) => {
     console.log(activityId);
     if (auth.token) {
       setIsAdded(true);
       // TODO uloz pridanie odborky do databazy podla id
-      await axios
-        .post("api/activities", {
+      axios
+        .post("api/add-activity", {
           user_id: 10,
           activity_id: activityId,
         })
@@ -50,10 +50,7 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
   return (
     <div className="my-card col-6 col-sm-4 col-lg-3">
       <Card onClick={toggleOdborkaModal}>
-        <Card.Img
-          variant="top"
-          src={image}
-        />
+        <Card.Img variant="top" src={image} />
         <Card.Body style={{ backgroundColor: "rgba(255, 255, 255, 0)" }}>
           <Card.Title className="text-center card-title">{name}</Card.Title>
         </Card.Body>
