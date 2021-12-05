@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Modal, Button } from "react-bootstrap";
-//import css from "./OdborkaModal.css";
 
 const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
   const { name, img_url, tasks } = odborka;
@@ -12,6 +11,10 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
   const taskMapping = tasks.map((task) => {
     return <li key={task.id}>{task.description}</li>;
   });
+
+  const showItem = () => {
+    window.location.replace("/progres");
+  };
 
   return (
     <>
@@ -45,13 +48,21 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
           {isAdded && <h6>✔ Odborka bola pridana</h6>}
         </div>
         <Button
-          style={{ backgroundColor: btnColor, borderColor: btnColor }}
+          style={{
+            backgroundColor: btnColor,
+            borderColor: btnColor,
+            color: "black",
+            fontWeight: "500",
+          }}
           onClick={() => {
-            console.log("click");
-            addItem();
+            if (isAdded) {
+              showItem();
+            } else {
+              addItem();
+            }
           }}
         >
-          <strong>{btnText}</strong>
+          {btnText}
         </Button>
         <Button variant="light" onClick={onHide}>
           Zavriet

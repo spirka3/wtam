@@ -93,7 +93,9 @@ export function Input({
   prepend,
   ...rest
 }) {
-  label = label || rest.name;
+  if (label === undefined) {
+    label = rest.name;
+  }
   placeholder = placeholder ? placeholder : `Enter ${label}`;
 
   return (

@@ -3,27 +3,53 @@ import {
   Badge,
   ProgressBar,
   Accordion,
-  Form,
+  Form as BsForm,
   useAccordionButton,
   Button,
 } from "react-bootstrap";
-import { GiSandsOfTime } from "react-icons/all";
+import { GiSandsOfTime, MdEmail } from "react-icons/all";
 import axios from "axios";
+import { Form, Form as F, Input } from "../../../../components/MyForm";
+import OdborkaModal from "../../../odborky/section/odborka/OdborkaModal";
+import ProgressModal from "./ProgressModal";
 
 // TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
 
-const ProgressCard = ({ now, label, aktivita }) => {
+const ProgressCard = ({ now, label, aktivita, singleActivity }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
 
+  const [selectedTasks, setSelectedTasks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal((prev) => !prev);
+
+  const selectTask = (task) => {
+    const foundTask = selectedTasks.find((t) => t.id === task.id);
+    if (!foundTask) {
+      setSelectedTasks([...selectedTasks, task]);
+    } else {
+      setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
+    }
+    console.log("task", task);
+  };
+
   const allTasks = tasks.map((task) => {
-    return <Form.Check label={task.description} />;
+    return (
+      <BsForm.Check
+        label={task.description}
+        onChange={() => selectTask(task)}
+      />
+    );
   });
 
   return (
     <div className="my-card progress-card col-12">
       <div className="row">
-        <div onClick={useAccordionButton(id)} className="col-12 col-md-5">
-          <div className="row">
+        <div className="col-12 col-md-5">
+          <div
+            className="row"
+            onClick={useAccordionButton(id)}
+            style={{ cursor: "pointer" }}
+          >
             <div className="col-4 col-md-4">
               <img
                 style={{
@@ -46,7 +72,11 @@ const ProgressCard = ({ now, label, aktivita }) => {
         </div>
 
         <div className="col-12 col-md-7">
-          <div className="row mb-3 ml-1 mr-">
+          <div
+            className="row mb-3 ml-1 mr-"
+            onClick={useAccordionButton(id)}
+            style={{ cursor: "pointer" }}
+          >
             <ProgressBar
               className="mt-md-2 my-activity-progressbar"
               style={{
@@ -64,11 +94,37 @@ const ProgressCard = ({ now, label, aktivita }) => {
           <Accordion.Collapse eventKey={id}>
             <div>
               <p>{allTasks}</p>
-              <Button>Odoslat</Button>
+              {selectedTasks.length ? (
+                <Form>
+                  <hr />
+                  <p style={{ fontWeight: "500", marginBottom: "0" }}>
+                    Úlohy ti musí overiť vedúci
+                  </p>
+                  <Input
+                    as="textarea"
+                    name="password"
+                    label=""
+                    placeholder="Ako dôkaz mu môžeš poslať pár slov, prípadne vložiť fotky"
+                    required
+                  />
+                  <div style={{ display: "flex", marginBottom: "1rem" }}>
+                    <Button
+                      variant="success"
+                      style={{ height: "36px", marginRight: "1rem" }}
+                    >
+                      Poslať
+                    </Button>
+                    {/*<BsForm.Label>Pridať prílohu</BsForm.Label>*/}
+                    <BsForm.Control type="file" multiple />
+                  </div>
+                </Form>
+              ) : null}
+              {/*<Button onClick={toggleModal}>Odoslat</Button>*/}
             </div>
           </Accordion.Collapse>
         </div>
       </div>
+      {showModal && <ProgressModal show={showModal} />}
     </div>
   );
 };

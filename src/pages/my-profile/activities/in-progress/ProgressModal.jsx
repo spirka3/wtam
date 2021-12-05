@@ -83,9 +83,8 @@ const ProgressModal = ({ show, onHide }) => {
           justifyContent: "space-between",
         }}
       >
-        <Button variant="light">Vymazat</Button>
         <Button variant="success">
-          Poslat <MdEmail size={20} />
+          Odoslať <MdEmail size={20} />
         </Button>
       </Modal.Footer>
     </Modal>

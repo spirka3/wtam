@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import { Row, Accordion } from "react-bootstrap";
-
 import ProgressCard from "./ProgressCard";
-
-// TODO: api na poslanie id prvej aktivnej aktivity (default active ket)
 
 const InProgress = () => {
   const [userActivities, setUserActivities] = useState([]);
@@ -17,7 +13,7 @@ const InProgress = () => {
           user_id: 10,
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setUserActivities(res.data);
         })
         .catch((err) => {

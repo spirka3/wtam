@@ -21,6 +21,7 @@ const Navigation = () => {
   const getStyle = (to) => {
     return {
       backgroundColor: isActiveLink(to) ? "#9ed6ff" : "#f8f9fa",
+      fontWeight: 500,
     };
   };
 
@@ -62,7 +63,7 @@ const Navigation = () => {
         <Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto mt-2 mobile-menu" variant="pills">
-            <MyNavLink to="/novinky" name="Novinky" />
+            {/*<MyNavLink to="/novinky" name="Novinky" />*/}
             <MyNavLink to="/odborky" name="Odborky" />
             <MyNavLink to="/vyzvy" name="Vyzvy" />
             <MyNavLink to="/ocenenia" name="Ocenenia" />
