@@ -6,12 +6,13 @@ import {
   Form as BsForm,
   useAccordionButton,
   Button,
+  InputGroup,
 } from "react-bootstrap";
-import { GiSandsOfTime, MdEmail } from "react-icons/all";
+import { GiSandsOfTime, IoIosAttach, MdEmail } from "react-icons/all";
 import axios from "axios";
 import { Form, Form as F, Input } from "../../../../components/MyForm";
-import OdborkaModal from "../../../odborky/section/odborka/OdborkaModal";
 import ProgressModal from "./ProgressModal";
+import UploadButton from "./UploadButton";
 
 // TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
 
@@ -19,8 +20,6 @@ const ProgressCard = ({ now, aktivita }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
 
   const [selectedTasks, setSelectedTasks] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal((prev) => !prev);
 
   const selectTask = (task) => {
     const foundTask = selectedTasks.find((t) => t.id === task.id);
@@ -95,18 +94,20 @@ const ProgressCard = ({ now, aktivita }) => {
             <div>
               <p>{allTasks}</p>
               {selectedTasks.length ? (
-                <Form>
-                  <hr />
-                  <p style={{ fontWeight: "500", marginBottom: "0" }}>
-                    Úlohy ti musí overiť vedúci
-                  </p>
-                  <Input
-                    as="textarea"
-                    name="password"
-                    label=""
-                    placeholder="Ako dôkaz mu môžeš poslať pár slov, prípadne vložiť fotky"
-                    required
-                  />
+                <div>
+                  <Form>
+                    <hr />
+                    <p style={{ fontWeight: "500", marginBottom: "0" }}>
+                      Úlohy ti musí overiť vedúci
+                    </p>
+                    <Input
+                      as="textarea"
+                      name="password"
+                      label=""
+                      placeholder="Ako dôkaz mu môžeš poslať pár slov, prípadne vložiť fotky"
+                      required
+                    />
+                  </Form>
                   <div style={{ display: "flex", marginBottom: "1rem" }}>
                     <Button
                       variant="success"
@@ -114,17 +115,14 @@ const ProgressCard = ({ now, aktivita }) => {
                     >
                       Poslať
                     </Button>
-                    {/*<BsForm.Label>Pridať prílohu</BsForm.Label>*/}
-                    <BsForm.Control type="file" multiple />
+                    <UploadButton />
                   </div>
-                </Form>
+                </div>
               ) : null}
-              {/*<Button onClick={toggleModal}>Odoslat</Button>*/}
             </div>
           </Accordion.Collapse>
         </div>
       </div>
-      {showModal && <ProgressModal show={showModal} />}
     </div>
   );
 };
