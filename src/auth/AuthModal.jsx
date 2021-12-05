@@ -20,11 +20,9 @@ const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
   };
 
   const handleSubmit = (data) => {
-    // if (action === "register")
-    // else // action === "login"
-
-    // TODO redirect len ak ide cez menu
-    // window.location.replace("/progres");
+    if (!onlyBody) {
+      window.location.replace("/progres");
+    }
     logIn(fakeAuth);
     onHide();
   };

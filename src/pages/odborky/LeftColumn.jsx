@@ -12,8 +12,15 @@ const LeftColumn = ({ vekKat, progKat }) => {
 
   const sectionsMaker = vekKat
     .filter((s) => allowedKat.includes(s.name))
-    .map((section) => {
-      return <Section id={section.id} name={section.name} progKat={progKat} />;
+    .map((section, i) => {
+      return (
+        <Section
+          order={i}
+          id={section.id}
+          name={section.name}
+          progKat={progKat}
+        />
+      );
     });
 
   return (

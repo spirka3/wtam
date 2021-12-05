@@ -91,17 +91,17 @@ const RightColumn = () => {
         <SectionButton
           text="Vĺčatá a včielky"
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-vlciacke-bttn.png"
-          to="1"
+          to="0"
         />
         <SectionButton
           text="Skauti a rangeri"
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-skautske-bttn.png"
-          to="2"
+          to="1"
         />
         <SectionButton
-          text="Roveri"
+          text="Roveri a Roverky"
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-roverske-bttn.png"
-          to="3"
+          to="2"
         />
         <NavigationButton
           text="Vyzvy"

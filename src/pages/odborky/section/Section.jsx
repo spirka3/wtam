@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OdborkaCard from "./odborka/OdborkaCard";
 
-const Section = ({ id, name, progKat }) => {
+const Section = ({ order, id, name, progKat }) => {
   const [odborkyById, setOdborkyById] = useState([]);
 
   useEffect(() => {
@@ -39,8 +39,10 @@ const Section = ({ id, name, progKat }) => {
     );
   });
 
+  console.log("odborka", order);
+
   return (
-    <div id={id} style={{ marginBottom: "2.5rem" }}>
+    <div id={order} style={{ paddingTop: "5rem" }}>
       <h3>{name}</h3>
       {activityCards}
     </div>

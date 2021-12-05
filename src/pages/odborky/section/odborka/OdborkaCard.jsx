@@ -86,9 +86,7 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
           onHide={showLoginModal ? toggleLoginModal : toggleOdborkaModal}
           centered
         >
-          {showLoginModal && (
-            <AuthModal onHide={toggleLoginModal} onlyBody title="omg" />
-          )}
+          {showLoginModal && <AuthModal onHide={toggleLoginModal} onlyBody />}
           {!showLoginModal && (
             <OdborkaModal
               addItem={addItem}
