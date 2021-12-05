@@ -200,3 +200,23 @@ Return if succesful:
 Error Response Codes: 400 - Wrong request/Database error
 
 */
+
+
+/* Remove from progress all tasks by activity [POST] https://www.polkadot-hub.eu/api/remove-activity
+
+{
+	"user_id" : 10,
+	"activity_id": 6
+}
+
+
+
+Return if succesful:
+
+{
+  "message": "Removed 10 tasks for activity."
+}
+
+Error Response Codes: 400 - Wrong request/Database error
+
+*/
