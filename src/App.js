@@ -53,7 +53,7 @@ function App() {
         <div className="my-content">
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/novinky" component={EmptyPage} />
+            {/*<Route path="/novinky" component={EmptyPage} />*/}
             <Route path="/odborky" component={OdborkyPage} />
             <Route path="/vyzvy" component={ChallengesPage} />
             <Route path="/ocenenia" component={EmptyPage} />

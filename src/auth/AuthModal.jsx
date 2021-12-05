@@ -21,7 +21,7 @@ const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
 
   const handleSubmit = (data) => {
     if (!onlyBody) {
-      window.location.replace("/progres");
+      window.location.replace("/");
     }
     logIn(fakeAuth);
     onHide();
