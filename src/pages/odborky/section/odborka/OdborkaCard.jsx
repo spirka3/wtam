@@ -21,15 +21,15 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
 
   const [isAdded, setIsAdded] = useState(hasInProgress);
 
-  const addItem = async (taskId) => {
-    console.log(taskId);
+  const addItem = async (activityId) => {
+    console.log(activityId);
     if (auth.token) {
       setIsAdded(true);
       // TODO uloz pridanie odborky do databazy podla id
       await axios
         .post("api/activities", {
           user_id: 10,
-          task_id: taskId,
+          activity_id: activityId,
         })
         .then((res) => {
           console.log(res.data);
