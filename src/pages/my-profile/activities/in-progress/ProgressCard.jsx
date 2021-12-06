@@ -129,7 +129,10 @@ const ProgressCard = ({ aktivita }) => {
                 ) : null}
                 {/* WAITING TASK */}
                 {subTasks.waiting.length ? (
-                  <Accordion.Item eventKey="2">
+                  <Accordion.Item
+                    eventKey="2"
+                    className={isSent ? `state-update` : null}
+                  >
                     <Accordion.Header>{`Čakajúce na schválenie (${subTasks.waiting.length})`}</Accordion.Header>
                     <Accordion.Body>
                       {subTasks.waiting.map((task) => (
