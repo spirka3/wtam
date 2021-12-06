@@ -19,8 +19,6 @@ const Formik = ({ setSubTasks, selectedTasks, setSelectedTasks }) => {
         done: prev.done,
       };
     });
-    console.log("");
-    console.log("submit");
     setIsSent(true);
   };
 

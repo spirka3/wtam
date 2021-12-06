@@ -92,14 +92,14 @@ const ProgressCard = ({ aktivita }) => {
                         onChange={() => selectTask(task)}
                       />
                     ))}
+                    {selectedTasks.length ? (
+                      <Formik
+                        setSubTasks={setSubTasks}
+                        selectedTasks={selectedTasks}
+                        setSelectedTasks={setSelectedTasks}
+                      />
+                    ) : null}
                   </Accordion.Body>
-                  {selectedTasks.length ? (
-                    <Formik
-                      setSubTasks={setSubTasks}
-                      selectedTasks={selectedTasks}
-                      setSelectedTasks={setSelectedTasks}
-                    />
-                  ) : null}
                 </Accordion.Item>
                 {/* WAITING TASK */}
                 <Accordion.Item eventKey="2">
