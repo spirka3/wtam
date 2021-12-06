@@ -31,14 +31,34 @@ const ProgressCard = ({ now, aktivita }) => {
     console.log("task", task);
   };
 
-  const allTasks = tasks.map((task) => {
-    return (
-      <BsForm.Check
-        label={task.description}
-        onChange={() => selectTask(task)}
-      />
-    );
-  });
+  // 1 - Rozpracovana -> Nesplnenea (default po pridani, alebo zamietnuta veducim)
+  const rozpracovaneTasky = tasks
+    .filter((task) => task.task_state === "rozpracovane")
+    .map((task) => {
+      return (
+        <BsForm.Check
+          label={task.description}
+          onChange={() => selectTask(task)}
+        />
+      );
+    });
+
+  // 2 - Nesplnena -> Rozpracovana (cakajuca na schvalenie)
+  const nesplneneTasky = tasks
+    .filter((task) => task.task_state === "nesplnene")
+    .map((task) => {
+      return <li>{task.description}</li>;
+    });
+
+  // 3 - Splnena -> Splnena (schvalena veducim)
+  const splneneTasky = tasks
+    .filter((task) => task.task_state === "splnene")
+    .map((task) => {
+      return <li>{task.description}</li>;
+    });
+
+  const prograssBarValue = (splneneTasky.length / tasks.length) * 100;
+  console.log(prograssBarValue);
 
   return (
     <div className="my-card progress-card col-12">
@@ -53,7 +73,6 @@ const ProgressCard = ({ now, aktivita }) => {
               <img
                 style={{
                   width: "100px",
-                  height: "90px",
                   marginBottom: "2rem",
                   display: "inline",
                 }}
@@ -81,8 +100,8 @@ const ProgressCard = ({ now, aktivita }) => {
               style={{
                 height: "40px",
               }}
-              now={now}
-              label={`0/${tasks.length}`}
+              now={prograssBarValue}
+              label={`${splneneTasky.length}/${tasks.length}`}
             />
             <span className="my-activity-badge mt-md-2">
               <Badge bg="warning">
@@ -92,7 +111,21 @@ const ProgressCard = ({ now, aktivita }) => {
           </div>
           <Accordion.Collapse eventKey={id}>
             <div>
-              <p>{allTasks}</p>
+              {/* <p>{allTasks}</p> */}
+              <Accordion defaultActiveKey="1">
+                <Accordion.Item eventKey="1">
+                  <Accordion.Header>{`Nesplnené(${rozpracovaneTasky.length})`}</Accordion.Header>
+                  <Accordion.Body>{rozpracovaneTasky}</Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                  <Accordion.Header>{`Čakajúce na schválenie(${nesplneneTasky.length})`}</Accordion.Header>
+                  <Accordion.Body>{nesplneneTasky}</Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="3">
+                  <Accordion.Header>{`Splnené(${splneneTasky.length})`}</Accordion.Header>
+                  <Accordion.Body>{splneneTasky}</Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
               {selectedTasks.length ? (
                 <div>
                   <Form>
