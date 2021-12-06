@@ -106,6 +106,7 @@ const ProgressCard = ({ aktivita }) => {
                   <Accordion.Body>
                     {subTasks.todo.map((task) => (
                       <BsForm.Check
+                        key={task.id}
                         label={task.description}
                         onChange={() => selectTask(task)}
                       />
