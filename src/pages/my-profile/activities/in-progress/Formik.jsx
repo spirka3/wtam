@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Input } from "../../../../components/MyForm";
 import { Button } from "react-bootstrap";
 import { IoIosAttach } from "react-icons/all";
+import axios from "axios";
 
 const Formik = ({
   setSubTasks,
@@ -14,6 +15,25 @@ const Formik = ({
 
   const handleSubmit = () => {
     // TODO selectedTasks ulozit do DB
+
+    for (let task of selectedTasks) {
+      console.log(task.id);
+
+      axios
+        .post("api/progress", {
+          user_id: 10,
+          task_id: task.id,
+          task_state: "nesplnene",
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    }
+
     setSubTasks((prev) => {
       const newTodo = prev.todo.filter((t) => !selectedTasks.includes(t));
       const newWait = [...prev.waiting, ...selectedTasks];
