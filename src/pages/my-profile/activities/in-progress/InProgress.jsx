@@ -25,7 +25,6 @@ const InProgress = () => {
   }, []);
 
   const progressCards = userActivities.map((aktivita) => {
-    console.log(aktivita.name);
     return (
       <ProgressCard
         key={aktivita.id}
