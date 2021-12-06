@@ -52,14 +52,14 @@ const ProgressCard = ({ aktivita }) => {
   };
 
   return (
-    <div className="my-card progress-card col-12">
+    <div
+      className="my-card progress-card col-12"
+      onClick={useAccordionButton(id)}
+      style={{ cursor: "pointer" }}
+    >
       <div className="row">
         <div className="col-12 col-md-5">
-          <div
-            className="row"
-            onClick={useAccordionButton(id)}
-            style={{ cursor: "pointer" }}
-          >
+          <div className="row">
             <div className="col-4 col-md-4">
               <img
                 style={{
@@ -86,9 +86,7 @@ const ProgressCard = ({ aktivita }) => {
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}
           >
-            <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} className={
-                ((subTasks.waiting.length) == 0 ? "none-subtasks-waiting" : "")
-              } />
+            <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} />
             <span
               className="my-activity-badge"
               style={{
@@ -102,12 +100,16 @@ const ProgressCard = ({ aktivita }) => {
           </div>
           <Accordion.Collapse eventKey={id}>
             <div>
-              <Accordion className="accordion-margin" defaultActiveKey="1">
+              <Accordion
+                className="accordion-margin"
+                defaultActiveKey="1"
+                onClick={(e) => e.stopPropagation()}
+              >
                 {/* TO DO TASKS */}
                 {subTasks.todo.length ? (
                   <Accordion.Item eventKey="1">
                     <Accordion.Header>{`Nesplnené (${subTasks.todo.length})`}</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body style={{ cursor: "default" }}>
                       {subTasks.todo.map((task) => (
                         <BsForm.Check
                           key={task.id}
@@ -138,7 +140,7 @@ const ProgressCard = ({ aktivita }) => {
                         <div className="ml-4 circle pulse blue" />
                       ) : null}
                     </Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body style={{ cursor: "default" }}>
                       {subTasks.waiting.map((task) => (
                         <li>{task.description}</li>
                       ))}
@@ -149,7 +151,7 @@ const ProgressCard = ({ aktivita }) => {
                 {subTasks.done.length ? (
                   <Accordion.Item eventKey="3">
                     <Accordion.Header>{`Splnené (${subTasks.done.length})`}</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body style={{ cursor: "default" }}>
                       {subTasks.done.map((task) => (
                         <li>{task.description}</li>
                       ))}
