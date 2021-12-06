@@ -22,7 +22,7 @@ const MyProgressBar = ({ splneneTasky, tasks }) => {
             flexDirection: "column",
             textAlign: "center",
             // width: "100%",
-            // fontSize: "0.75rem",
+            fontSize: "0.75rem",
             paddingLeft: "5%",
           }}
         >
