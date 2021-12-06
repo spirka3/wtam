@@ -92,7 +92,7 @@ const ProgressCard = ({ aktivita }) => {
                 visibility: subTasks.waiting.length ? "visible" : "hidden",
               }}
             >
-              <Badge bg="warning">
+              <Badge bg="warning" className="badge">
                 <GiSandsOfTime size={30} />
               </Badge>
             </span>
