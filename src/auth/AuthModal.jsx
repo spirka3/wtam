@@ -4,6 +4,7 @@ import { useAuthContext } from "../providers/AuthProvider";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import { fakeAuth } from "../utils/fakeData";
+import axios from "axios";
 
 const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
   const { logIn } = useAuthContext();
@@ -21,8 +22,24 @@ const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
 
   const handleSubmit = (data) => {
     if (!onlyBody) {
-      window.location.replace("/");
+      axios
+        .post("api/active", {
+          user_id: 10,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          if (res.data.length) {
+            window.location.replace("/progres");
+          } else {
+            window.location.replace("/odborky");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
     }
+
     logIn(fakeAuth);
     onHide();
   };
