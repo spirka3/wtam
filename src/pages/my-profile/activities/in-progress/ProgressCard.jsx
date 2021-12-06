@@ -15,8 +15,13 @@ import MyProgressBar from "./MyProgressBar";
 const ProgressCard = ({ aktivita }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
 
-  const [selectedTasks, setSelectedTasks] = useState([]);
+  const [subTasks, setSubTasks] = useState({
+    todo: tasks.filter((task) => task.task_state === "rozpracovane"),
+    waiting: tasks.filter((task) => task.task_state === "nesplnene"),
+    done: tasks.filter((task) => task.task_state === "splnene"),
+  });
 
+  const [selectedTasks, setSelectedTasks] = useState([]);
   const selectTask = (task) => {
     const foundTask = selectedTasks.find((t) => t.id === task.id);
     if (!foundTask) {
@@ -26,32 +31,6 @@ const ProgressCard = ({ aktivita }) => {
     }
     console.log("task", task);
   };
-
-  // 1 - Rozpracovana -> Nesplnenea (default po pridani, alebo zamietnuta veducim)
-  const rozpracovaneTasky = tasks
-    .filter((task) => task.task_state === "rozpracovane")
-    .map((task) => {
-      return (
-        <BsForm.Check
-          label={task.description}
-          onChange={() => selectTask(task)}
-        />
-      );
-    });
-
-  // 2 - Nesplnena -> Rozpracovana (cakajuca na schvalenie)
-  const nesplneneTasky = tasks
-    .filter((task) => task.task_state === "nesplnene")
-    .map((task) => {
-      return <li>{task.description}</li>;
-    });
-
-  // 3 - Splnena -> Splnena (schvalena veducim)
-  const splneneTasky = tasks
-    .filter((task) => task.task_state === "splnene")
-    .map((task) => {
-      return <li>{task.description}</li>;
-    });
 
   return (
     <div className="my-card progress-card col-12">
@@ -88,11 +67,11 @@ const ProgressCard = ({ aktivita }) => {
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}
           >
-            <MyProgressBar splneneTasky={splneneTasky} tasks={tasks} />
+            <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} />
             <span
               className="my-activity-badge mt-md-2"
               style={{
-                visibility: nesplneneTasky.length ? "visible" : "hidden",
+                visibility: subTasks.waiting.length ? "visible" : "hidden",
               }}
             >
               <Badge bg="warning">
@@ -104,17 +83,38 @@ const ProgressCard = ({ aktivita }) => {
             <div>
               <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="1">
-                  <Accordion.Header>{`Nesplnené(${rozpracovaneTasky.length})`}</Accordion.Header>
-                  <Accordion.Body>{rozpracovaneTasky}</Accordion.Body>
-                  {selectedTasks.length ? <Formik /> : null}
+                  <Accordion.Header>{`Nesplnené(${subTasks.todo.length})`}</Accordion.Header>
+                  <Accordion.Body>
+                    {subTasks.todo.map((task) => (
+                      <BsForm.Check
+                        label={task.description}
+                        onChange={() => selectTask(task)}
+                      />
+                    ))}
+                  </Accordion.Body>
+                  {selectedTasks.length ? (
+                    <Formik
+                      setSubTasks={setSubTasks}
+                      selectedTasks={selectedTasks}
+                      setSelectedTasks={setSelectedTasks}
+                    />
+                  ) : null}
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
-                  <Accordion.Header>{`Čakajúce na schválenie(${nesplneneTasky.length})`}</Accordion.Header>
-                  <Accordion.Body>{nesplneneTasky}</Accordion.Body>
+                  <Accordion.Header>{`Čakajúce na schválenie(${subTasks.waiting.length})`}</Accordion.Header>
+                  <Accordion.Body>
+                    {subTasks.waiting.map((task) => (
+                      <li>{task.description}</li>
+                    ))}
+                  </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="3">
-                  <Accordion.Header>{`Splnené(${splneneTasky.length})`}</Accordion.Header>
-                  <Accordion.Body>{splneneTasky}</Accordion.Body>
+                  <Accordion.Header>{`Splnené(${subTasks.done.length})`}</Accordion.Header>
+                  <Accordion.Body>
+                    {subTasks.done.map((task) => (
+                      <li>{task.description}</li>
+                    ))}
+                  </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
             </div>

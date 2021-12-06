@@ -3,12 +3,22 @@ import { Form, Input } from "../../../../components/MyForm";
 import { Button } from "react-bootstrap";
 import { IoIosAttach } from "react-icons/all";
 
-const Formik = () => {
+const Formik = ({ setSubTasks, selectedTasks, setSelectedTasks }) => {
   const [isSent, setIsSent] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState();
   const inputRef = useRef();
 
   const handleSubmit = () => {
+    setSubTasks((prev) => {
+      const newTodo = prev.todo.filter((t) => !selectedTasks.includes(t));
+      const newWait = [...prev.waiting, ...selectedTasks];
+      return {
+        todo: newTodo,
+        waiting: newWait,
+        done: prev.done,
+      };
+    });
+    console.log("");
     console.log("submit");
     setIsSent(true);
   };
