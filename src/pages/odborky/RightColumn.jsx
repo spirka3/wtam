@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../providers/AuthProvider";
 
 import "./index.css";
+import { firstWord } from "../../utils/functions";
 
 const RightColumn = () => {
   const { auth } = useAuthContext();
@@ -29,6 +30,7 @@ const RightColumn = () => {
     fontWeight: "400",
     color: "black",
     backgroundColor: "#F8F9FA",
+    // maxWidth: "10rem",
   };
 
   const SectionButton = ({ text, url, to }) => {
@@ -51,7 +53,8 @@ const RightColumn = () => {
             backgroundImage: `url(${url})`,
           }}
         >
-          <span style={spanStyle}>{text}</span>
+          <span style={spanStyle}>{firstWord(text)}</span>
+          {/*<p style={spanStyle}>{firstWord(text)}</p>*/}
         </div>
       </SectionLink>
     );
@@ -68,16 +71,17 @@ const RightColumn = () => {
         }}
         as={Link}
         to={to}
-		className={className}
+        className={className}
       >
         <span style={spanStyle}>{text}</span>
+        {/*<p style={spanStyle}>{text}</p>*/}
       </NavLink>
     );
   };
 
   return (
     <div className="col-12 col-md-4 col-lg-3 order-1 order-md-2">
-	  <div class="fixed-sidebar">
+      <div className="fixed-sidebar">
         <Form.Group className="mb-4" controlId="formBasicCheckbox">
           <Form.Check
             onChange={() => console.log("clicked")}
@@ -105,19 +109,19 @@ const RightColumn = () => {
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-roverske-bttn.png"
           to="2"
         />
-		<hr className="d-md-none"/>
+        <hr className="d-md-none" />
         <NavigationButton
           text="Vyzvy"
           url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
-          to="/vyzvy"		 
-		  className="mt-md-5" 
+          to="/vyzvy"
+          className="mt-md-5"
         />
         <NavigationButton
           text="Ocenenia"
           url="https://www.skauting.sk/wp-content/uploads/2019/01/skauting-program-najvyssie-ocenenie-medvedi-skaut-bttn.png"
           to="/ocenenia"
         />
-	  </div>
+      </div>
     </div>
   );
 };

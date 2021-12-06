@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OdborkaCard from "./odborka/OdborkaCard";
+import { firstWord } from "../../../utils/functions";
 
 const Section = ({ order, id, name, progKat }) => {
   const [odborkyById, setOdborkyById] = useState([]);
@@ -43,10 +44,8 @@ const Section = ({ order, id, name, progKat }) => {
 
   return (
     <div id={order} className="aktivity-section">
-      <h3>{name}</h3>
-	  <div className="row">
-      	{activityCards}
-	  </div>
+      <h3>{firstWord(name)}</h3>
+      <div className="row">{activityCards}</div>
     </div>
   );
 };

@@ -3,6 +3,9 @@ export const upperFirst = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+// export const firstWord = (str) => str.split(" ")[0];
+export const firstWord = (str) => str;
+
 export const goodMsg = (body) => {
   return { variant: "success", body: body };
 };
