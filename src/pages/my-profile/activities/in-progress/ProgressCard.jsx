@@ -73,7 +73,7 @@ const ProgressCard = ({ aktivita }) => {
             <div className="col-8 col-md-8">
               <div className="d-inline-block pl-4">
                 <h3 className="mb-3">{name}</h3>
-                <p>{type}</p>
+                <i>Odborka</i>
               </div>
             </div>
           </div>
