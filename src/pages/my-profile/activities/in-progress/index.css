@@ -1,38 +1,43 @@
-.my-activities-container{
-	width: 100%;
-	margin: 0 auto;
+.my-activities-container {
+  width: 100%;
+  margin: 0 auto;
 }
 
-.my-card{
-    justify-content: center;
-	padding: 1rem 0.8rem 0;
-    margin-bottom: 1.5rem;
-    background-color: white;
+.my-card {
+  justify-content: center;
+  padding: 1rem 0.8rem 0;
+  margin-bottom: 1.5rem;
+  background-color: white;
 }
 
-.my-activity-progressbar{
-	width: calc(100% - 65px) !important;
-	display: inline-flex;
-    margin-top: 0 !important;
-	padding-left: 0 !important;
+.my-activity-progressbar {
+  width: calc(100% - 65px) !important;
+  display: inline-flex;
+  margin-top: 0 !important;
+  padding-left: 0 !important;
 }
-.my-activity-badge{
-	display: flex;
-    max-width: 60px !important;
-    height: auto;
-    align-self: center;
-    padding: 0 5px;
-    justify-content: center;
+.my-activity-badge {
+  display: flex;
+  max-width: 60px !important;
+  height: auto;
+  align-self: center;
+  padding: 0 5px;
+  justify-content: center;
+}
+
+.button-margin {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (min-width: 1070px) {
-	.my-activities-container{
-		width: 1070px;
-	}
+  .my-activities-container {
+    width: 1070px;
+  }
 }
 
 @media only screen and (min-width: 780px) {
-	.my-card{
-		padding: 2rem 1.5rem 0px;
-	}
+  .my-card {
+    padding: 2rem 1.5rem 0px;
+  }
 }

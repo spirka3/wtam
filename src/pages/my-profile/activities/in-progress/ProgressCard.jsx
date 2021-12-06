@@ -5,10 +5,12 @@ import {
   Accordion,
   Form as BsForm,
   useAccordionButton,
+  Button,
 } from "react-bootstrap";
 import { GiSandsOfTime } from "react-icons/all";
 import Formik from "./Formik";
 import MyProgressBar from "./MyProgressBar";
+import axios from "axios";
 
 // TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
 
@@ -30,6 +32,22 @@ const ProgressCard = ({ aktivita }) => {
       setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
     }
     console.log("task", task);
+  };
+
+  const deleteActivityHandle = () => {
+    axios
+      .post("api/remove-activity", {
+        user_id: 10,
+        activity_id: id,
+      })
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+        throw err;
+      });
   };
 
   return (
@@ -81,7 +99,7 @@ const ProgressCard = ({ aktivita }) => {
           </div>
           <Accordion.Collapse eventKey={id}>
             <div>
-              <Accordion defaultActiveKey="1">
+              <Accordion className="accordion-margin" defaultActiveKey="1">
                 {/* TO DO TASKS */}
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>{`Nesplnené(${subTasks.todo.length})`}</Accordion.Header>
@@ -119,6 +137,13 @@ const ProgressCard = ({ aktivita }) => {
                     ))}
                   </Accordion.Body>
                 </Accordion.Item>
+                <Button
+                  className="button-margin"
+                  variant="danger"
+                  onClick={deleteActivityHandle}
+                >
+                  Vymazať aktivitu
+                </Button>
               </Accordion>
             </div>
           </Accordion.Collapse>
