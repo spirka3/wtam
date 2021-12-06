@@ -38,7 +38,7 @@ const MyActivitiesPage = () => {
 
   return (
     <div className="center my-activities-container">
-      <div>
+      <div class="col-12">
         <Tabs
           defaultActiveKey="progress"
           id="uncontrolled-tab-example"

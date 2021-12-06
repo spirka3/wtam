@@ -90,7 +90,7 @@ const ProgressCard = ({ aktivita }) => {
             <span
               className="my-activity-badge mt-md-2"
               style={{
-                visibility: subTasks.waiting.length ? "visible" : "hidden",
+                display: subTasks.waiting.length ? "inline-block" : "none",
               }}
             >
               <Badge bg="warning" className="badge">
