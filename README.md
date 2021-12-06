@@ -67,7 +67,7 @@ TODO: !! rozpracovane aktivity
 
 ### Bugy
 - [ ] Stranka odborky, mobilna verzia, po zavreti okna vybranej odborky prescrolluje uplne hore
-- [ ] Velkost obrazkov odboriek ... kruhove su 100x90 mali by byt 100x100
+- [X] Velkost obrazkov odboriek ... kruhove su 100x90 mali by byt 100x100
  
 MARTIN
 - [ ] spracovat pripomienky z hodnotenia
