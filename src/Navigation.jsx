@@ -65,7 +65,7 @@ const Navigation = () => {
           <Nav className="ml-auto mt-2 mobile-menu" variant="pills">
             {/*<MyNavLink to="/novinky" name="Novinky" />*/}
             <MyNavLink to="/odborky" name="Odborky" />
-            <MyNavLink to="/vyzvy" name="Vyzvy" />
+            <MyNavLink to="/vyzvy" name="Výzvy" />
             <MyNavLink to="/ocenenia" name="Ocenenia" />
             {auth.token ? (
               <>
@@ -78,7 +78,7 @@ const Navigation = () => {
                     window.location.replace("/");
                   }}
                 >
-                  Odhlasit sa
+                  Odhlásiť sa
                 </NavLink>
               </>
             ) : (
@@ -88,7 +88,7 @@ const Navigation = () => {
                   setExpanded(false);
                 }}
               >
-                Prihlasit sa
+                Prihlásiť sa
               </NavLink>
             )}
           </Nav>

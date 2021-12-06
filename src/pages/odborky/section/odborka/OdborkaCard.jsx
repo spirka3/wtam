@@ -48,7 +48,10 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
   const show = showOdborkaModal || showLoginModal;
 
   return (
-    <div className="my-card col-6 col-sm-4 col-lg-3">
+    <div
+      className="my-card col-6 col-sm-4 col-lg-3"
+      style={{ cursor: "pointer" }}
+    >
       <Card onClick={toggleOdborkaModal}>
         <Card.Img variant="top" src={image} />
         <Card.Body style={{ backgroundColor: "rgba(255, 255, 255, 0)" }}>

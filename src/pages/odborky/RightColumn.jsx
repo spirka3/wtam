@@ -90,10 +90,10 @@ const RightColumn = () => {
               visibility: auth.token ? "visible" : "hidden",
             }}
             type="checkbox"
-            label="Nezobrazovat ziskane aktivity"
+            label="Nezobrazovať získane aktivity"
           />
         </Form.Group>
-        <h4>Kategorie:</h4>
+        <h4>Kategórie:</h4>
         <SectionButton
           text="Vĺčatá a včielky"
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-vlciacke-bttn.png"
@@ -111,7 +111,7 @@ const RightColumn = () => {
         />
         <hr className="d-md-none" />
         <NavigationButton
-          text="Vyzvy"
+          text="Výzvy"
           url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
           to="/vyzvy"
           className="mt-md-5"

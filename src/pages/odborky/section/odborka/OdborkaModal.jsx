@@ -45,7 +45,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
       </Modal.Body>
       <Modal.Footer>
         <div style={{ marginLeft: "0", marginRight: "auto" }}>
-          {isAdded && <h6>✔ Odborka bola pridana</h6>}
+          {isAdded && <h6>✔ Pridaná</h6>}
         </div>
         <Button
           style={{
@@ -65,7 +65,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
           {btnText}
         </Button>
         <Button variant="light" onClick={onHide}>
-          Zavriet
+          Zavrieť
         </Button>
       </Modal.Footer>
     </>

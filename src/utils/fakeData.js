@@ -48,5 +48,5 @@ export const fakeAuth = {
   },
 };
 
-export const appName = "Skautsky Program";
+export const appName = "Skautský Program";
 export const _appName = " - " + appName;
