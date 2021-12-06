@@ -110,7 +110,7 @@ const RightColumn = () => {
           to="2"
         />
         <hr className="d-md-none" />
-        <NavigationButton
+        {/* <NavigationButton
           text="Výzvy"
           url="https://www.skauting.sk/wp-content/uploads/2017/07/skauting-program-vyzvy-bttn.png"
           to="/vyzvy"
@@ -120,7 +120,7 @@ const RightColumn = () => {
           text="Ocenenia"
           url="https://www.skauting.sk/wp-content/uploads/2019/01/skauting-program-najvyssie-ocenenie-medvedi-skaut-bttn.png"
           to="/ocenenia"
-        />
+        /> */}
       </div>
     </div>
   );
