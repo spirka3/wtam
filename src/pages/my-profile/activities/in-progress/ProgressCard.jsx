@@ -133,7 +133,7 @@ const ProgressCard = ({ aktivita }) => {
                     <Accordion.Header>
                       {`Čakajúce na schválenie (${subTasks.waiting.length})`}
                       {isSent ? (
-                        <div className="ml-3 circle pulse blue" />
+                        <div className="ml-4 circle pulse blue" />
                       ) : null}
                     </Accordion.Header>
                     <Accordion.Body>
