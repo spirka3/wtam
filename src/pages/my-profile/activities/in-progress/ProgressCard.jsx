@@ -82,6 +82,7 @@ const ProgressCard = ({ aktivita }) => {
           <Accordion.Collapse eventKey={id}>
             <div>
               <Accordion defaultActiveKey="1">
+                {/* TO DO TASKS */}
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>{`Nesplnené(${subTasks.todo.length})`}</Accordion.Header>
                   <Accordion.Body>
@@ -100,6 +101,7 @@ const ProgressCard = ({ aktivita }) => {
                     />
                   ) : null}
                 </Accordion.Item>
+                {/* WAITING TASK */}
                 <Accordion.Item eventKey="2">
                   <Accordion.Header>{`Čakajúce na schválenie(${subTasks.waiting.length})`}</Accordion.Header>
                   <Accordion.Body>
@@ -108,6 +110,7 @@ const ProgressCard = ({ aktivita }) => {
                     ))}
                   </Accordion.Body>
                 </Accordion.Item>
+                {/* DONE TASKS */}
                 <Accordion.Item eventKey="3">
                   <Accordion.Header>{`Splnené(${subTasks.done.length})`}</Accordion.Header>
                   <Accordion.Body>

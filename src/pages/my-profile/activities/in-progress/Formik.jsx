@@ -9,6 +9,7 @@ const Formik = ({ setSubTasks, selectedTasks, setSelectedTasks }) => {
   const inputRef = useRef();
 
   const handleSubmit = () => {
+    // TODO selectedTasks ulozit do DB
     setSubTasks((prev) => {
       const newTodo = prev.todo.filter((t) => !selectedTasks.includes(t));
       const newWait = [...prev.waiting, ...selectedTasks];
