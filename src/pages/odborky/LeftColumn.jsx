@@ -1,8 +1,8 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, Spinner } from "react-bootstrap";
 import Section from "./section/Section";
 
-const LeftColumn = ({ vekKat, progKat }) => {
+const LeftColumn = ({ vekKat, progKat, loading }) => {
   const allowedKat = [
     "Vĺčatá a včielky",
     // "Rangeri a rangerky",
@@ -24,14 +24,15 @@ const LeftColumn = ({ vekKat, progKat }) => {
     });
 
   return (
-    <div class="odborky col-12 col-md-8 col-lg-9 order-2 order-md-1"
+    <div
+      className="odborky col-12 col-md-8 col-lg-9 order-2 order-md-1"
       style={{
         display: "flex",
         justifyContent: "space-between",
         flexWrap: "wrap",
       }}
     >
-      {sectionsMaker}
+      {loading ? <Spinner animation="border" role="status" /> : sectionsMaker}
     </div>
   );
 };

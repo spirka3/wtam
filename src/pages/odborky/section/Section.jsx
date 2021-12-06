@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OdborkaCard from "./odborka/OdborkaCard";
 import { firstWord } from "../../../utils/functions";
+import { Spinner } from "react-bootstrap";
 
 const Section = ({ order, id, name, progKat }) => {
   const [odborkyById, setOdborkyById] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +18,7 @@ const Section = ({ order, id, name, progKat }) => {
         .then((res) => {
           console.log(res.data);
           setOdborkyById(res.data);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -44,8 +47,14 @@ const Section = ({ order, id, name, progKat }) => {
 
   return (
     <div id={order} className="aktivity-section">
-      <h3>{firstWord(name)}</h3>
-      <div className="row">{activityCards}</div>
+      {loading ? (
+        <Spinner animation="border" role="status" />
+      ) : (
+        <>
+          <h3>{firstWord(name)}</h3>
+          <div className="row">{activityCards}</div>
+        </>
+      )}
     </div>
   );
 };

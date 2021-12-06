@@ -1,13 +1,40 @@
-import React, { useState } from "react";
-import { Tabs, Tab } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Tabs, Tab, Spinner } from "react-bootstrap";
 import InProgress from "./in-progress/InProgress";
 import Achieved from "./achieved/Achieved";
 
 import "./in-progress/index.css";
+import axios from "axios";
 
 const MyActivitiesPage = () => {
-  const [numOfInProgress, setNumOfInProgress] = useState(0);
   const [numOfAchieved, setNumOfAchieved] = useState(0);
+
+  const [userActivities, setUserActivities] = useState();
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post("api/active", {
+          user_id: 10,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          setUserActivities(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    }
+    fetchData();
+  }, []);
+
+  if (userActivities === undefined || numOfAchieved === undefined) {
+    return (
+      <div className="center my-activities-container">
+        <Spinner animation="border" role="status" />
+      </div>
+    );
+  }
 
   return (
     <div className="center my-activities-container">
@@ -20,9 +47,9 @@ const MyActivitiesPage = () => {
           <Tab
             eventKey="progress"
             className="my-tab"
-            title={`Rozpracované (${numOfInProgress})`}
+            title={`Rozpracované (${userActivities.length})`}
           >
-            <InProgress setNumOfInProgress={setNumOfInProgress} />
+            <InProgress userActivities={userActivities} />
           </Tab>
           <Tab eventKey="achieved" title={`Získané (${numOfAchieved})`}>
             <Achieved />

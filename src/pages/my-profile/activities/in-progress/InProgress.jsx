@@ -1,30 +1,8 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Row, Accordion } from "react-bootstrap";
 import ProgressCard from "./ProgressCard";
 
-const InProgress = ({ setNumOfInProgress }) => {
-  const [userActivities, setUserActivities] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      await axios
-        .post("api/active", {
-          user_id: 10,
-        })
-        .then((res) => {
-          // console.log(res.data);
-          setUserActivities(res.data);
-          setNumOfInProgress(res.data.length);
-        })
-        .catch((err) => {
-          console.log(err);
-          throw err;
-        });
-    }
-    fetchData();
-  }, []);
-
+const InProgress = ({ userActivities }) => {
   const progressCards = userActivities.map((aktivita) => {
     return <ProgressCard key={aktivita.id} aktivita={aktivita} />;
   });

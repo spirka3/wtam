@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Badge,
-  ProgressBar,
   Accordion,
   Form as BsForm,
   useAccordionButton,
@@ -101,43 +100,49 @@ const ProgressCard = ({ aktivita }) => {
             <div>
               <Accordion className="accordion-margin" defaultActiveKey="1">
                 {/* TO DO TASKS */}
-                <Accordion.Item eventKey="1">
-                  <Accordion.Header>{`Nesplnené(${subTasks.todo.length})`}</Accordion.Header>
-                  <Accordion.Body>
-                    {subTasks.todo.map((task) => (
-                      <BsForm.Check
-                        key={task.id}
-                        label={task.description}
-                        onChange={() => selectTask(task)}
-                      />
-                    ))}
-                    {selectedTasks.length ? (
-                      <Formik
-                        setSubTasks={setSubTasks}
-                        selectedTasks={selectedTasks}
-                        setSelectedTasks={setSelectedTasks}
-                      />
-                    ) : null}
-                  </Accordion.Body>
-                </Accordion.Item>
+                {subTasks.todo.length ? (
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header>{`Nesplnené (${subTasks.todo.length})`}</Accordion.Header>
+                    <Accordion.Body>
+                      {subTasks.todo.map((task) => (
+                        <BsForm.Check
+                          key={task.id}
+                          label={task.description}
+                          onChange={() => selectTask(task)}
+                        />
+                      ))}
+                      {selectedTasks.length ? (
+                        <Formik
+                          setSubTasks={setSubTasks}
+                          selectedTasks={selectedTasks}
+                          setSelectedTasks={setSelectedTasks}
+                        />
+                      ) : null}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ) : null}
                 {/* WAITING TASK */}
-                <Accordion.Item eventKey="2">
-                  <Accordion.Header>{`Čakajúce na schválenie(${subTasks.waiting.length})`}</Accordion.Header>
-                  <Accordion.Body>
-                    {subTasks.waiting.map((task) => (
-                      <li>{task.description}</li>
-                    ))}
-                  </Accordion.Body>
-                </Accordion.Item>
+                {subTasks.waiting.length ? (
+                  <Accordion.Item eventKey="2">
+                    <Accordion.Header>{`Čakajúce na schválenie (${subTasks.waiting.length})`}</Accordion.Header>
+                    <Accordion.Body>
+                      {subTasks.waiting.map((task) => (
+                        <li>{task.description}</li>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ) : null}
                 {/* DONE TASKS */}
-                <Accordion.Item eventKey="3">
-                  <Accordion.Header>{`Splnené(${subTasks.done.length})`}</Accordion.Header>
-                  <Accordion.Body>
-                    {subTasks.done.map((task) => (
-                      <li>{task.description}</li>
-                    ))}
-                  </Accordion.Body>
-                </Accordion.Item>
+                {subTasks.done.length ? (
+                  <Accordion.Item eventKey="3">
+                    <Accordion.Header>{`Splnené (${subTasks.done.length})`}</Accordion.Header>
+                    <Accordion.Body>
+                      {subTasks.done.map((task) => (
+                        <li>{task.description}</li>
+                      ))}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ) : null}
                 <Button
                   className="button-margin"
                   variant="danger"

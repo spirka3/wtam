@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row } from "react-bootstrap";
+import { Row, Spinner } from "react-bootstrap";
 
 import "./index.css";
 import RightColumn from "./RightColumn";
@@ -10,6 +10,7 @@ const OdborkyPage = () => {
   const odborky = "odborky";
 
   const [vekKat, setVekKat] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,6 +19,7 @@ const OdborkyPage = () => {
         .then((res) => {
           console.log(res.data);
           setVekKat(res.data);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -29,7 +31,7 @@ const OdborkyPage = () => {
 
   return (
     <Row>
-      <LeftColumn vekKat={vekKat} progKat={odborky} />
+      <LeftColumn vekKat={vekKat} progKat={odborky} loading={loading} />
       <RightColumn />
     </Row>
   );
