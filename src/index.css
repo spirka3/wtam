@@ -28,6 +28,10 @@
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
 }
 
+/*.progress {*/
+/*    background-color: #cbcaca !important*/
+/*}*/
+
 .progress-bar{
     background-color: #85CBF4 !important
 }
