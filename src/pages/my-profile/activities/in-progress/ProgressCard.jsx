@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Badge,
   ProgressBar,
   Accordion,
   Form as BsForm,
   useAccordionButton,
-  Button,
-  InputGroup,
 } from "react-bootstrap";
-import { GiSandsOfTime, IoIosAttach, MdEmail } from "react-icons/all";
-import axios from "axios";
-import { Form, Form as F, Input } from "../../../../components/MyForm";
-import ProgressModal from "./ProgressModal";
-import UploadButton from "./UploadButton";
+import { GiSandsOfTime } from "react-icons/all";
+import Formik from "./Formik";
+import MyProgressBar from "./MyProgressBar";
 
 // TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
 
-const ProgressCard = ({ now, aktivita }) => {
+const ProgressCard = ({ aktivita }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
 
   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -57,9 +53,6 @@ const ProgressCard = ({ now, aktivita }) => {
       return <li>{task.description}</li>;
     });
 
-  const prograssBarValue = (splneneTasky.length / tasks.length) * 100;
-  console.log(prograssBarValue);
-
   return (
     <div className="my-card progress-card col-12">
       <div className="row">
@@ -95,15 +88,13 @@ const ProgressCard = ({ now, aktivita }) => {
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}
           >
-            <ProgressBar
-              className="mt-md-2 my-activity-progressbar"
+            <MyProgressBar splneneTasky={splneneTasky} tasks={tasks} />
+            <span
+              className="my-activity-badge mt-md-2"
               style={{
-                height: "40px",
+                visibility: nesplneneTasky.length ? "visible" : "hidden",
               }}
-              now={prograssBarValue}
-              label={`${splneneTasky.length}/${tasks.length}`}
-            />
-            <span className="my-activity-badge mt-md-2">
+            >
               <Badge bg="warning">
                 <GiSandsOfTime size={30} />
               </Badge>
@@ -111,11 +102,11 @@ const ProgressCard = ({ now, aktivita }) => {
           </div>
           <Accordion.Collapse eventKey={id}>
             <div>
-              {/* <p>{allTasks}</p> */}
               <Accordion defaultActiveKey="1">
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>{`Nesplnené(${rozpracovaneTasky.length})`}</Accordion.Header>
                   <Accordion.Body>{rozpracovaneTasky}</Accordion.Body>
+                  {selectedTasks.length ? <Formik /> : null}
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
                   <Accordion.Header>{`Čakajúce na schválenie(${nesplneneTasky.length})`}</Accordion.Header>
@@ -126,32 +117,6 @@ const ProgressCard = ({ now, aktivita }) => {
                   <Accordion.Body>{splneneTasky}</Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-              {selectedTasks.length ? (
-                <div>
-                  <Form>
-                    <hr />
-                    <p style={{ fontWeight: "500", marginBottom: "0" }}>
-                      Úlohy ti musí overiť vedúci
-                    </p>
-                    <Input
-                      as="textarea"
-                      name="password"
-                      label=""
-                      placeholder="Ako dôkaz mu môžeš poslať pár slov, prípadne vložiť fotky"
-                      required
-                    />
-                  </Form>
-                  <div style={{ display: "flex", marginBottom: "1rem" }}>
-                    <Button
-                      variant="success"
-                      style={{ height: "36px", marginRight: "1rem" }}
-                    >
-                      Poslať
-                    </Button>
-                    <UploadButton />
-                  </div>
-                </div>
-              ) : null}
             </div>
           </Accordion.Collapse>
         </div>

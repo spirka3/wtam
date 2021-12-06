@@ -75,7 +75,7 @@ const Navigation = () => {
                   onClick={() => {
                     logOut();
                     setExpanded(false);
-                    window.location.replace("/novinky");
+                    window.location.replace("/");
                   }}
                 >
                   Odhlasit sa

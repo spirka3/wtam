@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import InProgress from "./in-progress/InProgress";
 import Achieved from "./achieved/Achieved";
@@ -6,8 +6,8 @@ import Achieved from "./achieved/Achieved";
 import "./in-progress/index.css";
 
 const MyActivitiesPage = () => {
-  const numOfInProgress = 7; // TODO
-  const numOfAchieved = 10; // TODO
+  const [numOfInProgress, setNumOfInProgress] = useState(0);
+  const [numOfAchieved, setNumOfAchieved] = useState(0);
 
   return (
     <div className="center my-activities-container">
@@ -22,7 +22,7 @@ const MyActivitiesPage = () => {
             className="my-tab"
             title={`Rozpracované (${numOfInProgress})`}
           >
-            <InProgress />
+            <InProgress setNumOfInProgress={setNumOfInProgress} />
           </Tab>
           <Tab eventKey="achieved" title={`Získané (${numOfAchieved})`}>
             <Achieved />

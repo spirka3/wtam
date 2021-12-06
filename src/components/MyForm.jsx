@@ -99,8 +99,8 @@ export function Input({
   placeholder = placeholder ? placeholder : `Enter ${label}`;
 
   return (
-    <FormGroup style={{ marginBottom: "1.5rem" }}>
-      <FormLabel>{upperFirst(label)}</FormLabel>
+    <FormGroup style={{ marginBottom: ".5rem" }}>
+      {label ? <FormLabel>{upperFirst(label)}</FormLabel> : null}
       {prepend ? (
         <InputGroup className="mb-2">
           <InputGroup.Prepend>

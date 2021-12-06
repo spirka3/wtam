@@ -88,10 +88,10 @@
 /*    right: 0;*/
 /*}*/
 
-html {
-    overflow: scroll;
-    overflow-x: hidden;
-}
+/*html {*/
+/*    overflow: scroll;*/
+/*    overflow-x: hidden;*/
+/*}*/
 
 .form-btn {
     color: dodgerblue;

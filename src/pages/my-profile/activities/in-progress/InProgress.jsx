@@ -3,7 +3,7 @@ import axios from "axios";
 import { Row, Accordion } from "react-bootstrap";
 import ProgressCard from "./ProgressCard";
 
-const InProgress = () => {
+const InProgress = ({ setNumOfInProgress }) => {
   const [userActivities, setUserActivities] = useState([]);
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const InProgress = () => {
         .then((res) => {
           // console.log(res.data);
           setUserActivities(res.data);
+          setNumOfInProgress(res.data.length);
         })
         .catch((err) => {
           console.log(err);
@@ -25,14 +26,7 @@ const InProgress = () => {
   }, []);
 
   const progressCards = userActivities.map((aktivita) => {
-    return (
-      <ProgressCard
-        key={aktivita.id}
-        aktivita={aktivita}
-        now={10}
-        label={`1/10`}
-      />
-    );
+    return <ProgressCard key={aktivita.id} aktivita={aktivita} />;
   });
 
   return (
