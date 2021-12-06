@@ -2,19 +2,19 @@
 - gradient efect na hover cez HomePage button
 - orezat obrazkove pozadie
 
-[narvh] Zobrazit 3 stavy uloh
-[narvh] Nadidednim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer)
-    -   kliknutim sa zobrazia detaily
-[narvh] interface pre veduceho na schvalenie uloh
-[navrh] expertske odborky
-[navrh] blizsi popis/vysvetlenie akcii
+[narvh] Zobrazit 3 stavy uloh <br />
+[narvh] Nadidednim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer) <br />
+    -   kliknutim sa zobrazia detaily <br />
+[narvh] interface pre veduceho na schvalenie uloh <br />
+[navrh] expertske odborky <br />
+[navrh] blizsi popis/vysvetlenie akcii <br />
 
 
 
 #### FILIP
 
-po prihlaseni hned ukazat moje aktivity 
-z private po odhlaseni hned na home
+po prihlaseni hned ukazat moje aktivity <br />
+z private po odhlaseni hned na home <br />
 
 nacitat z db odborky
 - [ ] vediet odfiltrovat hotove
@@ -48,12 +48,12 @@ TODO: !! rozpracovane aktivity
 ### Rozpracovane aktivity:  odoslanie spravy, prehlad iba rozpracovanych aktivit.
 - [X] Kazda aktivita ma n bodov ktore moze pouzivatel plnit. 
 - [ ] Ak dany bod splnil (v realnom svete) - bod ma stav nesplnene, po kliku nan sa mu otvori dialog pre spravu veducemu kde bude v nejakej hlavicke info ze posiela spravu veducemu, ze splnil vybranu aktivitu v danej odborke (see scenar 1), 
-- [ ] moze vyplnit popis a moze vkladat prilohu (pre mobilnu verziu otvorenie fotaku? ak zlozite tak nie)
-- [ ] moze tento dialog zavriet
+- [X] moze vyplnit popis a moze vkladat prilohu (pre mobilnu verziu otvorenie fotaku? ak zlozite tak nie)
+- [X] moze tento dialog zavriet (nevyplni nic)
 - [ ] po odoslani sa zmeni stav BODU danej aktivity pre tohto usera na caka na schvalenie
 - [ ] my manualne v DB zmenime stav na hotovo
 - [ ] ak je stav hotovo tak to musi byt pri bode vidiet
-- [ ] zatial sprava aj priloha sa nikde nebudu odosielat, meni sa iba stav aktivity v DB
+- [X] zatial sprava aj priloha sa nikde nebudu odosielat, meni sa iba stav aktivity v DB
     Rozpracovane aktivity - prehlad (navrh):
 - [X] body defaultne nezobrazovat (aktualny janov navrh)
 - [ ] moznost body zobrazit -> odosielanie spravy
