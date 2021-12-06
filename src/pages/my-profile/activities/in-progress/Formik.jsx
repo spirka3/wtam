@@ -3,8 +3,13 @@ import { Form, Input } from "../../../../components/MyForm";
 import { Button } from "react-bootstrap";
 import { IoIosAttach } from "react-icons/all";
 
-const Formik = ({ setSubTasks, selectedTasks, setSelectedTasks }) => {
-  const [isSent, setIsSent] = useState(false);
+const Formik = ({
+  setSubTasks,
+  selectedTasks,
+  setSelectedTasks,
+  isSent,
+  setIsSent,
+}) => {
   const [uploadedFileName, setUploadedFileName] = useState();
   const inputRef = useRef();
 

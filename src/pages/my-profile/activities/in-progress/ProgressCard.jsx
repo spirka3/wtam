@@ -15,6 +15,7 @@ import axios from "axios";
 
 const ProgressCard = ({ aktivita }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
+  const [isSent, setIsSent] = useState(false);
 
   const [subTasks, setSubTasks] = useState({
     todo: tasks.filter((task) => task.task_state === "rozpracovane"),
@@ -24,6 +25,7 @@ const ProgressCard = ({ aktivita }) => {
 
   const [selectedTasks, setSelectedTasks] = useState([]);
   const selectTask = (task) => {
+    setIsSent(false);
     const foundTask = selectedTasks.find((t) => t.id === task.id);
     if (!foundTask) {
       setSelectedTasks([...selectedTasks, task]);
@@ -113,10 +115,15 @@ const ProgressCard = ({ aktivita }) => {
                       ))}
                       {selectedTasks.length ? (
                         <Formik
+                          isSent={isSent}
+                          setIsSent={setIsSent}
                           setSubTasks={setSubTasks}
                           selectedTasks={selectedTasks}
                           setSelectedTasks={setSelectedTasks}
                         />
+                      ) : null}
+                      {isSent ? (
+                        <h6 className="pt-3">✔ Správa bola odoslaná</h6>
                       ) : null}
                     </Accordion.Body>
                   </Accordion.Item>
