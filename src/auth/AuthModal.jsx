@@ -31,7 +31,7 @@ const AuthModal = ({ action: _action = "login", onHide, onlyBody }) => {
           if (res.data.length) {
             window.location.replace("/progres");
           } else {
-            window.location.replace("/");
+            window.location.replace("/odborky");
           }
         })
         .catch((err) => {
