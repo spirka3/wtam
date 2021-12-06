@@ -1,17 +1,15 @@
 import React, { useRef, useState } from "react";
 import { Form, Input } from "../../../../components/MyForm";
-import { Button } from "react-bootstrap";
+import { Button, Toast, ToastBody } from "react-bootstrap";
 import { IoIosAttach } from "react-icons/all";
 
-const Formik = ({
-  setSubTasks,
-  selectedTasks,
-  setSelectedTasks,
-  isSent,
-  setIsSent,
-}) => {
+const Formik = ({ setSubTasks, selectedTasks, setSelectedTasks }) => {
   const [uploadedFileName, setUploadedFileName] = useState();
   const inputRef = useRef();
+
+  const [toast, setToast] = useState();
+
+  const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = () => {
     // TODO selectedTasks ulozit do DB
@@ -24,8 +22,11 @@ const Formik = ({
         done: prev.done,
       };
     });
-    setSelectedTasks([]);
     setIsSent(true);
+
+    setTimeout(() => {
+      setSelectedTasks([]);
+    }, 5000);
   };
 
   const handleUpload = () => {
