@@ -6,7 +6,7 @@ import {
   useAccordionButton,
   Button,
 } from "react-bootstrap";
-import { GiSandsOfTime } from "react-icons/all";
+import { GiSandsOfTime, WiMoonAltNew } from "react-icons/all";
 import Formik from "./Formik";
 import MyProgressBar from "./MyProgressBar";
 import axios from "axios";
@@ -129,11 +129,13 @@ const ProgressCard = ({ aktivita }) => {
                 ) : null}
                 {/* WAITING TASK */}
                 {subTasks.waiting.length ? (
-                  <Accordion.Item
-                    eventKey="2"
-                    className={isSent ? `state-update` : null}
-                  >
-                    <Accordion.Header>{`Čakajúce na schválenie (${subTasks.waiting.length})`}</Accordion.Header>
+                  <Accordion.Item eventKey="2">
+                    <Accordion.Header>
+                      {`Čakajúce na schválenie (${subTasks.waiting.length})`}
+                      {isSent ? (
+                        <div className="ml-3 circle pulse blue" />
+                      ) : null}
+                    </Accordion.Header>
                     <Accordion.Body>
                       {subTasks.waiting.map((task) => (
                         <li>{task.description}</li>
