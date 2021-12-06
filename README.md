@@ -2,19 +2,19 @@
 - gradient efect na hover cez HomePage button
 - orezat obrazkove pozadie
 
-[narvh] Zobrazit 3 stavy uloh
-[narvh] Nadidednim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer)
-    -   kliknutim sa zobrazia detaily
-[narvh] interface pre veduceho na schvalenie uloh
-[navrh] expertske odborky
-[navrh] blizsi popis/vysvetlenie akcii
+[narvh] Zobrazit 3 stavy uloh <br />
+[narvh] Nadidednim na ziskanu akt. sa zobrazi jej nazov a kedy bola splnena (v footer) <br />
+    -   kliknutim sa zobrazia detaily <br />
+[narvh] interface pre veduceho na schvalenie uloh <br />
+[navrh] expertske odborky <br />
+[navrh] blizsi popis/vysvetlenie akcii <br />
 
 
 
 #### FILIP
 
-po prihlaseni hned ukazat moje aktivity 
-z private po odhlaseni hned na home
+po prihlaseni hned ukazat moje aktivity <br />
+z private po odhlaseni hned na home <br />
 
 nacitat z db odborky
 - [ ] vediet odfiltrovat hotove
