@@ -83,7 +83,7 @@ Error Response Codes: 400 - Wrong request/Database error
 */
 
 
-/* Create task progress or update stav [POST] https://www.polkadot-hub.eu/api/activities
+/* Create task progress or update stav [POST] https://www.polkadot-hub.eu/api/progress
 Task state musi byt: splnene, nesplnene, rozpracovane. Bez pola task state sa vytvori novy task v tabulke new_task_progress
 
 {
