@@ -8,7 +8,7 @@ const MyProgressBar = ({ splneneTasky, tasks }) => {
   if (prograssBarValue === 0) {
     return (
       <div
-        className="mt-md-2 my-activity-progressbar"
+        className="my-activity-progressbar"
         style={{
           height: "40px",
           backgroundColor: "#E9ECEF",
@@ -33,7 +33,7 @@ const MyProgressBar = ({ splneneTasky, tasks }) => {
   }
   return (
     <ProgressBar
-      className="mt-md-2 my-activity-progressbar"
+      className= "my-activity-progressbar"
       style={{
         height: "40px",
       }}

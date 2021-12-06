@@ -82,11 +82,13 @@ const ProgressCard = ({ aktivita }) => {
 
         <div className="col-12 col-md-7">
           <div
-            className="row mb-3 ml-1 mr-"
+		  	className={["row mb-3 ml-1 mr-2",  ((subTasks.waiting.length) == 0 ? "none-subtasks-waiting" : "")].join(" ")}
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}
           >
-            <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} />
+            <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} className={
+                ((subTasks.waiting.length) == 0 ? "none-subtasks-waiting" : "")
+              } />
             <span
               className="my-activity-badge"
               style={{

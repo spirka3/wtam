@@ -10,6 +10,7 @@
   background-color: white;
 }
 
+
 .my-activity-progressbar {
   width: calc(100% - 65px) !important;
   display: inline-flex;
@@ -17,6 +18,15 @@
   padding-left: 0 !important;
   padding-right: 0;
 }
+
+.none-subtasks-waiting .my-activity-progressbar {
+	width: 100% !important;
+	display: inline-flex;
+	margin-top: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0;
+  }
+
 .my-activity-badge {
   display: flex;
   max-width: 60px !important;
