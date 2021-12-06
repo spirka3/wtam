@@ -115,7 +115,6 @@ const ProgressCard = ({ aktivita }) => {
                       ))}
                       {selectedTasks.length ? (
                         <Formik
-                          isSent={isSent}
                           setIsSent={setIsSent}
                           setSubTasks={setSubTasks}
                           selectedTasks={selectedTasks}
