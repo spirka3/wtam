@@ -21,12 +21,12 @@ const MyProgressBar = ({ splneneTasky, tasks }) => {
             justifyContent: "center",
             flexDirection: "column",
             textAlign: "center",
-            width: "100%",
-            fontSize: "0.75rem",
-            // paddingLeft: "5%",
+            // width: "100%",
+            // fontSize: "0.75rem",
+            paddingLeft: "5%",
           }}
         >
-          {`0/${tasks.length}`}
+          {`${splneneTasky.length}/${tasks.length}`}
         </div>
       </div>
     );
