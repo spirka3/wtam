@@ -88,7 +88,7 @@ const ProgressCard = ({ aktivita }) => {
           >
             <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} />
             <span
-              className="my-activity-badge mt-md-2"
+              className="my-activity-badge"
               style={{
                 display: subTasks.waiting.length ? "inline-block" : "none",
               }}
