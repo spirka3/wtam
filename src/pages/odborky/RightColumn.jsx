@@ -90,7 +90,7 @@ const RightColumn = ({ setFilterIsChecked }) => {
               visibility: auth.token ? "visible" : "hidden",
             }}
             type="checkbox"
-            label="Nezobrazovať získane aktivity"
+            label="Skryť moje aktivity"
           />
         </Form.Group>
         <h4>Kategórie:</h4>
