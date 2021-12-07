@@ -42,20 +42,18 @@ const Section = ({
     return data.filter((aktivita) => !activeActivityId.includes(aktivita.id));
   };
 
-  const activityCards = filteredData(odborkyById)
-    // .slice(0, 2)
-    .map((aktivita) => {
-      return (
-        <OdborkaCard
-          key={aktivita.id}
-          id={aktivita.id}
-          image={aktivita.img_url}
-          name={aktivita.name}
-          odborkyById={aktivita}
-          hasActive={activeActivityId.includes(aktivita.id)}
-        />
-      );
-    });
+  const activityCards = filteredData(odborkyById).map((aktivita) => {
+    return (
+      <OdborkaCard
+        key={aktivita.id}
+        id={aktivita.id}
+        image={aktivita.img_url}
+        name={aktivita.name}
+        odborkyById={aktivita}
+        hasActive={activeActivityId.includes(aktivita.id)}
+      />
+    );
+  });
 
   console.log("odborka", order);
 
