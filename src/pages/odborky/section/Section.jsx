@@ -43,7 +43,7 @@ const Section = ({
   };
 
   const activityCards = filteredData(odborkyById)
-    // .slice(0, 3)
+    // .slice(0, 2)
     .map((aktivita) => {
       return (
         <OdborkaCard
@@ -60,7 +60,7 @@ const Section = ({
   console.log("odborka", order);
 
   return (
-    <div id={order} className="aktivity-section">
+    <div id={order} className="aktivity-section w-100">
       {loading ? (
         <Spinner animation="border" role="status" />
       ) : (
