@@ -14,40 +14,17 @@ import AuthModal from "./auth/AuthModal";
 import ProfilePage from "./pages/my-profile/settings/ProfilePage";
 import { getItem } from "./utils/functions";
 import { AuthProvider } from "./providers/AuthProvider";
+import { ToastProvider } from "./providers/ToastProvider";
 // import jwtDecode from "jwt-decode";
 
 function App() {
   axios.defaults.baseURL = "https://www.polkadot-hub.eu/";
 
-  const [userActivities, setUserActivities] = useState();
-  useEffect(() => {
-    async function fetchData() {
-      await axios
-        .post("api/active", {
-          user_id: 10,
-        })
-        .then((res) => {
-          console.log(res.data);
-          setUserActivities(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          throw err;
-        });
-    }
-    fetchData();
-  }, []);
-
   const backgroundStyle = {
     opacity: 0.05,
-
     backgroundImage:
       "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
   };
-
-  useEffect(() => {
-    // setToast({ message: "hahaha", time: "Prave teraz" });
-  }, []);
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
     let auth = getItem("auth");
@@ -58,7 +35,7 @@ function App() {
     }
 
     return auth.token ? (
-      <Route exact {...rest} component={() => <Component {...rest} />} />
+      <Route exact {...rest} component={() => <Component />} />
     ) : (
       <AuthModal action="login" />
     );
@@ -66,31 +43,25 @@ function App() {
 
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Navigation />
-        <div className="bg" style={backgroundStyle}></div>
-        <div className="my-content">
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            {/*<Route path="/novinky" component={EmptyPage} />*/}
-            <Route
-              path="/odborky"
-              component={() => <OdborkyPage userActivities={userActivities} />}
-            />
-            <Route path="/vyzvy" component={ChallengesPage} />
-            <Route path="/ocenenia" component={EmptyPage} />
-            <PrivateRoute
-              path="/progres"
-              component={() => (
-                <MyActivitiesPage userActivities={userActivities} />
-              )}
-            />
-            <PrivateRoute path="/druzina" component={MyTeamPage} />
-            <PrivateRoute path="/profil" component={ProfilePage} />
-            <Route path="*" component={ErrorPage} />
-          </Switch>
-        </div>
-      </BrowserRouter>
+      <ToastProvider>
+        <BrowserRouter>
+          <Navigation />
+          <div className="bg" style={backgroundStyle}></div>
+          <div className="my-content">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              {/*<Route path="/novinky" component={EmptyPage} />*/}
+              <Route path="/odborky" component={() => <OdborkyPage />} />
+              <Route path="/vyzvy" component={ChallengesPage} />
+              <Route path="/ocenenia" component={EmptyPage} />
+              <PrivateRoute path="/progres" component={MyActivitiesPage} />
+              <PrivateRoute path="/druzina" component={MyTeamPage} />
+              <PrivateRoute path="/profil" component={ProfilePage} />
+              <Route path="*" component={ErrorPage} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </ToastProvider>
     </AuthProvider>
   );
 }

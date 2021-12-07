@@ -15,16 +15,10 @@ const Section = ({
   const [odborkyById, setOdborkyById] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const activeActivityId = [];
+  const activeActivityId = userActivities.map((a) => a.id);
 
-  console.log(userActivities);
-
-  for (let activeActivity of userActivities) {
-    console.log(activeActivity);
-    activeActivityId.push(activeActivity.id);
-  }
-
-  console.log(activeActivityId);
+  // console.log(userActivities);
+  // console.log(activeActivityId);
 
   useEffect(() => {
     axios
@@ -46,7 +40,9 @@ const Section = ({
   console.log(odborkyById);
 
   const activityCards = odborkyById
-    .filter((aktivita) => !activeActivityId.includes(aktivita.id))
+    .filter(
+      (aktivita) => !filterIsChecked || !activeActivityId.includes(aktivita.id)
+    )
     .map((aktivita) => {
       // console.log(aktivita);
       return (
@@ -56,6 +52,7 @@ const Section = ({
           image={aktivita.img_url}
           name={aktivita.name}
           odborkyById={aktivita}
+          hasActive={activeActivityId.includes(aktivita.id)}
         />
       );
     });

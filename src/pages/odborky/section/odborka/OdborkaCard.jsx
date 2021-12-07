@@ -7,7 +7,7 @@ import axios from "axios";
 
 import "./index.css";
 
-const OdborkaCard = ({ id, odborkyById, image, name }) => {
+const OdborkaCard = ({ id, odborkyById, image, name, hasActive }) => {
   const { auth } = useAuthContext();
 
   const [showOdborkaModal, setShowOdborkaModal] = useState(false);
@@ -16,12 +16,7 @@ const OdborkaCard = ({ id, odborkyById, image, name }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
-  const hasInProgress = () => {
-    // TODO zistit, ci ma odborku uz v progrese
-    return false;
-  };
-
-  const [isAdded, setIsAdded] = useState(hasInProgress);
+  const [isAdded, setIsAdded] = useState(hasActive);
 
   const addItem = (activityId) => {
     console.log(activityId);

@@ -6,14 +6,12 @@ import RightColumn from "./RightColumn";
 import LeftColumn from "./LeftColumn";
 import axios from "axios";
 
-const OdborkyPage = ({ userActivities }) => {
+const OdborkyPage = () => {
   const odborky = "odborky";
 
   const [vekKat, setVekKat] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterIsChecked, setFilterIsChecked] = useState(false);
-
-  console.log(userActivities);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,7 +36,6 @@ const OdborkyPage = ({ userActivities }) => {
         vekKat={vekKat}
         progKat={odborky}
         loading={loading}
-        userActivities={userActivities}
         filterIsChecked={filterIsChecked}
       />
       <RightColumn setFilterIsChecked={setFilterIsChecked} />

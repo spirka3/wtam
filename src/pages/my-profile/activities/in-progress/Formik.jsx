@@ -74,8 +74,13 @@ const Formik = ({
       <div style={{ display: "flex", marginBottom: "1rem" }}>
         <Button
           onClick={handleSubmit}
-          variant="success"
-          style={{ height: "36px", marginRight: "1rem", width: "8rem" }}
+          style={{
+            height: "36px",
+            marginRight: "1rem",
+            backgroundColor: "#85CBF4", // B6DE92 | 85CBF4
+            borderColor: "#85CBF4",
+            color: "black",
+          }}
         >
           Poslať vedúcemu
         </Button>

@@ -1,14 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import Section from "./section/Section";
+import axios from "axios";
 
-const LeftColumn = ({
-  vekKat,
-  progKat,
-  loading,
-  userActivities,
-  filterIsChecked,
-}) => {
+const LeftColumn = ({ vekKat, progKat, loading, filterIsChecked }) => {
   const allowedKat = [
     "Vĺčatá a včielky",
     // "Rangeri a rangerky",
@@ -16,7 +11,25 @@ const LeftColumn = ({
     "Skauti a skautky",
   ];
 
-  console.log(userActivities);
+  const [userActivities, setUserActivities] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post("api/active", {
+          user_id: 10,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUserActivities(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    }
+    fetchData();
+  }, []);
 
   const sectionsMaker = vekKat
     .filter((s) => allowedKat.includes(s.name))

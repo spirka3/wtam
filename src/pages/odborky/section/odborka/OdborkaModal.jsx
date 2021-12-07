@@ -5,7 +5,7 @@ import { Modal, Button } from "react-bootstrap";
 const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
   const { name, img_url, tasks } = odborka;
 
-  const btnColor = isAdded ? "#B6DE92" : "#F2E272";
+  const btnColor = isAdded ? "#B6DE92" : "#85CBF4";
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
   const taskMapping = tasks.map((task) => {
@@ -52,7 +52,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
             backgroundColor: btnColor,
             borderColor: btnColor,
             color: "black",
-            fontWeight: "500",
+            // fontWeight: "500",
           }}
           onClick={() => {
             if (isAdded) {

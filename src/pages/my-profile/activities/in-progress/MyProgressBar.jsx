@@ -3,7 +3,6 @@ import { ProgressBar } from "react-bootstrap";
 
 const MyProgressBar = ({ splneneTasky, tasks }) => {
   const prograssBarValue = (splneneTasky.length / tasks.length) * 100;
-  console.log(prograssBarValue);
 
   if (prograssBarValue === 0) {
     return (
@@ -33,7 +32,7 @@ const MyProgressBar = ({ splneneTasky, tasks }) => {
   }
   return (
     <ProgressBar
-      className= "my-activity-progressbar"
+      className="my-activity-progressbar"
       style={{
         height: "40px",
       }}

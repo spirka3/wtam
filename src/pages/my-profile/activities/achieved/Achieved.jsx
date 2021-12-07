@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import AchievedCard from "./AchievedCard";
 
-const Achieved = () => {
+const Achieved = ({ achievedActivities }) => {
   return (
     <>
       <h3 style={{ marginTop: "1.15rem" }}>Ziskane</h3>
