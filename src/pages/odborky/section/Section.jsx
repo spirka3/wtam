@@ -42,18 +42,20 @@ const Section = ({
     return data.filter((aktivita) => !activeActivityId.includes(aktivita.id));
   };
 
-  const activityCards = filteredData(odborkyById).map((aktivita) => {
-    return (
-      <OdborkaCard
-        key={aktivita.id}
-        id={aktivita.id}
-        image={aktivita.img_url}
-        name={aktivita.name}
-        odborkyById={aktivita}
-        hasActive={activeActivityId.includes(aktivita.id)}
-      />
-    );
-  });
+  const activityCards = filteredData(odborkyById)
+    // .slice(0, 3)
+    .map((aktivita) => {
+      return (
+        <OdborkaCard
+          key={aktivita.id}
+          id={aktivita.id}
+          image={aktivita.img_url}
+          name={aktivita.name}
+          odborkyById={aktivita}
+          hasActive={activeActivityId.includes(aktivita.id)}
+        />
+      );
+    });
 
   console.log("odborka", order);
 
@@ -65,7 +67,7 @@ const Section = ({
         <>
           <h3>{firstWord(name)}</h3>
 
-          {filteredData(odborkyById).length < 10 ? (
+          {filteredData(odborkyById).length ? (
             <div className="row">{activityCards}</div>
           ) : (
             <div className="row">
