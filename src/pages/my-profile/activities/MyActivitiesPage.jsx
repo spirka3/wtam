@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Tabs, Tab, Spinner } from "react-bootstrap";
 import InProgress from "./in-progress/InProgress";
 import Achieved from "./achieved/Achieved";
 
 import "./in-progress/index.css";
-import axios from "axios";
 
-const MyActivitiesPage = () => {
+const MyActivitiesPage = ({ userActivities }) => {
   const [numOfAchieved, setNumOfAchieved] = useState(0);
 
-  const [userActivities, setUserActivities] = useState();
-  useEffect(() => {
-    async function fetchData() {
-      await axios
-        .post("api/active", {
-          user_id: 10,
-        })
-        .then((res) => {
-          // console.log(res.data);
-          setUserActivities(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          throw err;
-        });
-    }
-    fetchData();
-  }, []);
+  console.log(userActivities);
 
   if (userActivities === undefined || numOfAchieved === undefined) {
     return (

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
@@ -18,6 +18,25 @@ import { AuthProvider } from "./providers/AuthProvider";
 
 function App() {
   axios.defaults.baseURL = "https://www.polkadot-hub.eu/";
+
+  const [userActivities, setUserActivities] = useState();
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post("api/active", {
+          user_id: 10,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUserActivities(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    }
+    fetchData();
+  }, []);
 
   const backgroundStyle = {
     opacity: 0.05,
@@ -39,7 +58,7 @@ function App() {
     }
 
     return auth.token ? (
-      <Route exact {...rest} component={() => <Component />} />
+      <Route exact {...rest} component={() => <Component {...rest} />} />
     ) : (
       <AuthModal action="login" />
     );
@@ -54,10 +73,18 @@ function App() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             {/*<Route path="/novinky" component={EmptyPage} />*/}
-            <Route path="/odborky" component={OdborkyPage} />
+            <Route
+              path="/odborky"
+              component={() => <OdborkyPage userActivities={userActivities} />}
+            />
             <Route path="/vyzvy" component={ChallengesPage} />
             <Route path="/ocenenia" component={EmptyPage} />
-            <PrivateRoute path="/progres" component={MyActivitiesPage} />
+            <PrivateRoute
+              path="/progres"
+              component={() => (
+                <MyActivitiesPage userActivities={userActivities} />
+              )}
+            />
             <PrivateRoute path="/druzina" component={MyTeamPage} />
             <PrivateRoute path="/profil" component={ProfilePage} />
             <Route path="*" component={ErrorPage} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, NavLink, Form } from "react-bootstrap";
+import { NavLink, Form } from "react-bootstrap";
 import { Link as SectionLink } from "react-scroll";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../providers/AuthProvider";
@@ -84,7 +84,7 @@ const RightColumn = () => {
       <div className="fixed-sidebar">
         <Form.Group className="mb-4" controlId="formBasicCheckbox">
           <Form.Check
-            onChange={() => console.log("clicked")}
+            onChange={({ currentTarget: input }) => console.log(input.checked)}
             style={{
               fontWeight: "500",
               visibility: auth.token ? "visible" : "hidden",
