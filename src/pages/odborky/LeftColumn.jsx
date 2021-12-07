@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Spinner } from "react-bootstrap";
 import Section from "./section/Section";
-import axios from "axios";
+import { useActivityContext } from "../../providers/ActivityProvider";
 
-const LeftColumn = ({ vekKat, progKat, loading, filterIsChecked }) => {
+const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {
   const allowedKat = [
     "Vĺčatá a včielky",
     // "Rangeri a rangerky",
@@ -11,25 +11,9 @@ const LeftColumn = ({ vekKat, progKat, loading, filterIsChecked }) => {
     "Skauti a skautky",
   ];
 
-  const [userActivities, setUserActivities] = useState([]);
+  const { activities } = useActivityContext();
 
-  useEffect(() => {
-    async function fetchData() {
-      await axios
-        .post("api/active", {
-          user_id: 10,
-        })
-        .then((res) => {
-          console.log(res.data);
-          setUserActivities(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          throw err;
-        });
-    }
-    fetchData();
-  }, []);
+  const userActivities = activities.active;
 
   const sectionsMaker = vekKat
     .filter((s) => allowedKat.includes(s.name))
@@ -55,7 +39,11 @@ const LeftColumn = ({ vekKat, progKat, loading, filterIsChecked }) => {
         flexWrap: "wrap",
       }}
     >
-      {loading ? <Spinner animation="border" role="status" /> : sectionsMaker}
+      {activities.active === undefined ? (
+        <Spinner animation="border" role="status" />
+      ) : (
+        sectionsMaker
+      )}
     </div>
   );
 };

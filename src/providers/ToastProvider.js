@@ -1,5 +1,6 @@
 import React, { useContext, useState, createContext } from "react";
 import Toast from "react-bootstrap/Toast";
+import { FiSmile } from "react-icons/all";
 
 const ToastContext = createContext();
 
@@ -14,11 +15,15 @@ export const ToastProvider = ({ children }) => {
         // delay={3000}
         onClose={() => setToast({})}
       >
-        <Toast.Header>
-          <strong className="mr-auto">Upozornenie</strong>
+        <Toast.Header style={{ backgroundColor: "#9ED6FF", color: "black" }}>
+          <h6 className="mr-auto">Upozornenie</h6>
           <small>{toast.time || "just now"}</small>
         </Toast.Header>
-        <Toast.Body>{toast.message || "default text message"}</Toast.Body>
+        <Toast.Body>
+          <p style={{ fontWeight: "500" }}>
+            {toast.message || "default text message"} <FiSmile size={25} />
+          </p>
+        </Toast.Body>
       </Toast>
     );
   };

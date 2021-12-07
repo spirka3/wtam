@@ -9,15 +9,13 @@ const Section = ({
   id,
   name,
   progKat,
-  userActivities,
   filterIsChecked,
+  userActivities,
 }) => {
   const [odborkyById, setOdborkyById] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const activeActivityId = userActivities.map((a) => a.id);
-
-  // console.log(userActivities);
   // console.log(activeActivityId);
 
   useEffect(() => {
@@ -39,23 +37,23 @@ const Section = ({
 
   console.log(odborkyById);
 
-  const activityCards = odborkyById
-    .filter(
-      (aktivita) => !filterIsChecked || !activeActivityId.includes(aktivita.id)
-    )
-    .map((aktivita) => {
-      // console.log(aktivita);
-      return (
-        <OdborkaCard
-          key={aktivita.id}
-          id={aktivita.id}
-          image={aktivita.img_url}
-          name={aktivita.name}
-          odborkyById={aktivita}
-          hasActive={activeActivityId.includes(aktivita.id)}
-        />
-      );
-    });
+  const filteredData = (data) => {
+    if (!filterIsChecked) return data;
+    return data.filter((aktivita) => !activeActivityId.includes(aktivita.id));
+  };
+
+  const activityCards = filteredData(odborkyById).map((aktivita) => {
+    return (
+      <OdborkaCard
+        key={aktivita.id}
+        id={aktivita.id}
+        image={aktivita.img_url}
+        name={aktivita.name}
+        odborkyById={aktivita}
+        hasActive={activeActivityId.includes(aktivita.id)}
+      />
+    );
+  });
 
   console.log("odborka", order);
 
@@ -66,7 +64,16 @@ const Section = ({
       ) : (
         <>
           <h3>{firstWord(name)}</h3>
-          <div className="row">{activityCards}</div>
+
+          {filteredData(odborkyById).length < 10 ? (
+            <div className="row">{activityCards}</div>
+          ) : (
+            <div className="row">
+              <h6 style={{ marginTop: "2rem", marginBottom: "6rem" }}>
+                V tejto kategórii máš už zapísané všetky aktivity
+              </h6>
+            </div>
+          )}
         </>
       )}
     </div>
