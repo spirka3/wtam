@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from "react";
+import React, { useContext, useState, createContext, useEffect } from "react";
 import Toast from "react-bootstrap/Toast";
 import { FiSmile } from "react-icons/all";
 
@@ -7,12 +7,20 @@ const ToastContext = createContext();
 export const ToastProvider = ({ children }) => {
   const [toast, setToast] = useState({});
 
+  useEffect(() => {
+    if (toast.message) {
+      setTimeout(() => {
+        setToast({});
+      }, 3000);
+    }
+  }, [toast]);
+
   const MyToast = () => {
     return (
       <Toast
         className="my-toast"
         show={toast.message !== undefined}
-        // delay={3000}
+        delay={4000}
         onClose={() => setToast({})}
       >
         <Toast.Header style={{ backgroundColor: "#9ED6FF", color: "black" }}>

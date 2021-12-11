@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import Section from "./section/Section";
 import { useActivityContext } from "../../providers/ActivityProvider";
+import axios from "axios";
 
 const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {
   const allowedKat = [
@@ -11,9 +12,37 @@ const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {
     "Skauti a skautky",
   ];
 
-  const { activities } = useActivityContext();
+  const loadUserActivities = () => {
+    axios
+      .post("api/active", {
+        user_id: 10,
+      })
+      .then((res) => {
+        const filterActivities = res.data.filter((a) =>
+          a.tasks.some((t) => t.task_state !== "splnene")
+        );
+        setActivities((prev) => {
+          return {
+            ...prev,
+            active: filterActivities,
+          };
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        throw err;
+      });
+  };
 
-  const userActivities = activities.active;
+  const [activities, setActivities] = useState({});
+
+  useEffect(() => {
+    loadUserActivities();
+  }, []);
+
+  // const { activities } = useActivityContext();
+
+  const userActivities = activities.active || [];
 
   const sectionsMaker = vekKat
     .filter((s) => allowedKat.includes(s.name))

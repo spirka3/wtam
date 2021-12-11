@@ -24,7 +24,7 @@ export const ActivityProvider = ({ children }) => {
           console.log("first response", res.data);
           setActivities((prev) => {
             return {
-              ...prev,
+              active: prev.active,
               completed: res.data,
             };
           });
@@ -35,7 +35,7 @@ export const ActivityProvider = ({ children }) => {
           setToast({ message: "Získal si novú odborku", time: "Práve teraz" });
           setActivities((prev) => {
             return {
-              ...prev,
+              active: prev.active,
               completed: res.data,
             };
           });

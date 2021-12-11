@@ -3,6 +3,7 @@ import axios from "axios";
 import OdborkaCard from "./odborka/OdborkaCard";
 import { firstWord } from "../../../utils/functions";
 import { Spinner } from "react-bootstrap";
+import { useAuthContext } from "../../../providers/AuthProvider";
 
 const Section = ({
   order,
@@ -14,6 +15,8 @@ const Section = ({
 }) => {
   const [odborkyById, setOdborkyById] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { auth } = useAuthContext();
 
   const activeActivityId = userActivities.map((a) => a.id);
   // console.log(activeActivityId);
@@ -35,10 +38,10 @@ const Section = ({
       });
   }, [id, progKat]);
 
-  console.log(odborkyById);
+  // console.log(odborkyById);
 
   const filteredData = (data) => {
-    if (!filterIsChecked) return data;
+    if (!filterIsChecked || !auth.token) return data;
     return data.filter((aktivita) => !activeActivityId.includes(aktivita.id));
   };
 
@@ -50,12 +53,10 @@ const Section = ({
         image={aktivita.img_url}
         name={aktivita.name}
         odborkyById={aktivita}
-        hasActive={activeActivityId.includes(aktivita.id)}
+        hasActive={auth.token && activeActivityId.includes(aktivita.id)}
       />
     );
   });
-
-  console.log("odborka", order);
 
   return (
     <div id={order} className="aktivity-section w-100">
