@@ -14,8 +14,6 @@ const Formik = ({
   const inputRef = useRef();
 
   const handleSubmit = () => {
-    // TODO selectedTasks ulozit do DB
-
     for (let task of selectedTasks) {
       console.log(task.id);
 

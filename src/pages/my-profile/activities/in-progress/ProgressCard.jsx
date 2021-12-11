@@ -32,7 +32,7 @@ const ProgressCard = ({ aktivita }) => {
     } else {
       setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
     }
-    console.log("task", task);
+    // console.log("task", task);
   };
 
   const deleteActivityHandle = () => {
@@ -82,7 +82,10 @@ const ProgressCard = ({ aktivita }) => {
 
         <div className="col-12 col-md-7">
           <div
-		  	className={["row mb-3 ml-1 mr-2",  ((subTasks.waiting.length) == 0 ? "none-subtasks-waiting" : "")].join(" ")}
+            className={[
+              "row mb-3 ml-1 mr-2",
+              subTasks.waiting.length == 0 ? "none-subtasks-waiting" : "",
+            ].join(" ")}
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}
           >

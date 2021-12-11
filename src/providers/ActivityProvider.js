@@ -21,7 +21,7 @@ export const ActivityProvider = ({ children }) => {
       .then((res) => {
         if (activities.completed === undefined) {
           // setToast({ message: "Získal si novú odborku", time: "Práve teraz" });
-          console.log("first response", res.data);
+          // console.log("first response", res.data);
           setActivities((prev) => {
             return {
               active: prev.active,
@@ -31,7 +31,7 @@ export const ActivityProvider = ({ children }) => {
           return;
         }
         if (activities.completed.length !== res.data.length) {
-          console.log("NEW COMPLETED");
+          // console.log("NEW COMPLETED");
           setToast({ message: "Získal si novú odborku", time: "Práve teraz" });
           setActivities((prev) => {
             return {
@@ -42,7 +42,7 @@ export const ActivityProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         throw err;
       });
   };
@@ -64,14 +64,14 @@ export const ActivityProvider = ({ children }) => {
         });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         throw err;
       });
   };
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("tick");
+      // console.log("tick");
       loadUserActivities();
       loadAchievedActivities();
       setToggle((prev) => !prev);

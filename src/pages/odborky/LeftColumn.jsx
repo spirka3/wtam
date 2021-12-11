@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import Section from "./section/Section";
-import { useActivityContext } from "../../providers/ActivityProvider";
 import axios from "axios";
 
 const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {

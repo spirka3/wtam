@@ -28,7 +28,7 @@ const Section = ({
         activity_type: progKat,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setOdborkyById(res.data);
         setLoading(false);
       })
