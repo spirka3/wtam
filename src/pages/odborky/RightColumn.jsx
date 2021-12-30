@@ -15,7 +15,7 @@ const RightColumn = ({
   const { auth } = useAuthContext();
 
   // TODO nastavit activeSection podla prihlaseneho usera
-  const [activeSection, setActiveSection] = useState("1");
+  const [activeSection, setActiveSection] = useState("0");
 
   const divStyle = {
     display: "block",
@@ -85,7 +85,7 @@ const RightColumn = ({
           boxShadow: `3px 3px 10px 4px rgba(0,0,0,${a})`,
           backgroundImage: `url(${url})`,
         }}
-        onClick={() => setActiveSection(to)}
+        // onClick={() => setActiveSection(to)}
       >
         {text === "Skauti a rangeri" ? (
           <SelectButton text={text} to={to} />
