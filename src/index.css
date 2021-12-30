@@ -23,6 +23,21 @@
     align-items: center;
 }
 
+.card-btns {
+    bottom: -10px;
+    position: absolute;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+    visibility: hidden !important;
+}
+
+.my-card:hover .card-btns {
+    visibility: visible !important;
+    bottom: 0 !important;
+}
+
 .progress-card {
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
@@ -55,13 +70,11 @@
 	position: relative;
 }
 
-
 .nav-link.active{
 	color: rgba(0,0,0,.9);
     font-weight: 600;
     padding-left: 10px !important;
 }
-
 
 .demo-content {
     position: relative;
@@ -77,6 +90,14 @@
     width: 100%;
 	z-index: 999;
 }
+
+/*.navbar-wrapper, .my-navbar .nav-link {*/
+/*    background-color: #565A5B !important*/
+/*}*/
+
+/*.my-navbar .nav-link.active {*/
+/*    background-color: #F2E272 !important;*/
+/*}*/
 
 .my-tabs:nth-child(-n+3) {
     margin-left: auto;

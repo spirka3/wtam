@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Card, Modal } from "react-bootstrap";
+import { Button, Card, Modal } from "react-bootstrap";
 import AuthModal from "../../../../auth/AuthModal";
 import { useAuthContext } from "../../../../providers/AuthProvider";
 import OdborkaModal from "./OdborkaModal";
 import axios from "axios";
 
 import "./index.css";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-const OdborkaCard = ({ id, odborkyById, image, name, hasActive }) => {
+const OdborkaCard = ({ odborka, image, name, hasActive }) => {
   const { auth } = useAuthContext();
 
   const [showOdborkaModal, setShowOdborkaModal] = useState(false);
@@ -22,7 +23,6 @@ const OdborkaCard = ({ id, odborkyById, image, name, hasActive }) => {
     console.log(activityId);
     if (auth.token) {
       setIsAdded(true);
-      // TODO uloz pridanie odborky do databazy podla id
       axios
         .post("api/add-activity", {
           user_id: 10,
@@ -42,15 +42,60 @@ const OdborkaCard = ({ id, odborkyById, image, name, hasActive }) => {
 
   const show = showOdborkaModal || showLoginModal;
 
+  const btnColor = isAdded ? "#B6DE92" : "#85CBF4";
+  const btnVariant = isAdded ? "success" : "primary";
+  const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
+
+  const showItem = () => {
+    window.location.replace("/progres");
+  };
+
   return (
     <div
       className="my-card col-6 col-sm-4 col-lg-3"
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", position: "relative" }}
     >
       <Card onClick={toggleOdborkaModal}>
         <Card.Img variant="top" src={image} />
-        <Card.Body style={{ backgroundColor: "rgba(255, 255, 255, 0)" }}>
-          <Card.Title className="text-center card-title">{name}</Card.Title>
+        <Card.Body
+          className="card-body"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0)",
+            padding: "0.25rem",
+          }}
+        >
+          <Card.Title className="text-center card-title mb-2">
+            {name}
+          </Card.Title>
+          <ButtonGroup className="card-btns">
+            <Button
+              size="sm"
+              className="card-btn"
+              variant={btnVariant}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isAdded) {
+                  showItem();
+                } else {
+                  addItem(odborka.id);
+                }
+              }}
+              // style={{
+              //   backgroundColor: btnColor,
+              //   borderColor: btnColor,
+              //   color: "black",
+              //}}
+            >
+              {btnText}
+            </Button>
+            <Button
+              size="sm"
+              className="card-btn"
+              variant={`outline-${btnVariant}`}
+            >
+              Detail
+            </Button>
+          </ButtonGroup>
         </Card.Body>
       </Card>
 
@@ -64,7 +109,7 @@ const OdborkaCard = ({ id, odborkyById, image, name, hasActive }) => {
           {!showLoginModal && (
             <OdborkaModal
               addItem={addItem}
-              odborka={odborkyById}
+              odborka={odborka}
               show={show}
               isAdded={isAdded}
               onHide={toggleOdborkaModal}

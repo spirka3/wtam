@@ -11,7 +11,9 @@ const OdborkyPage = () => {
 
   const [vekKat, setVekKat] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filterIsChecked, setFilterIsChecked] = useState(false);
+
+  const [searchText, setSearchText] = useState("");
+  const [filterIsChecked, setFilterIsChecked] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,8 +39,13 @@ const OdborkyPage = () => {
         progKat={odborky}
         loading={loading}
         filterIsChecked={filterIsChecked}
+        searchText={searchText}
       />
-      <RightColumn setFilterIsChecked={setFilterIsChecked} />
+      <RightColumn
+        filterIsChecked={filterIsChecked}
+        setFilterIsChecked={setFilterIsChecked}
+        setSearchText={setSearchText}
+      />
     </Row>
   );
 };

@@ -6,12 +6,10 @@ import {
   useAccordionButton,
   Button,
 } from "react-bootstrap";
-import { GiSandsOfTime, WiMoonAltNew } from "react-icons/all";
+import { GiSandsOfTime } from "react-icons/all";
 import Formik from "./Formik";
 import MyProgressBar from "./MyProgressBar";
 import axios from "axios";
-
-// TODO: rozdelit body na tri kategorie -> cakajuce na schvalenie, splnene a nesplnene
 
 const ProgressCard = ({ aktivita }) => {
   const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
@@ -150,7 +148,7 @@ const ProgressCard = ({ aktivita }) => {
                     </Accordion.Body>
                   </Accordion.Item>
                 ) : null}
-                {/* DONE TASKS */}
+                {/* COMPLETE TASKS */}
                 {subTasks.done.length ? (
                   <Accordion.Item eventKey="3">
                     <Accordion.Header>{`Splnené (${subTasks.done.length})`}</Accordion.Header>

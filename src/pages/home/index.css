@@ -123,33 +123,34 @@ body, html {
 
 
 /* https://codepen.io/merkund/pen/EGpOEr */
-/*.home-title {*/
-/*	-webkit-appearance: none;*/
-/*	background: linear-gradient(to right, #a2ccb6 0%, #ee786e 50%, #ee786e 100%);*/
-/*	background-size: 500%;*/
-/*	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);*/
-/*	color: white;*/
-/*	cursor: pointer;*/
-/*	font: 1.5em Raleway, sans-serif;*/
-/*	letter-spacing: .05em;*/
-/*}*/
+.home-title {
+	border: none !important;
+	-webkit-appearance: none;
+	background: linear-gradient(to right, #EF5358 0%, #D88F4A 50%, #D88F4A 100%);
+	background-size: 500%;
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+	color: white;
+	cursor: pointer;
+	font: 1.5em Raleway, sans-serif;
+	letter-spacing: .05em;
+}
 
-/*.home-title:hover {*/
-/*	animation-name: gradient;*/
-/*	-webkit-animation-name: gradient;*/
-/*	animation-duration: 2s;*/
-/*	-webkit-animation-duration: 2s;*/
-/*	animation-iteration-count: 1;*/
-/*	-webkit-animation-iteration-count: 1;*/
-/*	animation-fill-mode: forwards;*/
-/*	-webkit-animation-fill-mode: forwards;*/
-/*}*/
+.home-title:hover {
+	animation-name: gradient;
+	-webkit-animation-name: gradient;
+	animation-duration: 2s;
+	-webkit-animation-duration: 2s;
+	animation-iteration-count: 1;
+	-webkit-animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
 
-/*@keyframes gradient {*/
-/*	0% {*/
-/*		background-position: 0% 50%*/
-/*	}*/
-/*	100% {*/
-/*		background-position: 100%*/
-/*	}*/
-/*}*/
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	100% {
+		background-position: 100%
+	}
+}

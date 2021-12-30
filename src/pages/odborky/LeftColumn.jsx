@@ -1,15 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import Section from "./section/Section";
 import axios from "axios";
+import { animateScroll } from "react-scroll";
 
-const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {
+const LeftColumn = ({ vekKat, progKat, filterIsChecked, searchText }) => {
   const allowedKat = [
     "Vĺčatá a včielky",
-    // "Rangeri a rangerky",
     "Roveri a Roverky",
     "Skauti a skautky",
   ];
+
+  const myRef0 = useRef(null);
+  const myRef1 = useRef(null);
+  const myRef2 = useRef(null);
+
+  const refs = [myRef0, myRef1, myRef2];
+
+  useEffect(() => {
+    setTimeout(() => {
+      animateScroll.scrollTo(myRef1, {
+        container: myRef1,
+        offset: -70,
+        duration: 400,
+        smooth: true,
+      });
+    }, 400);
+  }, [myRef2.current]);
 
   const loadUserActivities = () => {
     axios
@@ -39,8 +56,6 @@ const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {
     loadUserActivities();
   }, []);
 
-  // const { activities } = useActivityContext();
-
   const userActivities = activities.active || [];
 
   const sectionsMaker = vekKat
@@ -49,11 +64,13 @@ const LeftColumn = ({ vekKat, progKat, filterIsChecked }) => {
       return (
         <Section
           order={i}
+          refer={refs[i]}
           id={section.id}
           name={section.name}
           progKat={progKat}
           userActivities={userActivities}
           filterIsChecked={filterIsChecked}
+          searchText={searchText}
         />
       );
     });

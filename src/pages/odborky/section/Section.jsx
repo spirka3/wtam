@@ -6,20 +6,22 @@ import { Spinner } from "react-bootstrap";
 import { useAuthContext } from "../../../providers/AuthProvider";
 
 const Section = ({
+  refer,
   order,
   id,
   name,
   progKat,
   filterIsChecked,
   userActivities,
+  searchText,
 }) => {
-  const [odborkyById, setOdborkyById] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   const { auth } = useAuthContext();
 
-  const activeActivityId = userActivities.map((a) => a.id);
-  // console.log(activeActivityId);
+  const [allActivies, setAllActivies] = useState([]);
+  const [listedActivities, setListedActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const activeIds = userActivities.map((a) => a.id);
 
   useEffect(() => {
     axios
@@ -28,8 +30,12 @@ const Section = ({
         activity_type: progKat,
       })
       .then((res) => {
-        // console.log(res.data);
-        setOdborkyById(res.data);
+        console.log(res.data);
+        const sortedActivities = res.data.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        setAllActivies(sortedActivities);
+        setListedActivities(filterByCheckBox(sortedActivities));
         setLoading(false);
       })
       .catch((err) => {
@@ -38,45 +44,77 @@ const Section = ({
       });
   }, [id, progKat]);
 
-  // console.log(odborkyById);
+  useEffect(() => {
+    const activitiesByCheck = filterByCheckBox(allActivies);
+    const activitiesByCheckAndText = filterByText(activitiesByCheck);
+    setListedActivities(activitiesByCheckAndText);
+  }, [searchText, filterIsChecked]);
 
-  const filteredData = (data) => {
-    if (!filterIsChecked || !auth.token) return data;
-    return data.filter((aktivita) => !activeActivityId.includes(aktivita.id));
+  const filterByCheckBox = (activities) => {
+    if (!filterIsChecked || !auth.token) {
+      return activities;
+    }
+    return activities.filter((activity) => !activeIds.includes(activity.id));
   };
 
-  const activityCards = filteredData(odborkyById).map((aktivita) => {
+  const filterByText = (activities) => {
+    if (searchText === "") {
+      return activities;
+    }
+    const normalizedSearchText = searchText
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "");
+
+    return activities.filter((activity) => {
+      const normalizedName = activity.name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "");
+      return normalizedName.includes(normalizedSearchText);
+    });
+  };
+
+  const ActivityCards = () =>
+    listedActivities.map((activity) => {
+      return (
+        <OdborkaCard
+          key={activity.id}
+          id={activity.id}
+          image={activity.img_url}
+          name={activity.name}
+          odborka={activity}
+          hasActive={auth.token && activeIds.includes(activity.id)}
+        />
+      );
+    });
+
+  const EmptyPhrase = () => {
+    let phrase = "";
+    if (searchText === "") {
+      phrase = "V tejto kategórii máš už zapísané všetky aktivity";
+    } else {
+      phrase = "Nenašla sa žiadna zhoda s vyhľadávaným textom";
+    }
     return (
-      <OdborkaCard
-        key={aktivita.id}
-        id={aktivita.id}
-        image={aktivita.img_url}
-        name={aktivita.name}
-        odborkyById={aktivita}
-        hasActive={auth.token && activeActivityId.includes(aktivita.id)}
-      />
+      <h6 style={{ marginTop: "2rem", marginBottom: "6rem" }}>{phrase}</h6>
     );
-  });
+  };
 
   return (
-    <div id={order} className="aktivity-section w-100">
-      {loading ? (
-        <Spinner animation="border" role="status" />
-      ) : (
-        <>
-          <h3>{firstWord(name)}</h3>
-
-          {filteredData(odborkyById).length ? (
-            <div className="row">{activityCards}</div>
-          ) : (
+    <div className="aktivity-section w-100" ref={refer}>
+      <div id={order}>
+        {loading ? (
+          <Spinner animation="border" role="status" />
+        ) : (
+          <div>
+            <h3>{firstWord(name)}</h3>
             <div className="row">
-              <h6 style={{ marginTop: "2rem", marginBottom: "6rem" }}>
-                V tejto kategórii máš už zapísané všetky aktivity
-              </h6>
+              {listedActivities.length ? <ActivityCards /> : <EmptyPhrase />}
             </div>
-          )}
-        </>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

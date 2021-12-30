@@ -20,7 +20,7 @@ function App() {
 }
 
 const backgroundStyle = {
-  opacity: 0.05,
+  opacity: 0.03,
   backgroundImage:
     "url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg')",
 };

@@ -52,7 +52,6 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
             backgroundColor: btnColor,
             borderColor: btnColor,
             color: "black",
-            // fontWeight: "500",
           }}
           onClick={() => {
             if (isAdded) {
