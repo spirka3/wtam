@@ -8,7 +8,7 @@ import axios from "axios";
 import "./index.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-const OdborkaCard = ({ odborka, image, name, hasActive }) => {
+const OdborkaCard = ({ odborka, image, name, hasActive, isDone }) => {
   const { auth } = useAuthContext();
 
   const [showOdborkaModal, setShowOdborkaModal] = useState(false);
@@ -50,13 +50,20 @@ const OdborkaCard = ({ odborka, image, name, hasActive }) => {
     window.location.replace("/progres");
   };
 
+  const imgColor = () => {
+    if (isDone) {
+      return "img-done";
+    } else if (hasActive) {
+      return "img-active";
+    } else {
+      return "img-inactive";
+    }
+  };
+
   return (
-    <div
-      className="my-card col-6 col-sm-4 col-lg-3"
-      style={{ cursor: "pointer", position: "relative" }}
-    >
+    <div className="my-card col-6 col-sm-4 col-lg-3">
       <Card onClick={toggleOdborkaModal}>
-        <Card.Img variant="top" src={image} />
+        <Card.Img className={imgColor()} variant="top" src={image} />
         <Card.Body
           className="card-body"
           style={{

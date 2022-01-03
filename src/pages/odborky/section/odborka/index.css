@@ -1,28 +1,44 @@
-.odborky .my-card{
-	display: "inline-block";
-	cursor: "pointer";
-	background-color: "rgba(255, 255, 255, 0.5)";
-	z-index: "99";
+.odborky .my-card {
+  display: flex;
+  cursor: "pointer";
+  background-color: "rgba(255, 255, 255, 0.5)";
+  z-index: "99";
 }
 
-.odborky .card{
-	padding: 0.25rem;
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
+.my-card {
+  justify-content: center;
 }
 
-.aktivity-section{
-	padding-top: 0rem;
+.odborky .card {
+  padding: 0.25rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.odborky .card-img-top{
-	max-width: 150px;
-	padding: 0.25rem;
-    margin-left: auto;
-    margin-right: auto;
+.aktivity-section {
+  padding-top: 0rem;
 }
 
-.odborky .card-title{
-	margin: 0 auto;
-    padding: 10px 0;
+.odborky .card-img-top {
+  max-width: 150px;
+  padding: 0.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.odborky .card-title {
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.img-inactive {
+  filter: grayscale(100%);
+}
+
+.img-done {
+  filter: grayscale(0%);
+}
+
+.img-active {
+  filter: grayscale(75%);
 }

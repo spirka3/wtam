@@ -19,29 +19,47 @@ const Section = ({
 
   const [allActivies, setAllActivies] = useState([]);
   const [listedActivities, setListedActivities] = useState([]);
+  const [completed, setCompleted] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const activeIds = userActivities.map((a) => a.id);
 
   useEffect(() => {
-    axios
-      .post("api/activities", {
-        age_category_id: id,
-        activity_type: progKat,
-      })
-      .then((res) => {
-        console.log(res.data);
-        const sortedActivities = res.data.sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );
-        setAllActivies(sortedActivities);
-        setListedActivities(filterByCheckBox(sortedActivities));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        throw err;
-      });
+    const fetchData = async () => {
+      await axios
+        .post("api/activities", {
+          age_category_id: id,
+          activity_type: progKat,
+        })
+        .then((res) => {
+          console.log(res.data);
+          const sortedActivities = res.data.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          setAllActivies(sortedActivities);
+          setListedActivities(filterByCheckBox(sortedActivities));
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+
+      await axios
+        .post("api/completed", {
+          user_id: 10,
+        })
+        .then((res) => {
+          const doneIds = res.data.map((a) => a.id);
+          setCompleted(doneIds);
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        });
+    };
+
+    fetchData();
   }, [id, progKat]);
 
   useEffect(() => {
@@ -85,6 +103,7 @@ const Section = ({
           name={activity.name}
           odborka={activity}
           hasActive={auth.token && activeIds.includes(activity.id)}
+          isDone={auth.token && completed.includes(activity.id)}
         />
       );
     });
