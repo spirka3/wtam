@@ -153,26 +153,35 @@
 footer{
 	background-color: #181818;
 	padding: 20px;
-	max-height: 70px;
 }
 .inner-footer{
 	max-width: 1650px;
 	color: #fff;
 	margin: 0 auto;
 	display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-	padding: 0 2rem;
+	padding: 0 0;
 }
 .contact{
 	display: flex;
     align-items: center;
+	margin-top: 15px;
 }
 .mail-link{
 	color: #fff;
 }
 .mail-link:hover{
 	color: rgb(228, 228, 228);
+}
+@media screen and (min-width: 480px) {
+	.inner-footer {
+		flex-direction: row;
+		padding: 0 2rem;
+	}
+	.contact{
+		margin-top: 0;
+	}
 }
 
 /*.nav-tabs .nav-item > button.active {*/
