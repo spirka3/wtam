@@ -145,6 +145,36 @@
     height: 100px;
 }
 
+#root{
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+footer{
+	background-color: #181818;
+	padding: 20px;
+	max-height: 70px;
+}
+.inner-footer{
+	max-width: 1650px;
+	color: #fff;
+	margin: 0 auto;
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+	padding: 0 2rem;
+}
+.contact{
+	display: flex;
+    align-items: center;
+}
+.mail-link{
+	color: #fff;
+}
+.mail-link:hover{
+	color: rgb(228, 228, 228);
+}
+
 /*.nav-tabs .nav-item > button.active {*/
 /*    !*background-size: cover;*!*/
 /*    background-image: url('https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-skautske-bttn.png');*/

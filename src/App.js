@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import Navigation from "./Navigation";
+import Footer from "./Footer";
 import Provider from "./Provider";
 import Switcher from "./Switcher";
 
@@ -15,6 +16,7 @@ function App() {
       <div className="my-content">
         <Switcher />
       </div>
+      <Footer />
     </Provider>
   );
 }
