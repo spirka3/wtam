@@ -62,7 +62,7 @@ const Navigation = () => {
         </Navbar.Brand>
         <Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto mt-2 mobile-menu" variant="pills">
+          <Nav className="ml-auto mobile-menu" variant="pills">
             {/*<MyNavLink to="/novinky" name="Novinky" />*/}
             <MyNavLink to="/odborky" name="Odborky" />
             <MyNavLink to="/vyzvy" name="Výzvy" />

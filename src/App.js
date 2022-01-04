@@ -2,9 +2,12 @@ import React from "react";
 import axios from "axios";
 
 import Navigation from "./Navigation";
+import MobileMenuFixed from "./MobileMenuFixed";
 import Footer from "./Footer";
 import Provider from "./Provider";
 import Switcher from "./Switcher";
+
+import { useAuthContext } from "./providers/AuthProvider";
 
 function App() {
   axios.defaults.baseURL = "https://www.polkadot-hub.eu/";
@@ -16,6 +19,7 @@ function App() {
       <div className="my-content">
         <Switcher />
       </div>
+	  <MobileMenuFixed />
       <Footer />
     </Provider>
   );
