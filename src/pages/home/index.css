@@ -59,6 +59,7 @@ body, html {
 	padding: 3rem 2rem;
 	padding-top: calc(65px + 2rem);
 	min-height: calc(100% - 64px);
+	margin-bottom: 4rem;
 }
 
 .my-navbar{

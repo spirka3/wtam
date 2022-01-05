@@ -144,11 +144,21 @@
     width: 250px;
     height: 100px;
 }
+#root{
+	position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin-bottom: 0;
+}
 
 footer{
 	background-color: #181818;
 	padding: 20px;
-	position: relative;
+	bottom: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
 }
 .inner-footer{
 	max-width: 1650px;
