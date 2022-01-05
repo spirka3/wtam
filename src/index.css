@@ -145,15 +145,10 @@
     height: 100px;
 }
 
-#root{
-	min-height: 100%;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-}
 footer{
 	background-color: #181818;
 	padding: 20px;
-	margin-bottom: 60px;
+	position: relative;
 }
 .inner-footer{
 	max-width: 1650px;
