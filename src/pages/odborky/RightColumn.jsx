@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Form, Dropdown, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Dropdown, Button } from "react-bootstrap";
 // import { Link } from "react-router-dom";
-import { Link as SectionLink, animateScroll as scroll } from "react-scroll";
+import { Link as SectionLink } from "react-scroll";
 import { useAuthContext } from "../../providers/AuthProvider";
 
 import "./index.css";

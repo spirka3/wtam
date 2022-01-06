@@ -8,7 +8,9 @@ import axios from "axios";
 import "./index.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-const OdborkaCard = ({ odborka, image, name, hasActive, isDone }) => {
+const OdborkaCard = ({ odborka, hasActive, isDone }) => {
+  const { name, id, img_url: image } = odborka.items[0];
+
   const { auth } = useAuthContext();
 
   const [showOdborkaModal, setShowOdborkaModal] = useState(false);
@@ -42,7 +44,6 @@ const OdborkaCard = ({ odborka, image, name, hasActive, isDone }) => {
 
   const show = showOdborkaModal || showLoginModal;
 
-  const btnColor = isAdded ? "#B6DE92" : "#85CBF4";
   const btnVariant = isAdded ? "success" : "primary";
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 

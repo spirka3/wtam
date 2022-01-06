@@ -12,7 +12,7 @@ import MyProgressBar from "./MyProgressBar";
 import axios from "axios";
 
 const ProgressCard = ({ aktivita }) => {
-  const { id, name, img_url: image, activity_type: type, tasks } = aktivita;
+  const { id, name, img_url: image, tasks } = aktivita;
   const [isSent, setIsSent] = useState(false);
 
   const [subTasks, setSubTasks] = useState({
@@ -82,7 +82,7 @@ const ProgressCard = ({ aktivita }) => {
           <div
             className={[
               "row mb-3 ml-1 mr-2",
-              subTasks.waiting.length == 0 ? "none-subtasks-waiting" : "",
+              subTasks.waiting.length === 0 ? "none-subtasks-waiting" : "",
             ].join(" ")}
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}

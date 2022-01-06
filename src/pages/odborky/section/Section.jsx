@@ -4,6 +4,7 @@ import OdborkaCard from "./odborka/OdborkaCard";
 import { firstWord } from "../../../utils/functions";
 import { Spinner } from "react-bootstrap";
 import { useAuthContext } from "../../../providers/AuthProvider";
+import collect from "collect.js";
 
 const Section = ({
   refer,
@@ -21,12 +22,13 @@ const Section = ({
   const [listedActivities, setListedActivities] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [allGroupedActivities, setAllGroupedActivities] = useState([]);
 
   const activeIds = userActivities.map((a) => a.id);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await axios
+    const fetchData = () => {
+      axios
         .post("api/activities", {
           age_category_id: id,
           activity_type: progKat,
@@ -38,6 +40,12 @@ const Section = ({
           );
           setAllActivies(sortedActivities);
           setListedActivities(filterByCheckBox(sortedActivities));
+
+          const collection = collect(sortedActivities);
+          const groupBy = collection.groupBy("name");
+
+          setAllGroupedActivities(groupBy.toArray());
+
           setLoading(false);
         })
         .catch((err) => {
@@ -45,7 +53,7 @@ const Section = ({
           throw err;
         });
 
-      await axios
+      axios
         .post("api/completed", {
           user_id: 10,
         })
@@ -93,7 +101,7 @@ const Section = ({
     });
   };
 
-  const ActivityCards = () =>
+  /*   const ActivityCards = () =>
     listedActivities.map((activity) => {
       return (
         <OdborkaCard
@@ -104,6 +112,18 @@ const Section = ({
           odborka={activity}
           hasActive={auth.token && activeIds.includes(activity.id)}
           isDone={auth.token && completed.includes(activity.id)}
+        />
+      );
+    }); */
+
+  const ActivityCards = () =>
+    allGroupedActivities.map((activity) => {
+      return (
+        <OdborkaCard
+          key={activity.items[0].id}
+          odborka={activity}
+          hasActive={auth.token && activeIds.includes(activity.items[0].id)}
+          isDone={auth.token && completed.includes(activity.items[0].id)}
         />
       );
     });

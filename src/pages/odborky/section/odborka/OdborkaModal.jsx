@@ -1,19 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Modal, Button } from "react-bootstrap";
 
 const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
-  const { name, img_url, tasks } = odborka;
+  const [stupen, setStupen] = useState(odborka.items[0]);
+  const [stupenButtonName, setStupenButtonName] = useState(
+    "Zobraz Červený stupeň"
+  );
 
   const btnColor = isAdded ? "#B6DE92" : "#85CBF4";
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
-  const taskMapping = tasks.map((task) => {
+  const taskMapping = stupen.tasks.map((task) => {
     return <li key={task.id}>{task.description}</li>;
   });
 
   const showItem = () => {
     window.location.replace("/progres");
+  };
+
+  console.log(stupen);
+
+  useEffect(() => {
+    if (stupen.level === "Zelený") {
+      setStupenButtonName("Zobraz Červený stupeň");
+    } else {
+      setStupenButtonName("Zobraz Zelený stupeň");
+    }
+  }, [stupen.level]);
+
+  const stupenButtonHandle = () => {
+    if (stupen.level === "Zelený") {
+      console.log("zeleny");
+      setStupen(odborka.items[1]);
+    } else if (stupen.level === "Červený") {
+      console.log("cerveny");
+      setStupen(odborka.items[0]);
+    }
   };
 
   return (
@@ -26,7 +49,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
               width: "60px",
               height: "60px",
             }}
-            src={img_url}
+            src={stupen.img_url}
             alt="obr"
           />
           <p
@@ -36,7 +59,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
               display: "inline-block",
             }}
           >
-            {name}
+            {stupen.name}
           </p>
         </Modal.Title>
       </Modal.Header>
@@ -47,6 +70,11 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
         <div style={{ marginLeft: "0", marginRight: "auto" }}>
           {isAdded && <h6>✔ Pridaná</h6>}
         </div>
+        {odborka.items.length === 2 && (
+          <Button variant="warning" onClick={stupenButtonHandle}>
+            {stupenButtonName}
+          </Button>
+        )}
         <Button
           style={{
             backgroundColor: btnColor,
@@ -57,7 +85,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
             if (isAdded) {
               showItem();
             } else {
-              addItem(odborka.id);
+              addItem(stupen.id);
             }
           }}
         >
