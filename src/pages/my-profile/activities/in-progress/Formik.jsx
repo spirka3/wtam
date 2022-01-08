@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Form, Input } from "../../../../components/MyForm";
 import { Button } from "react-bootstrap";
-import { IoIosAttach } from "react-icons/all";
+import { IoIosAttach, RiMailSendLine } from "react-icons/all";
 import axios from "axios";
 
 const Formik = ({
@@ -74,13 +74,13 @@ const Formik = ({
           onClick={handleSubmit}
           style={{
             height: "36px",
-            marginRight: "1rem",
-            backgroundColor: "#85CBF4", // B6DE92 | 85CBF4
-            borderColor: "#85CBF4",
-            color: "black",
+            marginRight: "0.5rem",
+            backgroundColor: "#558776", // B6DE92 | 85CBF4
+            borderColor: "#558776",
+            color: "white",
           }}
         >
-          Poslať správu
+          Poslať <RiMailSendLine size={20} />
         </Button>
         <div className="btn btn-light">
           <input

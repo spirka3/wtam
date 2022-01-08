@@ -21,17 +21,6 @@
     align-items: center;
 }
 
-
-
-.progress-card {
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
-}
-
-.progress-bar{
-    background-color: #85CBF4 !important
-}
-
 .navbar-toggler{
 	padding: 0.15rem 0.25rem;
 }
@@ -66,7 +55,7 @@
 }
 
 .navbar-wrapper{
-	background-color: rgb(248, 249, 250);
+	background-color: #A3A847;
 	position: fixed;
     width: 100%;
 	z-index: 999;

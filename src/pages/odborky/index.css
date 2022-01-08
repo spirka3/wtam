@@ -76,3 +76,34 @@
         padding: 0 20px 0 0;
     }
 }
+
+.section-category {
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+    background-size: cover;
+    z-index: -5;
+}
+
+@media screen and (min-width: 330px) {
+    .section-category {
+        margin-bottom: 0.75rem !important;
+        padding: 0.75rem !important;
+    }
+}
+
+@media screen and (min-width: 766px) {
+    .section-category {
+        margin-bottom: 2rem !important;
+        padding: 2rem !important;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .card-btns {
+        display: none !important;
+    }
+}
+
+

@@ -21,7 +21,7 @@ const MyActivitiesPage = () => {
   }
 
   return (
-    <div className="center my-activities-container">
+    <div className="center my-activities-container mb-5">
       <div className="col-12">
         <Tabs
           defaultActiveKey="progress"

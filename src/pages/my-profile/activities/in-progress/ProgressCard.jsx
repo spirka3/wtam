@@ -87,14 +87,22 @@ const ProgressCard = ({ aktivita }) => {
             onClick={useAccordionButton(id)}
             style={{ cursor: "pointer" }}
           >
-            <MyProgressBar splneneTasky={subTasks.done} tasks={tasks} />
+            <MyProgressBar
+              waitingLen={subTasks.waiting.length}
+              doneLen={subTasks.done.length}
+              tasks={tasks}
+            />
             <span
               className="my-activity-badge"
               style={{
                 display: subTasks.waiting.length ? "inline-block" : "none",
               }}
             >
-              <Badge bg="warning" className="badge">
+              <Badge
+                bg="warning"
+                className="badge"
+                title="Niektoré body čakajú na schválenie"
+              >
                 <GiSandsOfTime size={30} />
               </Badge>
             </span>
@@ -143,7 +151,15 @@ const ProgressCard = ({ aktivita }) => {
                     </Accordion.Header>
                     <Accordion.Body style={{ cursor: "default" }}>
                       {subTasks.waiting.map((task) => (
-                        <li>{task.description}</li>
+                        <BsForm.Check
+                          className="waiting-check"
+                          checked
+                          inactive
+                          key={task.id}
+                          label={task.description}
+                          onChange={() => selectTask(task)}
+                        />
+                        // <li>{task.description}</li>
                       ))}
                     </Accordion.Body>
                   </Accordion.Item>
@@ -154,7 +170,15 @@ const ProgressCard = ({ aktivita }) => {
                     <Accordion.Header>{`Splnené (${subTasks.done.length})`}</Accordion.Header>
                     <Accordion.Body style={{ cursor: "default" }}>
                       {subTasks.done.map((task) => (
-                        <li>{task.description}</li>
+                        <BsForm.Check
+                          className="done-check"
+                          checked
+                          inactive
+                          key={task.id}
+                          label={task.description}
+                          onChange={() => selectTask(task)}
+                        />
+                        // <li>{task.description}</li>
                       ))}
                     </Accordion.Body>
                   </Accordion.Item>
@@ -163,6 +187,7 @@ const ProgressCard = ({ aktivita }) => {
                   className="button-margin"
                   variant="danger"
                   onClick={deleteActivityHandle}
+                  title="Vymažú sa aj všetky body, ktoré boli splené"
                 >
                   Vymazať aktivitu{" "}
                   <MdDelete style={{ marginTop: "-0.25rem" }} />

@@ -48,6 +48,7 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const show = showOdborkaModal || showLoginModal;
 
   const btnVariant = isAdded ? "success" : "primary";
+  const btnColor = isAdded ? "#A3A847" : "#558776";
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
   const showItem = () => {
@@ -92,11 +93,12 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
                   addItem(odborka.items[0].id);
                 }
               }}
-              // style={{
-              //   backgroundColor: btnColor,
-              //   borderColor: btnColor,
-              //   color: "black",
-              //}}
+              style={{
+                backgroundColor: btnColor,
+                borderColor: btnColor,
+                color: "white",
+              }}
+              title="Po pridaní odborky môžeš začať splňať úlohy"
             >
               {btnText}
             </Button>

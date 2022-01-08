@@ -8,7 +8,7 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
     "Zobraz Červený stupeň"
   );
 
-  const btnColor = isAdded ? "#B6DE92" : "#85CBF4";
+  const btnColor = isAdded ? "#A3A847" : "#558776";
   const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
 
   const taskMapping = stupen.tasks.map((task) => {
@@ -77,8 +77,9 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
           style={{
             backgroundColor: btnColor,
             borderColor: btnColor,
-            color: "black",
+            color: "white",
           }}
+          title={!isAdded && "Po pridaní odborky môžeš začať splňať úlohy"}
           onClick={() => {
             if (isAdded) {
               showItem();

@@ -24,6 +24,7 @@ const RightColumn = ({
     marginBottom: "1.5rem", // .75rem pre mobil | 1.5rem desktop
     padding: "2rem", // .75rem pre mobil | 2rem desktop
     backgroundSize: "cover",
+    zIndex: "-5",
   };
 
   // TODO podkategorie pre skauti a roveri
@@ -78,9 +79,9 @@ const RightColumn = ({
 
     return (
       <div
+        className="section-category"
         style={{
           ...divStyle,
-          zIndex: "-5",
           boxShadow: `3px 3px 10px 4px rgba(0,0,0,${a})`,
           backgroundImage: `url(${url})`,
         }}
@@ -114,6 +115,7 @@ const RightColumn = ({
           url="https://www.skauting.sk/wp-content/uploads/2017/03/skauting-program-odborky-roverske-bttn.png"
           to="2"
         />
+        <br />
         <h4 className="d-none d-sm-block">Filter:</h4>
         <Form.Label htmlFor="searchText" visuallyHidden>
           Vyhladavanie
@@ -122,7 +124,7 @@ const RightColumn = ({
           className="mb-2"
           id="searchText"
           onChange={(e) => setSearchText(e.target.value)}
-          placeholder="Hľadaj podľa názvu odborky"
+          placeholder="🔎 Hľadaj podľa názvu odborky"
         />
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           {/*<span style={{ fontSize: "0.9rem" }}>Ukáž</span>*/}

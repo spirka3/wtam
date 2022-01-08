@@ -20,8 +20,9 @@ const Navigation = () => {
 
   const getStyle = (to) => {
     return {
-      backgroundColor: isActiveLink(to) ? "#9ed6ff" : "#f8f9fa",
+      backgroundColor: isActiveLink(to) ? "#558776" : "#A3A847",
       fontWeight: 500,
+      color: isActiveLink(to) ? "#fff8ee" : "#fff8ee",
     };
   };
 
@@ -54,11 +55,13 @@ const Navigation = () => {
           <GiStairsGoal
             style={{
               marginRight: "0.5rem",
-              color: "#363636",
+              color: "#EAE2B6",
             }}
             size={35}
           />
-          <h1 className="d-inline appname">{appName}</h1>
+          <h1 className="d-inline appname" style={{ color: "#fff8ee" }}>
+            {appName}
+          </h1>
         </Navbar.Brand>
         <Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -72,6 +75,7 @@ const Navigation = () => {
                 {/*<ProfileDropDown />*/}
                 <MyNavLink to="/progres" name="Moje aktivity" />
                 <NavLink
+                  style={getStyle()}
                   onClick={() => {
                     logOut();
                     setExpanded(false);
@@ -83,6 +87,7 @@ const Navigation = () => {
               </>
             ) : (
               <NavLink
+                style={getStyle()}
                 onClick={() => {
                   setShowModal(true);
                   setExpanded(false);

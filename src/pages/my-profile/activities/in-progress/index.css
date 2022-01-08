@@ -68,6 +68,32 @@
   animation: pulse-animation 1.5s 3;
 }
 
+
+.progress-card {
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
+  border-radius: 10px;
+}
+
+.waiting-check > input[type=checkbox] {
+  background-image: url("./dash.png") !important;
+  background-color: #EAE2B6 !important;
+  border-color: #EAE2B6 !important;
+}
+
+.done-check > input[type=checkbox] {
+  background-color: #558776 !important;
+  border-color: #558776 !important;
+}
+
+/*.progress {*/
+/*  background-color: #EAE2B6 !important*/
+/*}*/
+
+/*.progress-bar{*/
+/*  background-color: #558776 !important*/
+/*}*/
+
 @keyframes pulse-animation {
   0% {
     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.15);
