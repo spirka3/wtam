@@ -110,7 +110,13 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
             padding: "0.25rem",
           }}
         >
-          <Card.Title className="text-center card-title mb-2">
+          <Card.Title
+            className="text-center card-title mb-2"
+            style={{
+              whiteSpace: name.length === 13 && "nowrap",
+              fontSize: name.length >= 13 && "1.20rem",
+            }}
+          >
             {name}
           </Card.Title>
           <ButtonGroup className="card-btns">
