@@ -15,18 +15,6 @@ const LoginForm = ({ handleSubmit, authError, switchForm }) => {
         <Error error={authError} />
         <Submit className="btn-block">Prihlasit sa</Submit>
       </Form>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "1rem",
-        }}
-      >
-        <p onClick={switchForm} className="form-btn">
-          <span style={{ color: "black" }}>Nemas ucet?</span> Zaregistruj sa
-        </p>
-        <p className="form-btn">Zabudol som heslo</p>
-      </div>
     </div>
   );
 };

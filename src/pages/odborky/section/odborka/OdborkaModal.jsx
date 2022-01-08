@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from "react";
 
 import { Modal, Button } from "react-bootstrap";
+import { Redirect } from "react-router";
 
-const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
+const OdborkaModal = ({ isDone, odborka, onHide, addItem, isAdded }) => {
+  const [tab, setTab] = useState("");
   const [stupen, setStupen] = useState(odborka.items[0]);
   const [stupenButtonName, setStupenButtonName] = useState(
     "Zobraz Červený stupeň"
   );
 
-  const btnColor = isAdded ? "#A3A847" : "#558776";
-  const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
+  let btnColor = "";
+  if (isDone) {
+    btnColor = "#bec454";
+  } else if (isAdded) {
+    btnColor = "#e38201";
+  } else {
+    btnColor = "#558776";
+  }
+
+  let btnText = "";
+  if (isDone) {
+    btnText = "Získané";
+  } else if (isAdded) {
+    btnText = "Rozpracované";
+  } else {
+    btnText = "Pridať odborku";
+  }
 
   const taskMapping = stupen.tasks.map((task) => {
     return <li key={task.id}>{task.description}</li>;
   });
-
-  const showItem = () => {
-    window.location.replace("/progres");
-  };
 
   useEffect(() => {
     if (stupen.level === "Zelený") {
@@ -37,44 +50,40 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
     }
   };
 
-  const BasicTitle = () => {
+  if (tab === "progress") {
     return (
-      <>
-        <img
-          style={{
-            display: "inline-block",
-            width: "60px",
-            height: "60px",
-          }}
-          src={stupen.img_url}
-          alt="obr"
-        />
-        <p
-          style={{
-            textAlign: "center",
-            marginLeft: "1rem",
-            display: "inline-block",
-          }}
-        >
-          {stupen.name}
-        </p>
-      </>
+      <Redirect
+        to={{
+          pathname: "/progres",
+          state: { id: "progress" },
+        }}
+      />
     );
-  };
-
-  const AdvancedTitle = () => {
+  }
+  if (tab === "done") {
     return (
-      <div>
-        <img
-          style={{
-            display: "inline-block",
-            width: "60px",
-            height: "60px",
-          }}
-          src={stupen.img_url}
-          alt="obr"
-        />
-        <div>
+      <Redirect
+        to={{
+          pathname: "/progres",
+          state: { id: "done" },
+        }}
+      />
+    );
+  }
+
+  return (
+    <>
+      <Modal.Header closeButton style={{ textAlign: "center" }}>
+        <Modal.Title className="mx-0">
+          <img
+            style={{
+              display: "inline-block",
+              width: "60px",
+              height: "60px",
+            }}
+            src={stupen.img_url}
+            alt="obr"
+          />
           <p
             style={{
               textAlign: "center",
@@ -84,18 +93,6 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
           >
             {stupen.name}
           </p>
-          <p onClick={stupenButtonHandle}>{stupenButtonName}</p>
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <>
-      <Modal.Header closeButton style={{ textAlign: "center" }}>
-        <Modal.Title className="mx-0">
-          <BasicTitle />
-          {/*{odborka.items.length === 1 ? <BasicTitle /> : <AdvancedTitle />}*/}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -118,10 +115,12 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
           }}
           title={!isAdded && "Po pridaní odborky môžeš začať splňať úlohy"}
           onClick={() => {
-            if (isAdded) {
-              showItem();
+            if (isDone) {
+              setTab("done");
+            } else if (isAdded) {
+              setTab("progress");
             } else {
-              addItem(stupen.id);
+              addItem(odborka.items[0].id);
             }
           }}
         >

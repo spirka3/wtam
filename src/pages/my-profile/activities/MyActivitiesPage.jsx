@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs, Tab, Spinner } from "react-bootstrap";
 import InProgress from "./in-progress/InProgress";
 import Achieved from "./achieved/Achieved";
@@ -6,7 +6,9 @@ import Achieved from "./achieved/Achieved";
 import "./in-progress/index.css";
 import { useActivityContext } from "../../../providers/ActivityProvider";
 
-const MyActivitiesPage = () => {
+const MyActivitiesPage = ({ location }) => {
+  const [defaultTab, setDefaultTab] = useState(location.state.tab);
+
   const { activities } = useActivityContext();
 
   const userActivities = activities.active;
@@ -26,7 +28,7 @@ const MyActivitiesPage = () => {
     <div className="center my-activities-container mb-5">
       <div className="col-12">
         <Tabs
-          defaultActiveKey="progress"
+          defaultActiveKey={defaultTab}
           id="uncontrolled-tab-example"
           className={`mb-3 my-tabs`}
         >

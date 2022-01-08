@@ -13,11 +13,14 @@ import {
   GrLayer,
   MdOutlineAddCircle,
 } from "react-icons/all";
+import { Redirect } from "react-router";
 
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const { auth } = useAuthContext();
 
   console.log(odborka, isDone);
+
+  const [tab, setTab] = useState("");
 
   const { name, id, img_url: image } = odborka.items[0];
 
@@ -71,38 +74,33 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
     btnText = "Pridať odborku";
   }
 
-  const showItem = () => {
-    window.location.replace("/progres");
-  };
-
-  const imgColor = () => {
-    return "";
-    if (isDone) {
-      return "img-done";
-    } else if (hasActive) {
-      return "img-active";
-    } else {
-      return "img-inactive";
-    }
-  };
+  if (tab === "progress") {
+    return (
+      <Redirect
+        push
+        to={{
+          pathname: "/progres",
+          state: { tab: "progress" },
+        }}
+      />
+    );
+  }
+  if (tab === "done") {
+    return (
+      <Redirect
+        push
+        to={{
+          pathname: "/progres",
+          state: { tab: "achieved" },
+        }}
+      />
+    );
+  }
 
   return (
     <div key={id} className="my-card col-6 col-sm-4 col-lg-3">
-      {/*<img*/}
-      {/*alt="dve úrovne"*/}
-      {/*src={"/images/two-cards.svg"}*/}
-      {/*<BsFillLayersFill*/}
-      {/*  width="20"*/}
-      {/*  height="20"*/}
-      {/*  style={{*/}
-      {/*    position: "absolute",*/}
-      {/*    top: "3.5rem",*/}
-      {/*    right: "3.5rem",*/}
-      {/*    // transform: "rotate(90deg)",*/}
-      {/*  }}*/}
-      {/*/>*/}
       <Card onClick={toggleOdborkaModal}>
-        <Card.Img className={imgColor()} variant="top" src={image} />
+        <Card.Img variant="top" src={image} />
         <Card.Body
           className="card-body"
           style={{
@@ -110,13 +108,7 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
             padding: "0.25rem",
           }}
         >
-          <Card.Title
-            className="text-center card-title mb-2"
-            style={{
-              whiteSpace: name.length === 13 && "nowrap",
-              fontSize: name.length >= 13 && "1.20rem",
-            }}
-          >
+          <Card.Title className="text-center card-title mb-2">
             {name}
           </Card.Title>
           <ButtonGroup className="card-btns">
@@ -126,8 +118,10 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
               variant={btnVariant}
               onClick={(e) => {
                 e.stopPropagation();
-                if (isAdded) {
-                  showItem();
+                if (isDone) {
+                  setTab("done");
+                } else if (isAdded) {
+                  setTab("progress");
                 } else {
                   addItem(odborka.items[0].id);
                 }
@@ -155,6 +149,7 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
           {showLoginModal && <AuthModal onHide={toggleLoginModal} onlyBody />}
           {!showLoginModal && (
             <OdborkaModal
+              isDone={isDone}
               addItem={addItem}
               odborka={odborka}
               show={show}

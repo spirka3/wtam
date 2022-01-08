@@ -15,7 +15,7 @@ import { getItem } from "./utils/functions";
 function Switcher() {
   const PrivateRoute = ({ component: Component, ...rest }) => {
     return getItem("auth").token ? (
-      <Route exact {...rest} component={() => <Component />} />
+      <Route exact {...rest} component={() => <Component {...rest} />} />
     ) : (
       <AuthModal action="login" />
     );

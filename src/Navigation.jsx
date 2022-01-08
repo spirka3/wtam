@@ -72,7 +72,6 @@ const Navigation = () => {
             <MyNavLink to="/ocenenia" name="Ocenenia" />
             {auth.token ? (
               <>
-                {/*<ProfileDropDown />*/}
                 <MyNavLink to="/progres" name="Moje aktivity" />
                 <NavLink
                   style={getStyle()}
