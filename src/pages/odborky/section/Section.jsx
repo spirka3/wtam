@@ -43,8 +43,7 @@ const Section = ({
           const filtered = sortedActivities.filter(
             (activity) => !auth.user || !activeIds.includes(activity.id)
           );
-          // const collection = collect(filtered);
-          const collection = collect(sortedActivities);
+          const collection = collect(filtered);
           const groupByName = collection.groupBy("name");
           setListedActivities(groupByName.toArray());
 

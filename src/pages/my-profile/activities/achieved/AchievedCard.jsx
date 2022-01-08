@@ -4,7 +4,7 @@ import MiniCarousel from "./MiniCarousel";
 
 const AchievedCard = ({ color, title, number, url }) => {
   return (
-    <Card>
+    <Card className="mb-4">
       <Card.Header
         style={{
           backgroundColor: color,
@@ -34,7 +34,7 @@ const AchievedCard = ({ color, title, number, url }) => {
         className="text-muted"
         style={{ display: "flex", justifyContent: "space-between" }}
       >
-        <span>Nazov</span>
+        <span>Nazov aktivity</span>
         <span>Ziskane pred 2 dnami</span>
       </Card.Footer>
     </Card>

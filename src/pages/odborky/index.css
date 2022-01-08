@@ -39,7 +39,7 @@
 
     transform: translate(-50%, -50%);
     transition: all 0.3s ease-in-out;
-    visibility: hidden !important;
+    /*visibility: hidden !important;*/
 }
 
 .card-btn {
@@ -99,11 +99,4 @@
         padding: 2rem !important;
     }
 }
-
-@media screen and (max-width: 765px) {
-    .card-btns {
-        display: none !important;
-    }
-}
-
 

@@ -12,6 +12,8 @@ const MyActivitiesPage = () => {
   const userActivities = activities.active;
   const achievedActivities = activities.completed;
 
+  console.log("achievedActivities", achievedActivities);
+
   if (userActivities === undefined || achievedActivities === undefined) {
     return (
       <div className="center my-activities-container">

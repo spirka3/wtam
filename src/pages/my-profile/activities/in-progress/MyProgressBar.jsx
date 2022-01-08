@@ -3,7 +3,7 @@ import { ProgressBar } from "react-bootstrap";
 
 const MyProgressBar = ({ waitingLen, doneLen, tasks }) => {
   const progressBarValue = (doneLen / tasks.length) * 100;
-  const progressBarValue2 = ((doneLen + waitingLen) / tasks.length) * 100;
+  const progressBarValue2 = (waitingLen / tasks.length) * 100;
 
   if (progressBarValue === -1) {
     return (

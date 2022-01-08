@@ -17,7 +17,7 @@ import {
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const { auth } = useAuthContext();
 
-  console.log(odborka);
+  console.log(odborka, isDone);
 
   const { name, id, img_url: image } = odborka.items[0];
 
@@ -53,8 +53,23 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const show = showOdborkaModal || showLoginModal;
 
   const btnVariant = isAdded ? "success" : "primary";
-  const btnColor = isAdded ? "#A3A847" : "#558776";
-  const btnText = isAdded ? "Ukáž progres" : "Pridať odborku";
+  let btnColor = "";
+  if (isDone) {
+    btnColor = "#bec454";
+  } else if (isAdded) {
+    btnColor = "#e38201";
+  } else {
+    btnColor = "#558776";
+  }
+
+  let btnText = "";
+  if (isDone) {
+    btnText = "Získané";
+  } else if (isAdded) {
+    btnText = "Rozpracované";
+  } else {
+    btnText = "Pridať odborku";
+  }
 
   const showItem = () => {
     window.location.replace("/progres");
@@ -115,14 +130,11 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
                 backgroundColor: btnColor,
                 borderColor: btnColor,
                 color: "white",
+                width: "8rem",
               }}
               title="Po pridaní odborky môžeš začať splňať úlohy"
             >
               {btnText}
-            </Button>
-            <Button size="sm" className="card-btn" variant={`outline-primary`}>
-              Detail{" "}
-              <FcViewDetails size={20} style={{ marginTop: "-0.25rem" }} />
             </Button>
           </ButtonGroup>
         </Card.Body>

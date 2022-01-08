@@ -25,16 +25,17 @@ const RightColumn = ({
     padding: "2rem", // .75rem pre mobil | 2rem desktop
     backgroundSize: "cover",
     zIndex: "-5",
+    cursor: "pointer",
   };
 
   // TODO podkategorie pre skauti a roveri
   // Príroda Dobrovoľníctvo a občianstvo Zručnosti Šport Umenie a kultúra
   const subCategories = [
-    "Príroda",
     "Dobrovoľníctvo a občianstvo",
-    "Zručnosti",
+    "Príroda",
     "Šport",
     "Umenie a kultúra",
+    "Zručnosti",
   ];
 
   const SectionButton = ({ text, to }) => {
@@ -58,16 +59,31 @@ const RightColumn = ({
   const SelectButton = ({ text, to }) => {
     return (
       <Dropdown
-        style={{ zIndex: "5" }}
+        style={{ zIndex: "50" }}
         as={ButtonGroup}
         key="info"
         variant="light"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <SectionButton text={text} to={to} />
         <Dropdown.Toggle split variant="light" id="dropdown-split-basic" />
         <Dropdown.Menu>
           {subCategories.map((value, i) => (
-            <Dropdown.Item eventKey={i}>{value}</Dropdown.Item>
+            <SectionLink
+              activeClass="active-section"
+              to={"_" + i}
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={400}
+              onSetActive={() => setActiveSection("_" + i)}
+            >
+              <Dropdown.Item eventKey={i} onClick={setActiveSection("_" + i)}>
+                {value}
+              </Dropdown.Item>
+            </SectionLink>
           ))}
         </Dropdown.Menu>
       </Dropdown>
@@ -78,21 +94,31 @@ const RightColumn = ({
     const a = activeSection === to ? 0.35 : 0.1;
 
     return (
-      <div
-        className="section-category"
-        style={{
-          ...divStyle,
-          boxShadow: `3px 3px 10px 4px rgba(0,0,0,${a})`,
-          backgroundImage: `url(${url})`,
-        }}
-        // onClick={() => setActiveSection(to)}
+      <SectionLink
+        activeClass="active-section"
+        to={to}
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={400}
+        onSetActive={() => setActiveSection(to)}
       >
-        {text === "Skauti a rangeri" ? (
-          <SelectButton text={text} to={to} />
-        ) : (
-          <SectionButton text={text} to={to} />
-        )}
-      </div>
+        <div
+          className="section-category"
+          style={{
+            ...divStyle,
+            boxShadow: `3px 3px 10px 4px rgba(0,0,0,${a})`,
+            backgroundImage: `url(${url})`,
+          }}
+          onClick={() => setActiveSection(to)}
+        >
+          {text === "Skauti a rangeri" ? (
+            <SelectButton text={text} to={to} />
+          ) : (
+            <SectionButton text={text} to={to} />
+          )}
+        </div>
+      </SectionLink>
     );
   };
 
@@ -161,7 +187,7 @@ const RightColumn = ({
             }}
             checked={filterIsChecked}
             type="checkbox"
-            label="hotové"
+            label="získané"
             inline
           />
         </div>

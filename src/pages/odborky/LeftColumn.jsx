@@ -82,6 +82,7 @@ const LeftColumn = ({ vekKat, progKat, filterIsChecked, searchText }) => {
         display: "flex",
         justifyContent: "space-between",
         flexWrap: "wrap",
+        marginBottom: "9rem",
       }}
     >
       {activities.active === undefined ? (

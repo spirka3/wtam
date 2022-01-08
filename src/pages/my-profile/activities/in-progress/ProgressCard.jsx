@@ -185,6 +185,7 @@ const ProgressCard = ({ aktivita }) => {
                 ) : null}
                 <Button
                   className="button-margin"
+                  size="sm"
                   variant="danger"
                   onClick={deleteActivityHandle}
                   title="Vymažú sa aj všetky body, ktoré boli splené"
