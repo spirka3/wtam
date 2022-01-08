@@ -1,13 +1,12 @@
 .odborky .my-card {
   display: flex;
+  cursor: "pointer";
   background-color: "rgba(255, 255, 255, 0.5)";
   z-index: "99";
-  position: relative;
 }
 
 .my-card {
   justify-content: center;
-  cursor: pointer;
 }
 
 .odborky .card {

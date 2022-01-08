@@ -19,8 +19,6 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
     window.location.replace("/progres");
   };
 
-  console.log(stupen);
-
   useEffect(() => {
     if (stupen.level === "Zelený") {
       setStupenButtonName("Zobraz Červený stupeň");

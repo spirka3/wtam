@@ -9,9 +9,11 @@ import "./index.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
-  const { name, id, img_url: image } = odborka.items[0];
-
   const { auth } = useAuthContext();
+
+  console.log(odborka);
+
+  const { name, id, img_url: image } = odborka.items[0];
 
   const [showOdborkaModal, setShowOdborkaModal] = useState(false);
   const toggleOdborkaModal = () => setShowOdborkaModal((prev) => !prev);
@@ -62,7 +64,7 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   };
 
   return (
-    <div className="my-card col-6 col-sm-4 col-lg-3">
+    <div key={id} className="my-card col-6 col-sm-4 col-lg-3">
       <Card onClick={toggleOdborkaModal}>
         <Card.Img className={imgColor()} variant="top" src={image} />
         <Card.Body

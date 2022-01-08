@@ -4,7 +4,7 @@ import OdborkaCard from "./odborka/OdborkaCard";
 import { firstWord } from "../../../utils/functions";
 import { Spinner } from "react-bootstrap";
 import { useAuthContext } from "../../../providers/AuthProvider";
-import collect from "collect.js";
+import { collect } from "collect.js";
 
 const Section = ({
   refer,
@@ -18,7 +18,7 @@ const Section = ({
 }) => {
   const { auth } = useAuthContext();
 
-  const [allActivies, setAllActivies] = useState([]);
+  const [allActivities, setAllActivities] = useState([]);
   const [listedActivities, setListedActivities] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,13 +38,15 @@ const Section = ({
           const sortedActivities = res.data.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
-          setAllActivies(sortedActivities);
-          setListedActivities(filterByCheckBox(sortedActivities));
 
-          const collection = collect(sortedActivities);
-          const groupBy = collection.groupBy("name");
+          setAllActivities(sortedActivities);
 
-          setAllGroupedActivities(groupBy.toArray());
+          const filtered = sortedActivities.filter(
+            (activity) => !activeIds.includes(activity.id)
+          );
+          const collection = collect(filtered);
+          const groupByName = collection.groupBy("name");
+          setListedActivities(groupByName.toArray());
 
           setLoading(false);
         })
@@ -71,53 +73,72 @@ const Section = ({
   }, [id, progKat]);
 
   useEffect(() => {
-    const activitiesByCheck = filterByCheckBox(allActivies);
+    const activitiesByCheck = filterByCheckBox(allActivities);
     const activitiesByCheckAndText = filterByText(activitiesByCheck);
+
     setListedActivities(activitiesByCheckAndText);
   }, [searchText, filterIsChecked]);
 
   const filterByCheckBox = (activities) => {
+    const collection = collect(activities);
+    const groupByName = collection.groupBy("name");
+
     if (!filterIsChecked || !auth.token) {
-      return activities;
+      return groupByName.toArray();
     }
-    return activities.filter((activity) => !activeIds.includes(activity.id));
+
+    const filtered = activities.filter(
+      (activity) => !activeIds.includes(activity.id)
+    );
+
+    const collectFiltered = collect(filtered);
+    const groupByNameFiltered = collectFiltered.groupBy("name");
+
+    return groupByNameFiltered.toArray();
   };
 
   const filterByText = (activities) => {
     if (searchText === "") {
       return activities;
     }
+
     const normalizedSearchText = searchText
       .toLowerCase()
       .normalize("NFD")
       .replace(/\p{Diacritic}/gu, "");
 
-    return activities.filter((activity) => {
+    if (!filterIsChecked) {
+      const filtered = allActivities.filter((activity) => {
+        const normalizedName = activity.name
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/\p{Diacritic}/gu, "");
+        return normalizedName.includes(normalizedSearchText);
+      });
+      const collectfiltered = collect(filtered);
+      const filteredGroupByName = collectfiltered.groupBy("name");
+      return filteredGroupByName.toArray();
+    }
+
+    const filteredChecked = allActivities.filter(
+      (activity) => !activeIds.includes(activity.id)
+    );
+    const filtered = filteredChecked.filter((activity) => {
       const normalizedName = activity.name
         .toLowerCase()
         .normalize("NFD")
         .replace(/\p{Diacritic}/gu, "");
       return normalizedName.includes(normalizedSearchText);
     });
+
+    const collectfiltered = collect(filtered);
+    const filteredGroupByName = collectfiltered.groupBy("name");
+
+    return filteredGroupByName.toArray();
   };
 
-  /*   const ActivityCards = () =>
-    listedActivities.map((activity) => {
-      return (
-        <OdborkaCard
-          key={activity.id}
-          id={activity.id}
-          image={activity.img_url}
-          name={activity.name}
-          odborka={activity}
-          hasActive={auth.token && activeIds.includes(activity.id)}
-          isDone={auth.token && completed.includes(activity.id)}
-        />
-      );
-    }); */
-
   const ActivityCards = () =>
-    allGroupedActivities.map((activity) => {
+    listedActivities.map((activity) => {
       return (
         <OdborkaCard
           key={activity.items[0].id}
