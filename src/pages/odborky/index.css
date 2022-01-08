@@ -26,21 +26,53 @@
     background: #0977ab;
 }
 
+.card-title {
+    max-width: 120px;
+    word-wrap: break-word;
+}
+
+.card-btns {
+    bottom: -10px;
+    left: 50%;
+
+    border-radius: 50px !important;
+
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+    visibility: hidden !important;
+}
+
+.card-btn {
+    border-radius: 50px !important;
+}
+
+.my-card:hover .card-btns {
+    visibility: visible !important;
+    bottom: 0 !important;
+}
+
+@media screen and (min-width: 992px) {
+    .fixed-sidebar {
+        border-left: 1px solid #ececec;
+        padding-left: 30px !important;
+    }
+}
+
 .fixed-sidebar{
-	position: relative;
+    position: relative;
     width: inherit;
 }
 
 .fixed-sidebar h4{
-	margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 
 @media screen and (min-width: 766px) {
-	.fixed-sidebar{
-		position: fixed;
-		max-width: 380px;
-		width: inherit;
-		padding: 0 20px 0 0;
-	}	
-  }
+    .fixed-sidebar{
+        position: fixed;
+        max-width: 380px;
+        width: inherit;
+        padding: 0 20px 0 0;
+    }
+}

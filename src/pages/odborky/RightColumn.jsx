@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form, Dropdown, Button } from "react-bootstrap";
-// import { Link } from "react-router-dom";
 import { Link as SectionLink } from "react-scroll";
 import { useAuthContext } from "../../providers/AuthProvider";
 
@@ -22,8 +21,8 @@ const RightColumn = ({
     verticalAlign: "middle",
     textAlign: "center",
     width: "100%",
-    marginBottom: "1.5rem",
-    padding: "2rem",
+    marginBottom: "1.5rem", // .75rem pre mobil | 1.5rem desktop
+    padding: "2rem", // .75rem pre mobil | 2rem desktop
     backgroundSize: "cover",
   };
 
@@ -125,23 +124,46 @@ const RightColumn = ({
           onChange={(e) => setSearchText(e.target.value)}
           placeholder="Hľadaj podľa názvu odborky"
         />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <span />
-          <Form.Group className="mb-4" controlId="formBasicCheckbox">
-            <Form.Check
-              onChange={() => setFilterIsChecked((prev) => !prev)}
-              style={{
-                fontSize: ".9rem",
-                fontWeight: "500",
-                visibility: auth.token ? "visible" : "hidden",
-              }}
-              checked={filterIsChecked}
-              type="checkbox"
-              label="Skryť moje aktivity"
-            />
-          </Form.Group>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          {/*<span style={{ fontSize: "0.9rem" }}>Ukáž</span>*/}
+          <Form.Check
+            onChange={() => setFilterIsChecked((prev) => !prev)}
+            style={{
+              fontSize: ".9rem",
+              fontWeight: "500",
+              visibility: auth.token ? "visible" : "hidden",
+            }}
+            checked={filterIsChecked}
+            type="checkbox"
+            label="nezačaté"
+            inline
+          />
+          <Form.Check
+            onChange={() => setFilterIsChecked((prev) => !prev)}
+            style={{
+              fontSize: ".9rem",
+              fontWeight: "500",
+              visibility: auth.token ? "visible" : "hidden",
+            }}
+            checked={filterIsChecked}
+            type="checkbox"
+            label="rozpracované"
+            inline
+          />
+          <Form.Check
+            onChange={() => setFilterIsChecked((prev) => !prev)}
+            style={{
+              fontSize: ".9rem",
+              fontWeight: "500",
+              visibility: auth.token ? "visible" : "hidden",
+            }}
+            checked={filterIsChecked}
+            type="checkbox"
+            label="hotové"
+            inline
+          />
         </div>
-        {/*<hr className="d-md-none" />*/}
+        <hr className="d-md-none" />
       </div>
     </div>
   );

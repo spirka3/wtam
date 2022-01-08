@@ -5,7 +5,7 @@ const MobileMenuFixed = () => {
   return (
     <div className="mobile-menu-fixed">
       <ul>
-        <li class="text-left">
+        <li className="text-left">
           <a href="/odborky">
             <FaVolleyballBall
               color="#ffff"
@@ -15,10 +15,10 @@ const MobileMenuFixed = () => {
               }}
               size={20}
             />
-            <span>Oborky</span>
+            <span>Vyzvy</span>
           </a>
         </li>
-        <li class="text-right">
+        <li className="text-right">
           <a href="/progres">
             <FiActivity
               color="#ffff"
@@ -28,7 +28,33 @@ const MobileMenuFixed = () => {
               }}
               size={20}
             />
-            <span>Moje aktivity</span>
+            <span>Ocenenia</span>
+          </a>
+        </li>
+        <li className="text-left">
+          <a href="/odborky">
+            <FaVolleyballBall
+              color="#ffff"
+              style={{
+                marginRight: "0.5rem",
+                fill: "#ffff",
+              }}
+              size={20}
+            />
+            <span>MojeAktivity</span>
+          </a>
+        </li>
+        <li className="text-left">
+          <a href="/odborky">
+            <FaVolleyballBall
+              color="#ffff"
+              style={{
+                marginRight: "0.5rem",
+                fill: "#ffff",
+              }}
+              size={20}
+            />
+            <span>Odhlasit</span>
           </a>
         </li>
       </ul>

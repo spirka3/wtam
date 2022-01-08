@@ -7,6 +7,7 @@ import axios from "axios";
 
 import "./index.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { FcViewDetails, MdOutlineAddCircle } from "react-icons/all";
 
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const { auth } = useAuthContext();
@@ -54,6 +55,7 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   };
 
   const imgColor = () => {
+    return "";
     if (isDone) {
       return "img-done";
     } else if (hasActive) {
@@ -80,14 +82,14 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
           <ButtonGroup className="card-btns">
             <Button
               size="sm"
-              className="card-btn"
+              className="card-btn mr-1"
               variant={btnVariant}
               onClick={(e) => {
                 e.stopPropagation();
                 if (isAdded) {
                   showItem();
                 } else {
-                  addItem(odborka.id);
+                  addItem(odborka.items[0].id);
                 }
               }}
               // style={{
@@ -98,12 +100,9 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
             >
               {btnText}
             </Button>
-            <Button
-              size="sm"
-              className="card-btn"
-              variant={`outline-${btnVariant}`}
-            >
-              Detail
+            <Button size="sm" className="card-btn" variant={`outline-primary`}>
+              Detail{" "}
+              <FcViewDetails size={20} style={{ marginTop: "-0.25rem" }} />
             </Button>
           </ButtonGroup>
         </Card.Body>

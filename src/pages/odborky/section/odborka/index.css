@@ -1,8 +1,8 @@
 .odborky .my-card {
   display: flex;
-  cursor: "pointer";
-  background-color: "rgba(255, 255, 255, 0.5)";
-  z-index: "99";
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  /*z-index:99;*/
 }
 
 .my-card {
@@ -16,7 +16,7 @@
 }
 
 .aktivity-section {
-  padding-top: 0rem;
+  padding-top: 0;
 }
 
 .odborky .card-img-top {

@@ -12,10 +12,8 @@
     height: auto;
 }
 
-.card-title {
-    max-width: 120px;
-    word-wrap: break-word;
-}
+
+
 
 .center {
     display: flex;
@@ -23,29 +21,12 @@
     align-items: center;
 }
 
-.card-btns {
-    bottom: -10px;
-    position: absolute;
-    left: 50%;
 
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease-in-out;
-    visibility: hidden !important;
-}
-
-.my-card:hover .card-btns {
-    visibility: visible !important;
-    bottom: 0 !important;
-}
 
 .progress-card {
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.15);
 }
-
-/*.progress {*/
-/*    background-color: #cbcaca !important*/
-/*}*/
 
 .progress-bar{
     background-color: #85CBF4 !important
@@ -229,6 +210,10 @@ footer{
 	footer{
 		margin-bottom: 0;
 	}
+}
+
+input[type="checkbox"] {
+    margin-top: 4px !important;
 }
 
 /*.nav-tabs .nav-item > button.active {*/

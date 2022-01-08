@@ -80,7 +80,7 @@ const Formik = ({
             color: "black",
           }}
         >
-          Poslať vedúcemu
+          Poslať správu
         </Button>
         <div className="btn btn-light">
           <input
@@ -91,7 +91,7 @@ const Formik = ({
           />
           <div onClick={handleUpload}>
             <IoIosAttach size={20} />
-            <span>{uploadedFileName ? uploadedFileName : "Vyber súbor"}</span>
+            <span>{uploadedFileName ? uploadedFileName : "Príloha"}</span>
           </div>
         </div>
       </div>

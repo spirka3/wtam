@@ -6,7 +6,7 @@ import {
   useAccordionButton,
   Button,
 } from "react-bootstrap";
-import { GiSandsOfTime } from "react-icons/all";
+import { GiSandsOfTime, MdDelete } from "react-icons/all";
 import Formik from "./Formik";
 import MyProgressBar from "./MyProgressBar";
 import axios from "axios";
@@ -164,7 +164,8 @@ const ProgressCard = ({ aktivita }) => {
                   variant="danger"
                   onClick={deleteActivityHandle}
                 >
-                  Vymazať aktivitu
+                  Vymazať aktivitu{" "}
+                  <MdDelete style={{ marginTop: "-0.25rem" }} />
                 </Button>
               </Accordion>
             </div>

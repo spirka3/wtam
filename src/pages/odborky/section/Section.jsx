@@ -22,7 +22,6 @@ const Section = ({
   const [listedActivities, setListedActivities] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [allGroupedActivities, setAllGroupedActivities] = useState([]);
 
   const activeIds = userActivities.map((a) => a.id);
 
@@ -42,9 +41,10 @@ const Section = ({
           setAllActivities(sortedActivities);
 
           const filtered = sortedActivities.filter(
-            (activity) => !activeIds.includes(activity.id)
+            (activity) => !auth.user || !activeIds.includes(activity.id)
           );
-          const collection = collect(filtered);
+          // const collection = collect(filtered);
+          const collection = collect(sortedActivities);
           const groupByName = collection.groupBy("name");
           setListedActivities(groupByName.toArray());
 
