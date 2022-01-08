@@ -1,0 +1,2 @@
+ked ako odhlaseny pridavam odborku, tak po prihlaseni zavrie modal
+ked ako odhlaseny pozeram odborky, tak su filtrovane
