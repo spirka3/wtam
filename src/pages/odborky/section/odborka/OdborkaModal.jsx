@@ -37,19 +37,44 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
     }
   };
 
-  return (
-    <>
-      <Modal.Header closeButton style={{ textAlign: "center" }}>
-        <Modal.Title className="mx-0">
-          <img
-            style={{
-              display: "inline-block",
-              width: "60px",
-              height: "60px",
-            }}
-            src={stupen.img_url}
-            alt="obr"
-          />
+  const BasicTitle = () => {
+    return (
+      <>
+        <img
+          style={{
+            display: "inline-block",
+            width: "60px",
+            height: "60px",
+          }}
+          src={stupen.img_url}
+          alt="obr"
+        />
+        <p
+          style={{
+            textAlign: "center",
+            marginLeft: "1rem",
+            display: "inline-block",
+          }}
+        >
+          {stupen.name}
+        </p>
+      </>
+    );
+  };
+
+  const AdvancedTitle = () => {
+    return (
+      <div>
+        <img
+          style={{
+            display: "inline-block",
+            width: "60px",
+            height: "60px",
+          }}
+          src={stupen.img_url}
+          alt="obr"
+        />
+        <div>
           <p
             style={{
               textAlign: "center",
@@ -59,6 +84,18 @@ const OdborkaModal = ({ odborka, onHide, addItem, isAdded }) => {
           >
             {stupen.name}
           </p>
+          <p onClick={stupenButtonHandle}>{stupenButtonName}</p>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <Modal.Header closeButton style={{ textAlign: "center" }}>
+        <Modal.Title className="mx-0">
+          <BasicTitle />
+          {/*{odborka.items.length === 1 ? <BasicTitle /> : <AdvancedTitle />}*/}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

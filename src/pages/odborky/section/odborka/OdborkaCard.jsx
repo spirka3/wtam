@@ -7,7 +7,12 @@ import axios from "axios";
 
 import "./index.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { FcViewDetails, MdOutlineAddCircle } from "react-icons/all";
+import {
+  BsFillLayersFill,
+  FcViewDetails,
+  GrLayer,
+  MdOutlineAddCircle,
+} from "react-icons/all";
 
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const { auth } = useAuthContext();
@@ -68,6 +73,19 @@ const OdborkaCard = ({ odborka, hasActive, isDone }) => {
 
   return (
     <div key={id} className="my-card col-6 col-sm-4 col-lg-3">
+      {/*<img*/}
+      {/*alt="dve úrovne"*/}
+      {/*src={"/images/two-cards.svg"}*/}
+      {/*<BsFillLayersFill*/}
+      {/*  width="20"*/}
+      {/*  height="20"*/}
+      {/*  style={{*/}
+      {/*    position: "absolute",*/}
+      {/*    top: "3.5rem",*/}
+      {/*    right: "3.5rem",*/}
+      {/*    // transform: "rotate(90deg)",*/}
+      {/*  }}*/}
+      {/*/>*/}
       <Card onClick={toggleOdborkaModal}>
         <Card.Img className={imgColor()} variant="top" src={image} />
         <Card.Body

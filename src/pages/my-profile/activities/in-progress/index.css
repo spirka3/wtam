@@ -76,7 +76,7 @@
 }
 
 .waiting-check > input[type=checkbox] {
-  background-image: url("./dash.png") !important;
+  background-image: url("../../../../../public/images/dash.png") !important;
   background-color: #EAE2B6 !important;
   border-color: #EAE2B6 !important;
 }
