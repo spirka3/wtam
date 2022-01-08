@@ -53,9 +53,10 @@ const OdborkaModal = ({ isDone, odborka, onHide, addItem, isAdded }) => {
   if (tab === "progress") {
     return (
       <Redirect
+        push
         to={{
           pathname: "/progres",
-          state: { id: "progress" },
+          state: { tab: "progress" },
         }}
       />
     );
@@ -63,9 +64,10 @@ const OdborkaModal = ({ isDone, odborka, onHide, addItem, isAdded }) => {
   if (tab === "done") {
     return (
       <Redirect
+        push
         to={{
           pathname: "/progres",
-          state: { id: "done" },
+          state: { tab: "achieved" },
         }}
       />
     );
