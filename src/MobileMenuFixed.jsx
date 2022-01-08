@@ -1,13 +1,13 @@
 import React from "react";
-import { FaVolleyballBall, FiActivity } from "react-icons/all";
+import { FaVolleyballBall, FaMedal, AiFillCompass } from "react-icons/all";
 
 const MobileMenuFixed = () => {
   return (
     <div className="mobile-menu-fixed">
       <ul>
-        <li className="text-left">
+        <li className="text-left pr-0">
           <a href="/odborky">
-            <FaVolleyballBall
+            <FaMedal
               color="#ffff"
               style={{
                 marginRight: "0.5rem",
@@ -15,24 +15,11 @@ const MobileMenuFixed = () => {
               }}
               size={20}
             />
-            <span>Vyzvy</span>
+            <span>Odborky</span>
           </a>
         </li>
-        <li className="text-right">
+        <li className="text-left">
           <a href="/progres">
-            <FiActivity
-              color="#ffff"
-              style={{
-                marginRight: "0.5rem",
-                fill: "#ffff",
-              }}
-              size={20}
-            />
-            <span>Ocenenia</span>
-          </a>
-        </li>
-        <li className="text-left">
-          <a href="/odborky">
             <FaVolleyballBall
               color="#ffff"
               style={{
@@ -41,20 +28,7 @@ const MobileMenuFixed = () => {
               }}
               size={20}
             />
-            <span>MojeAktivity</span>
-          </a>
-        </li>
-        <li className="text-left">
-          <a href="/odborky">
-            <FaVolleyballBall
-              color="#ffff"
-              style={{
-                marginRight: "0.5rem",
-                fill: "#ffff",
-              }}
-              size={20}
-            />
-            <span>Odhlasit</span>
+            <span>Moje Aktivity</span>
           </a>
         </li>
       </ul>
