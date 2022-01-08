@@ -7,7 +7,7 @@ import "./in-progress/index.css";
 import { useActivityContext } from "../../../providers/ActivityProvider";
 
 const MyActivitiesPage = ({ location }) => {
-  const [defaultTab, setDefaultTab] = useState(location.state.tab);
+  const [defaultTab, setDefaultTab] = useState(location.state?.tab);
 
   const { activities } = useActivityContext();
 
