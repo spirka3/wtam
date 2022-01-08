@@ -22,7 +22,7 @@ const Navigation = () => {
     return {
       backgroundColor: isActiveLink(to) ? "#558776" : "#A3A847",
       fontWeight: 500,
-      color: isActiveLink(to) ? "#fff8ee" : "#fff8ee",
+      color: isActiveLink(to) ? "#fff" : "#fff",
     };
   };
 
@@ -55,11 +55,11 @@ const Navigation = () => {
           <GiStairsGoal
             style={{
               marginRight: "0.5rem",
-              color: "#EAE2B6",
+              color: "#fff",
             }}
             size={35}
           />
-          <h1 className="d-inline appname" style={{ color: "#fff8ee" }}>
+          <h1 className="d-inline appname" style={{ color: "#fff" }}>
             {appName}
           </h1>
         </Navbar.Brand>
