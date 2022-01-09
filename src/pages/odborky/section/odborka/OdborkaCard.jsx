@@ -7,12 +7,6 @@ import axios from "axios";
 
 import "./index.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import {
-  BsFillLayersFill,
-  FcViewDetails,
-  GrLayer,
-  MdOutlineAddCircle,
-} from "react-icons/all";
 import { Redirect } from "react-router";
 
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
