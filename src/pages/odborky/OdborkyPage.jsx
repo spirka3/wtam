@@ -13,7 +13,11 @@ const OdborkyPage = () => {
   const [loading, setLoading] = useState(true);
 
   const [searchText, setSearchText] = useState("");
-  const [filterIsChecked, setFilterIsChecked] = useState(true);
+  const [filterIsChecked, setFilterIsChecked] = useState({
+    nezacate: true,
+    rozpracovane: true,
+    ziskane: true,
+  });
 
   useEffect(() => {
     async function fetchData() {

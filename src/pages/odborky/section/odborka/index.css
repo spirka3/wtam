@@ -31,14 +31,8 @@
   padding: 10px 0;
 }
 
-.img-inactive {
-  filter: grayscale(100%);
-}
-
-.img-done {
-  filter: grayscale(0%);
-}
-
-.img-active {
-  filter: grayscale(75%);
+.sub {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

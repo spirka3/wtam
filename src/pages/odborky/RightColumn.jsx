@@ -155,37 +155,61 @@ const RightColumn = ({
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           {/*<span style={{ fontSize: "0.9rem" }}>Ukáž</span>*/}
           <Form.Check
-            onChange={() => setFilterIsChecked((prev) => !prev)}
+            onChange={() =>
+              setFilterIsChecked((prev) => {
+                return {
+                  ...prev,
+                  nezacate: !prev.nezacate,
+                };
+              })
+            }
+            id="1"
             style={{
               fontSize: ".9rem",
               fontWeight: "500",
               visibility: auth.token ? "visible" : "hidden",
             }}
-            checked={filterIsChecked}
+            checked={filterIsChecked.nezacate}
             type="checkbox"
             label="nezačaté"
             inline
           />
           <Form.Check
-            onChange={() => setFilterIsChecked((prev) => !prev)}
+            onChange={() =>
+              setFilterIsChecked((prev) => {
+                return {
+                  ...prev,
+                  rozpracovane: !prev.rozpracovane,
+                };
+              })
+            }
+            id="2"
             style={{
               fontSize: ".9rem",
               fontWeight: "500",
               visibility: auth.token ? "visible" : "hidden",
             }}
-            checked={filterIsChecked}
+            checked={filterIsChecked.rozpracovane}
             type="checkbox"
             label="rozpracované"
             inline
           />
           <Form.Check
-            onChange={() => setFilterIsChecked((prev) => !prev)}
+            onChange={() =>
+              setFilterIsChecked((prev) => {
+                return {
+                  ...prev,
+                  ziskane: !prev.ziskane,
+                };
+              })
+            }
+            id="3"
             style={{
               fontSize: ".9rem",
               fontWeight: "500",
               visibility: auth.token ? "visible" : "hidden",
             }}
-            checked={filterIsChecked}
+            checked={filterIsChecked.ziskane}
             type="checkbox"
             label="získané"
             inline

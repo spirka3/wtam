@@ -16,12 +16,24 @@ const Section = ({
   userActivities,
   searchText,
 }) => {
+  const subCategories = [
+    "Dobrovoľníctvo a občianstvo",
+    "Príroda",
+    "Šport",
+    "Umenie a kultúra",
+    "Zručnosti",
+  ];
+
   const { auth } = useAuthContext();
 
   const [allActivities, setAllActivities] = useState([]);
   const [listedActivities, setListedActivities] = useState([]);
-  const [completed, setCompleted] = useState([]);
+  const [completedIds, setCompletedIds] = useState([]);
+
+  const [allIds, setAllIds] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [uncompletedIds, setUncompletedIds] = useState([]);
 
   const activeIds = userActivities.map((a) => a.id);
 
@@ -33,18 +45,21 @@ const Section = ({
           activity_type: progKat,
         })
         .then((res) => {
-          console.log(res.data);
           const sortedActivities = res.data.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
 
           setAllActivities(sortedActivities);
+          setAllIds(sortedActivities.map((a) => a.id));
 
-          const filtered = sortedActivities.filter(
-            (activity) => !auth.user || !activeIds.includes(activity.id)
-          );
-          const collection = collect(filtered);
+          const activitiesByCheck = filterByCheckBox(sortedActivities);
+          const activitiesByCheckAndText = filterByText(activitiesByCheck);
+
+          console.log(activitiesByCheckAndText);
+
+          const collection = collect(activitiesByCheckAndText);
           const groupByName = collection.groupBy("name");
+
           setListedActivities(groupByName.toArray());
 
           setLoading(false);
@@ -60,7 +75,7 @@ const Section = ({
         })
         .then((res) => {
           const doneIds = res.data.map((a) => a.id);
-          setCompleted(doneIds);
+          setCompletedIds(doneIds);
         })
         .catch((err) => {
           console.log(err);
@@ -75,25 +90,47 @@ const Section = ({
     const activitiesByCheck = filterByCheckBox(allActivities);
     const activitiesByCheckAndText = filterByText(activitiesByCheck);
 
-    setListedActivities(activitiesByCheckAndText);
+    console.log(activitiesByCheckAndText);
+
+    const collection = collect(activitiesByCheckAndText);
+    const groupByName = collection.groupBy("name");
+
+    setListedActivities(groupByName.toArray());
   }, [searchText, filterIsChecked]);
 
   const filterByCheckBox = (activities) => {
-    const collection = collect(activities);
-    const groupByName = collection.groupBy("name");
+    const uncompleted = allIds
+      .filter((id) => !completedIds.includes(id))
+      .filter((id) => !activeIds.includes(id));
 
-    if (!filterIsChecked || !auth.token) {
-      return groupByName.toArray();
+    const checkCount =
+      filterIsChecked.nezacate +
+      filterIsChecked.rozpracovane +
+      filterIsChecked.ziskane;
+
+    if (checkCount === 0 || checkCount === 3 || !auth.token) {
+      return activities;
     }
 
-    const filtered = activities.filter(
-      (activity) => !activeIds.includes(activity.id)
-    );
+    if (!filterIsChecked.nezacate) {
+      activities = activities.filter(
+        (activity) => !uncompleted.includes(activity.id)
+      );
+    }
 
-    const collectFiltered = collect(filtered);
-    const groupByNameFiltered = collectFiltered.groupBy("name");
+    if (!filterIsChecked.rozpracovane) {
+      activities = activities.filter(
+        (activity) => !activeIds.includes(activity.id)
+      );
+    }
 
-    return groupByNameFiltered.toArray();
+    if (!filterIsChecked.ziskane) {
+      activities = activities.filter(
+        (activity) => !completedIds.includes(activity.id)
+      );
+    }
+
+    return activities;
   };
 
   const filterByText = (activities) => {
@@ -106,23 +143,8 @@ const Section = ({
       .normalize("NFD")
       .replace(/\p{Diacritic}/gu, "");
 
-    if (!filterIsChecked) {
-      const filtered = allActivities.filter((activity) => {
-        const normalizedName = activity.name
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/\p{Diacritic}/gu, "");
-        return normalizedName.includes(normalizedSearchText);
-      });
-      const collectfiltered = collect(filtered);
-      const filteredGroupByName = collectfiltered.groupBy("name");
-      return filteredGroupByName.toArray();
-    }
-
-    const filteredChecked = allActivities.filter(
-      (activity) => !activeIds.includes(activity.id)
-    );
-    const filtered = filteredChecked.filter((activity) => {
+    // if (!filterIsChecked) {
+    const filtered = allActivities.filter((activity) => {
       const normalizedName = activity.name
         .toLowerCase()
         .normalize("NFD")
@@ -130,10 +152,9 @@ const Section = ({
       return normalizedName.includes(normalizedSearchText);
     });
 
-    const collectfiltered = collect(filtered);
-    const filteredGroupByName = collectfiltered.groupBy("name");
+    console.log(filtered);
 
-    return filteredGroupByName.toArray();
+    return filtered;
   };
 
   const ActivityCards = () =>
@@ -143,7 +164,7 @@ const Section = ({
           key={activity.items[0].id}
           odborka={activity}
           hasActive={auth.token && activeIds.includes(activity.items[0].id)}
-          isDone={auth.token && completed.includes(activity.items[0].id)}
+          isDone={auth.token && completedIds.includes(activity.items[0].id)}
         />
       );
     });
@@ -160,6 +181,30 @@ const Section = ({
     );
   };
 
+  const Subsection = ({ name, order }) => {
+    const subsectionFilter = listedActivities
+      .filter((a) => name.includes(a.items[0].expertske_odborky))
+      .map((activity) => (
+        <OdborkaCard
+          key={activity.items[0].id}
+          odborka={activity}
+          hasActive={auth.token && activeIds.includes(activity.items[0].id)}
+          isDone={auth.token && completedIds.includes(activity.items[0].id)}
+        />
+      ));
+    return (
+      <div id={order}>
+        <h4>{name}</h4>
+        <div className="sub">
+          {subsectionFilter.length ? subsectionFilter : <EmptyPhrase />}
+        </div>
+      </div>
+    );
+  };
+
+  const createSubsections = subCategories.map((sub, i) => {
+    return <Subsection name={sub} order={`_${i}`} />;
+  });
   return (
     <div className="aktivity-section w-100" ref={refer}>
       <div id={order}>
@@ -169,7 +214,9 @@ const Section = ({
           <div>
             <h3>{firstWord(name)}</h3>
             <div className="row">
-              {listedActivities.length ? <ActivityCards /> : <EmptyPhrase />}
+              {name === "Skauti a skautky" && createSubsections}
+              {name !== "Skauti a skautky" &&
+                (listedActivities.length ? <ActivityCards /> : <EmptyPhrase />)}
             </div>
           </div>
         )}
