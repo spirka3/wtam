@@ -192,9 +192,16 @@ const Section = ({
           isDone={auth.token && completedIds.includes(activity.items[0].id)}
         />
       ));
+
+    if (subsectionFilter.length === 0) {
+      return null;
+    }
+
     return (
       <div id={order}>
-        <h4>{name}</h4>
+        <h4 style={{ color: "gray" }}>
+          <i>{name}</i>
+        </h4>
         <div className="sub">
           {subsectionFilter.length ? subsectionFilter : <EmptyPhrase />}
         </div>
@@ -205,12 +212,13 @@ const Section = ({
   const createSubsections = subCategories.map((sub, i) => {
     return <Subsection name={sub} order={`_${i}`} />;
   });
+
   return (
     <div className="aktivity-section w-100" ref={refer}>
       <div id={order}>
         {loading ? (
           <Spinner animation="border" role="status" />
-        ) : (
+        ) : listedActivities.length ? (
           <div>
             <h3>{firstWord(name)}</h3>
             <div className="row">
@@ -219,7 +227,7 @@ const Section = ({
                 (listedActivities.length ? <ActivityCards /> : <EmptyPhrase />)}
             </div>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
