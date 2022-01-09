@@ -33,8 +33,6 @@ const Section = ({
   const [allIds, setAllIds] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [uncompletedIds, setUncompletedIds] = useState([]);
-
   const activeIds = userActivities.map((a) => a.id);
 
   useEffect(() => {
@@ -54,8 +52,6 @@ const Section = ({
 
           const activitiesByCheck = filterByCheckBox(sortedActivities);
           const activitiesByCheckAndText = filterByText(activitiesByCheck);
-
-          console.log(activitiesByCheckAndText);
 
           const collection = collect(activitiesByCheckAndText);
           const groupByName = collection.groupBy("name");
@@ -89,8 +85,6 @@ const Section = ({
   useEffect(() => {
     const activitiesByCheck = filterByCheckBox(allActivities);
     const activitiesByCheckAndText = filterByText(activitiesByCheck);
-
-    console.log(activitiesByCheckAndText);
 
     const collection = collect(activitiesByCheckAndText);
     const groupByName = collection.groupBy("name");
@@ -144,7 +138,7 @@ const Section = ({
       .replace(/\p{Diacritic}/gu, "");
 
     // if (!filterIsChecked) {
-    const filtered = allActivities.filter((activity) => {
+    const filtered = activities.filter((activity) => {
       const normalizedName = activity.name
         .toLowerCase()
         .normalize("NFD")
@@ -152,13 +146,12 @@ const Section = ({
       return normalizedName.includes(normalizedSearchText);
     });
 
-    console.log(filtered);
-
     return filtered;
   };
 
   const ActivityCards = () =>
     listedActivities.map((activity) => {
+      console.log(activity);
       return (
         <OdborkaCard
           key={activity.items[0].id}

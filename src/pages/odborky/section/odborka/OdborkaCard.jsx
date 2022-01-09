@@ -12,8 +12,6 @@ import { Redirect } from "react-router";
 const OdborkaCard = ({ odborka, hasActive, isDone }) => {
   const { auth } = useAuthContext();
 
-  console.log(odborka, isDone);
-
   const [tab, setTab] = useState("");
 
   const { name, id, img_url: image } = odborka.items[0];

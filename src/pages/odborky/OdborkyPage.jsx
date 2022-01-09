@@ -14,9 +14,9 @@ const OdborkyPage = () => {
 
   const [searchText, setSearchText] = useState("");
   const [filterIsChecked, setFilterIsChecked] = useState({
-    nezacate: true,
-    rozpracovane: true,
-    ziskane: true,
+    nezacate: false,
+    rozpracovane: false,
+    ziskane: false,
   });
 
   useEffect(() => {
@@ -24,7 +24,6 @@ const OdborkyPage = () => {
       await axios
         .post("api/age_categories")
         .then((res) => {
-          console.log(res.data);
           setVekKat(res.data);
           setLoading(false);
         })
